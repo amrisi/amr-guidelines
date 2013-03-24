@@ -453,11 +453,11 @@ predicate-specific and numbered.  For example:
   - `:ARG0` of `charge-01` is the person doing the charging.
   - `:ARG1` of `charge-01` is the person being charged.
   - `:ARG2` of `charge-01` is the role or crime (for which `:ARG0` is charging `:ARG1`).
-
+<p></p>
   - `:ARG0` of `sentence-01` is the person doing the sentencing.
   - `:ARG1` of `sentence-01` is the person being sentenced.
   - `:ARG2` of `sentence-01` is the role or crime.
-
+<p></p>
   - `:ARG0` of `fine-01` is the person doing the fining.
   - `:ARG1` of `fine-01` is the amount of the fine (e.g., $1000).
   - `:ARG2` of `fine-01` is the person being fined.
@@ -2688,7 +2688,7 @@ AMR also moves titles into the `:instance` role:
 ```lisp
 (p / president				    NOT:  (p / person
    :name (n / name                       :domain-of (p2 / president)
-            :op1 "Obama"))                             :name (n / name
+            :op1 "Obama"))                              :name (n / name
                                                                  :op1 "Obama"))
 ```
 
@@ -2735,8 +2735,9 @@ When faced with an appositive, AMR calmly inserts facts into slots:
             :name (h / name
                      :op1 "Holland"))
     :ARG0-of (p2 / publish-01)))
-Elsevier N.V. , the Dutch publishing group
 ```
+
+> Elsevier N.V. , the Dutch publishing group
 
 We view this object semantically as a “group”, which happens to have a known
 `:name`, plus some a couple of other properties that describe it.  
@@ -2947,27 +2948,27 @@ For stretches of time and relative times, AMR uses `temporal-quantity`.
 
 ```lisp
 (t / temporal-quantity
-    :unit (y / year)
-    :quant 30))
+   :unit (y / year)
+   :quant 30))
 ```
 
 > 30 years
 
 ```lisp
 (a3 / ago
-   :op1 (t / temporal-quantity
-           :unit (y / year)
-           :quant 30))
+    :op1 (t / temporal-quantity
+            :unit (y / year)
+            :quant 30))
 ```
 
 > 30 years ago
 
 ```lisp
 (a3 / ago
-   :op1 (t / temporal-quantity
-           :unit (y / year)
-           :quant (m2 / more-than
-                      :op1 30))))
+    :op1 (t / temporal-quantity
+            :unit (y / year)
+            :quant (m2 / more-than
+                       :op1 30))))
 ```
 
 > more than 30 years ago
