@@ -68,12 +68,12 @@ information:
 ```
 instance(w, want-01) ^      /* w is an instance of wanting */
 instance(b, boy) ^          /* b is an instance of boy */
-instance(b2, believe-01) ^	/* b2 is an instance of believing */
-instance(g, girl) ^		    /* g is an instance of girl */
-ARG0(w, b) ^			    /* b is the wanter in w */
-ARG1(w, b2) ^			    /* b2 is the wantee in w */
-ARG0(b2, g) ^			    /* g is the believer in b2 */
-ARG1(b2, b)			        /* b is the believee in b2 */
+instance(b2, believe-01) ^  /* b2 is an instance of believing */
+instance(g, girl) ^         /* g is an instance of girl */
+ARG0(w, b) ^                /* b is the wanter in w */
+ARG1(w, b2) ^               /* b2 is the wantee in w */
+ARG0(b2, g) ^               /* g is the believer in b2 */
+ARG1(b2, b)                 /* b is the believee in b2 */
 ```
 
 
@@ -1028,9 +1028,9 @@ not introduce implicit *concepts*, e.g., `full` below:
 
 
 ```lisp
-(h / hopeful			NOT:    (f / full
-   :ARG1 (g / girl))               :poss (h / hope)
-				                   :ARG1 (g / girl))
+(h / hopeful          NOT: (f / full
+   :ARG1 (g / girl))          :poss (h / hope)
+                              :ARG1 (g / girl))
 ```
 
 > the hopeful girl
@@ -1183,7 +1183,7 @@ make maximal use of use of OntoNotes predicate frames, instead of defaulting to
 
 
 ```lisp
-(o / organization			      NOT:  (m / maker
+(o / organization                 NOT:  (m / maker
    :ARG0-of (m / make-01                   :mod (c / chip))
                :ARG1 (c / chip)))
 ```
@@ -1208,8 +1208,8 @@ make maximal use of use of OntoNotes predicate frames, instead of defaulting to
 > bond investor 
 
 ```lisp
-(p / person					      NOT:  (i / investor
-   :ARG0-of (i / invest-01                 :mod (s / small))      “I can’t see you!”
+(p / person                        NOT:  (i / investor
+   :ARG0-of (i / invest-01                  :mod (s / small))      “I can’t see you!”
                :mod (s / small)))
 ```
 
@@ -1229,15 +1229,15 @@ someone who treasures:
 
 
 ```lisp
-(t  / treasure)			NOT:   (p / person
-                                  :ARG0-of (t / treasure-01))
+(t  / treasure)            NOT:   (p / person
+                                     :ARG0-of (t / treasure-01))
 ```
 
 > treasurer
 
 ```lisp
-(p / president)			NOT:   (p / person
-                                  :ARG0-of (p2 / preside-01))
+(p / president)            NOT:   (p / person
+                                     :ARG0-of (p2 / preside-01))
 ```
 
 > president
@@ -1248,9 +1248,9 @@ hard worker” just means the boy works hard:
 
 
 ```lisp
-(w / work-01			NOT:    (p / person
-   :ARG0 (b / boy)                 :ARG0-of (w / work-01
-   :manner (h / hard))                         :manner (h / hard))
+(w / work-01               NOT:   (p / person
+   :ARG0 (b / boy)                   :ARG0-of (w / work-01
+   :manner (h / hard))                           :manner (h / hard))
    :domain (b / boy))
 ```
 
@@ -1296,9 +1296,9 @@ predicates:
 
 
 ```lisp
-(a / realize-01			NOT:  (a / aware
-   :ARG0 (s / soldier)           :ARG1 (s / soldier)
-   :ARG1 (b / battle)            :prep-of (b / battle))
+(a / realize-01            NOT:  (a / aware
+   :ARG0 (s / soldier)              :ARG1 (s / soldier)
+   :ARG1 (b / battle)               :prep-of (b / battle))
 ```
 
 > The soldier was aware of the battle.
@@ -1449,9 +1449,9 @@ English is a wily opponent though.  If you own a taxable fund, getting taxed is
 more than just a possibility, my friend:
 
 ```lisp
-(f / fund				   NOT: (f / fund
-   :ARG3-of (t / tax-01))          :ARG3-of (t / tax-01
-                                               :domain-of (p / possible)))
+(f / fund                   NOT: (f / fund
+   :ARG3-of (t / tax-01))           :ARG3-of (t / tax-01
+                                                :domain-of (p / possible)))
 ```
 
 > a taxable fund
@@ -1607,10 +1607,10 @@ role, e.g.:
 
 
 ```lisp
-(p / provide-01			NOT:	(p / provide-01
-   :ARG0 (b / boy)                 :ARG0 (b / boy)
-   :ARG1 (c / chocolate)           :ARG1 (c / chocolate)
-   :ARG2 (g / girl))               :beneficiary (g / girl))
+(p / provide-01            NOT:  (p / provide-01
+   :ARG0 (b / boy)                  :ARG0 (b / boy)
+   :ARG1 (c / chocolate)            :ARG1 (c / chocolate)
+   :ARG2 (g / girl))                :beneficiary (g / girl))
 ```
 
 > The boy provided chocolate to the girl.
@@ -1622,9 +1622,9 @@ involving creation events.  We tend to put them on the event, rather than on the
 created thing:
 
 ```lisp
-(b / build-01						NOT:  (b / build-01
-  :ARG0 (t / they)					         :ARG0 (t / they)
-  :ARG1 (b2 / bridge)                        :ARG1 (b2 / bridge :location …))
+(b / build-01                        NOT:  (b / build-01
+  :ARG0 (t / they)                            :ARG0 (t / they)
+  :ARG1 (b2 / bridge)                         :ARG1 (b2 / bridge :location …))
   :location (s / state :name (n / name :op1 "Maryland"))                                   
   :time (d / date-entity :month 12))
 ```
@@ -1638,7 +1638,7 @@ Here are more non-core roles:
 ### `:part`
 
 ```lisp
-(e / engine			
+(e / engine
    :part-of (c / car))                                                                                    
 ```
 
@@ -1755,11 +1755,11 @@ relation `:cause` is replaced by `cause-01`. Instead of `x :cause y`, we have
 
 ```lisp
 AMR without reification:        AMR with reification:
-(l / leave				        (l / leave
-   :ARG0 (g / girl)			       :ARG0 (g / girl)
-   :cause (a / arrive			   :ARG1-of (c / cause-01
-             :ARG0 (b / boy))) 	               :ARG0 (a / arrive
-                                        	   :ARG0 (b / boy))))
+(l / leave                      (l / leave
+   :ARG0 (g / girl)                :ARG0 (g / girl)
+   :cause (a / arrive              :ARG1-of (c / cause-01
+             :ARG0 (b / boy)))                 :ARG0 (a / arrive
+                                               :ARG0 (b / boy))))
 ```
 
 > The girl left because the boy arrived.
@@ -1826,9 +1826,9 @@ We also use reification when we want to modify a relation.  For example:
 Here are the AMR reifications.  Reifications often correspond to OntoNotes
 predicates, in which case, we just use the `:ARG` relations in the natural way.
 
-> Read this chart as: 	`x :Relation y` = `x :Domain-of (z / Reification :Range y)`
+> Read this chart as: `x :Relation y` = `x :Domain-of (z / Reification :Range y)`
 >
-> For example: 		`x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`
+> For example: `x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`
 
 Relation       | Reification           | Domain  | Range   | Example
 ---------------|-----------------------|---------|---------|-------------------------
@@ -1863,11 +1863,11 @@ canonical:
 
 ```lisp
 AMR without reification:        AMR with reification:
-(l / leave				        (l / leave
-   :ARG0 (g / girl)			       :ARG0 (g / girl)
-   :cause (a / arrive			   :ARG1-of (c / cause-01
-             :ARG0 (b / boy))) 	               :ARG0 (a / arrive
-                                        	   :ARG0 (b / boy))))
+(l / leave                      (l / leave
+   :ARG0 (g / girl)                :ARG0 (g / girl)
+   :cause (a / arrive              :ARG1-of (c / cause-01
+             :ARG0 (b / boy)))                 :ARG0 (a / arrive
+                                               :ARG0 (b / boy))))
 ```
 
 Furthermore, we might reasonably tend to use the first AMR for “The girl left
@@ -2064,7 +2064,7 @@ difficult (“the not-black car”):
 
 > the car that is not black
 
-Japanese simply marks adjectives with a negative suffix.	
+Japanese simply marks adjectives with a negative suffix.
 
 
 
@@ -2685,10 +2685,10 @@ AMR also moves titles into the `:instance` role:
 
 
 ```lisp
-(p / president				    NOT:  (p / person
-   :name (n / name                       :domain-of (p2 / president)
-            :op1 "Obama"))                              :name (n / name
-                                                                 :op1 "Obama"))
+(p / president              NOT:  (p / person
+   :name (n / name                   :domain-of (p2 / president)
+            :op1 "Obama"))                          :name (n / name
+                                                             :op1 "Obama"))
 ```
 
 > President Obama
@@ -3006,10 +3006,10 @@ Relative positions often include a quantity:
    :ARG1 (p / plane)
    :location (r / relative-position
                 :op1 (g / city :name (n / name :op1 "Moscow"))
-   	            :quant (d / distance-quantity 
+                :quant (d / distance-quantity 
                           :unit (m / mile)
                                    :quant 50)
-	            :direction (e / east)))
+                :direction (e / east)))
 ```
 
 > The plane crashed 50 miles east of Moscow.
@@ -3212,7 +3212,7 @@ These entities are described in standard, canonical forms:
     :calendar (y / year
                  :poss (f / finance)
                  :mod (g / government
-			             :part-of (u / country 
+                         :part-of (u / country 
                                      :name (n / name
                                               :op1 "United"
                                               :op2 "States")))))
@@ -3292,10 +3292,10 @@ Second, we have two different ways of encoding the same propositional content
 (“the boy likes to be believed”):
 
 ```lisp
-(l / like-01			(l / like-01
-   :ARG0 (b / boy)		   :ARG0 (b / boy
-   :ARG1 (b2 / believe		        :ARG1-of (c / believe))
-             :ARG1 b))              :ARG1 c)
+(l / like-01           (l / like-01
+   :ARG0 (b / boy)        :ARG0 (b / boy
+   :ARG1 (b2 / believe             :ARG1-of (c / believe))
+             :ARG1 b))             :ARG1 c)
 ```
 
 Sensible people will prefer the version on the left, though both versions relate
