@@ -36,6 +36,8 @@ English than to other languages.  It is not an interlingua.
 Example
 -------
 
+![Example AMR graph](graph.png "The boy wants the girl to believe him.")
+
 This AMR means (roughly):  There is a wanting event, whose ARG0 (wanter) is a
 boy, and whose ARG1 (wanted thing) is a believing event.  This believing event
 has an ARG0 (believer), which is a girl, and it has an ARG1 (believed thing),
@@ -1825,9 +1827,9 @@ We also use reification when we want to modify a relation.  For example:
 Here are the AMR reifications.  Reifications often correspond to OntoNotes
 predicates, in which case, we just use the `:ARG` relations in the natural way.
 
-*Read this chart as: 	`x :Relation y` = `x :Domain-of (z / Reification :Range y)`.*
-
-*For example: 		`x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`.*
+> Read this chart as: 	`x :Relation y` = `x :Domain-of (z / Reification :Range y)`
+>
+> For example: 		`x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`
 
 Relation       | Reification           | Domain  | Range   | Example
 ---------------|-----------------------|---------|---------|-------------------------
@@ -1846,7 +1848,6 @@ Relation       | Reification           | Domain  | Range   | Example
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
-```
 
 These relations do not have reifications:
 
