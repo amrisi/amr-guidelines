@@ -415,7 +415,6 @@ partial, as other `:prep-X` relations are legal AMR.
 :prep-versus
 :prep-with, :prep-within, :prep-without
 ```
-
 etc.
 
 Some conjunctions are also not well-covered under the list of non-core roles. 
@@ -424,8 +423,8 @@ AMR also likes to avoid these, but sometimes we have no good alternative:
 
 ```lisp
 :conj-as-if
-   etc.
 ```
+etc.
 
 All relations above have inverses of the form `:X-of`.
 
@@ -433,8 +432,8 @@ All relations above have inverses of the form `:X-of`.
 ```lisp
 :ARG0-of, :ARG1-of
 :cause-of
-   etc.
 ```
+etc.
 
 
 
@@ -470,9 +469,9 @@ One semantic frame may be realized in vastly different ways in English:
 
 ```lisp
 (d / describe-01
-  :ARG0 (h / he)
-  :ARG1 (m / mission)
-  :ARG2 (f / failure))
+   :ARG0 (h / he)
+   :ARG1 (m / mission)
+   :ARG2 (f / failure))
 ```
 
 > He described the mission as a failure.
