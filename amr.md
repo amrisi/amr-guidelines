@@ -2215,7 +2215,7 @@ their position:
 ```lisp
 (l / leave-01
    :ARG0 (b / boy
-                 :mod (a / all)))
+            :mod (a / all)))
 ```
 
 > The boys all left.
@@ -2226,8 +2226,8 @@ their position:
 
 ```lisp
 (l / leave-01
-  :ARG0 (b / boy
-                :mod (n / no)))
+   :ARG0 (b / boy
+            :mod (n / no)))
 ```
 
 > No boy left.
@@ -2236,31 +2236,30 @@ their position:
 
 ```lisp
 (l / leave-01
-  :ARG0 (b / boy
-               :mod (a / all
-                           :polarity -)))
+   :ARG0 (b / boy
+            :mod (a / all
+                    :polarity -)))
 ```
 
 > Not all of the boys left.
 
 ```lisp
 (l / leave-01
-  :ARG0 (p / person
-               :mod (a / all
-                           :polarity -)))
+   :ARG0 (p / person
+           :mod (a / all
+                   :polarity -)))
 ```
 
 > Not everyone left.
 
 The placement of `:polarity` can be troublesome.  Consider:
 
-
 ```lisp
 (b / believe-01
-  :ARG0 (g / girl)
-  :ARG1 (w / work-01
-                 :ARG0 (b / boy)
-                 :manner (h / hard)))
+   :ARG0 (g / girl)
+   :ARG1 (w / work-01
+            :ARG0 (b / boy)
+            :manner (h / hard)))
 ```
 
 > The girl believes that the boy works hard.
@@ -2272,11 +2271,11 @@ or “hard”.  Here it should go under “hard”:
 
 ```lisp
 (b / believe-01
-  :ARG0 (g / girl)
-  :ARG1 (w / work-01
-                 :ARG0 (b2 / boy)
-                 :manner (h / hard
-                                  :polarity -)))
+   :ARG0 (g / girl)
+   :ARG1 (w / work-01
+            :ARG0 (b2 / boy)
+            :manner (h / hard
+                       :polarity -)))
 ```
 
 > The girl believes that the boy works in a not-hard manner.
@@ -2290,34 +2289,34 @@ If we put `:polarity` elsewhere, we change the meaning:
 
 ```lisp
 (b / believe-01
-  :ARG0 (g / girl)
-  :ARG1 (w / work-01
-                 :polarity -
-                 :ARG0 (b2 / boy)
-                 :manner (h / hard)))
+   :ARG0 (g / girl)
+   :ARG1 (w / work-01
+            :polarity -
+            :ARG0 (b2 / boy)
+            :manner (h / hard)))
 ```
 
 > The girl believes that the boy refrains from work, in a hard manner.
 
 ```lisp
 (b / believe-01
-  :polarity -
-  :ARG0 (g / girl)
-  :ARG1 (w / work-01
-                 :ARG0 (b2 / boy)
-                 :manner (h / hard)))
+   :polarity -
+   :ARG0 (g / girl)
+   :ARG1 (w / work-01
+            :ARG0 (b2 / boy)
+            :manner (h / hard)))
 ```
 
 > It’s not true that the girl believes the boy works hard.
 
 ```lisp
 (b / believe-01
-  :ARG0 (g / girl
-                 :polarity -)
+   :ARG0 (g / girl
+            :polarity -)
   :ARG1 (w / work-01
-                 :ARG0 (b2 / boy
-                                 :polarity -)
-                 :manner (h / hard)))
+           :ARG0 (b2 / boy
+                     :polarity -)
+           :manner (h / hard)))
 ```
 
 > The non-girl believes that the non-boy works hard.
@@ -2332,12 +2331,11 @@ Degree
 
 Comparatives and superlatives are represented by `:degree` and `:compared-to`, e.g.:
 
-
 ```lisp
 (b / bright
-  :ARG1 (b2 / boy 
-                  :mod (t / that))
-  :degree (m / more))
+   :ARG1 (b2 / boy 
+             :mod (t / that))
+   :degree (m / more))
 ```
 
 > That boy is brighter.
@@ -2346,9 +2344,9 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (b / bright
-  :ARG1 (b2 / boy
-                  :mod (t / that))
-  :degree (m / most))
+   :ARG1 (b2 / boy
+             :mod (t / that))
+   :degree (m / most))
 ```
 
 > That boy is the brightest.
@@ -2357,51 +2355,51 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (p / plan-01
-  :time (e / early
-              :degree (m / more)))
+   :time (e / early
+            :degree (m / more)))
 ```
 
 > the earlier plan
 
 ```lisp
  (p / plan-01
-  :mod (g / good
-              :degree (m / more)))
+    :mod (g / good
+            :degree (m / more)))
 ```
 
 > a better plan
 
 ```lisp
 (p / plan-01
-  :mod (g / bad
-              :degree (m / more)))
+   :mod (g / bad
+           :degree (m / more)))
 ```
 
 > a worse plan
 
 ```lisp
 (p / plan-01
-  :mod (e / extreme
-              :degree (t / too)))
+   :mod (e / extreme
+           :degree (t / too)))
 ```
 
 > a plan that is too extreme
 
 ```lisp
 (t / tall
-  :degree (m / more)
-  :ARG1 (g / girl)
-  :compared-to (b / boy))
+   :degree (m / more)
+   :ARG1 (g / girl)
+   :compared-to (b / boy))
 ```
 
 > the girl is taller than the boy
 
 ```lisp
 (g / girl
-  :mod (t / tall 
-             :degree (m / most)
-             :compared-to (t2 / team))
-  :ARG1 (s / she))
+   :mod (t / tall 
+           :degree (m / most)
+           :compared-to (t2 / team))
+   :ARG1 (s / she))
 ```
 
 > she is the tallest girl on the team
@@ -2419,9 +2417,9 @@ If two variables are the same, then they refer to the same entity:
 
 ```lisp
 (w / want-01
-  :ARG0 (y / boy)
-  :ARG1 (g / go-01
-                 :ARG0 y))
+   :ARG0 (y / boy)
+   :ARG1 (g / go-01
+            :ARG0 y))
 ```
 
 > The boy wants to go.
@@ -2429,24 +2427,22 @@ If two variables are the same, then they refer to the same entity:
 In English, overt and zero pronouns are often used to realize co-reference, but
 AMR uses variables instead:
 
-
 ```lisp
 (w / want-01
-  :ARG0 (y / boy)
-  :ARG1 (b / believe-01
-                 :ARG0 y)
-                 :ARG1 y))
+   :ARG0 (y / boy)
+   :ARG1 (b / believe-01
+            :ARG0 y)
+            :ARG1 y))
 ```
 
 > The boy wants to believe himself.
 
 If an overt pronoun has no antecedent within the sentence, AMR uses the pronoun:
 
-
 ```lisp
 (s / see-01
-  :ARG0 (h / he)
-  :ARG1 (s / they))
+   :ARG0 (h / he)
+   :ARG1 (s / they))
 ```
 
 > He saw them.
@@ -2455,11 +2451,10 @@ Pronouns in AMR are always nominative (he, she, i, we, they, …) and never
 accusative (him, her, me, us, them, …).  AMR uses the token `y'all` for you
 plural:
 
-
 ```lisp
 (s / see-01
-  :ARG0 (i / i)
-  :ARG1 (y / y'all))
+   :ARG0 (i / i)
+   :ARG1 (y / y'all))
 ```
 
 > I saw you (plural).
@@ -2475,10 +2470,9 @@ Possession
 The relation `:poss` (“possessed by”) is a very general form of possession.  AMR
 uses it only for possessives and prepositional phrases with “of”:
 
-
 ```lisp
 (c / car
-  :poss (h / he))
+   :poss (h / he))
 ```
 
 > his car
@@ -2487,7 +2481,7 @@ uses it only for possessives and prepositional phrases with “of”:
 
 ```lisp
 (t / titan
-  :poss (n / nation))
+   :poss (n / nation))
 ```
 
 > the nation’s titans
@@ -2504,10 +2498,9 @@ Pertainym adjectives (e.g., “atomic, adj. = of, or pertaining to, atoms”) do
 appear in AMR.  Only the stemmed noun form is used, along with the `:mod`
 relation.
 
-
 ```lisp
 (v / virus
-  :mod (m / microbe))
+   :mod (m / microbe))
 ```
 
 > microbial virus
@@ -2516,17 +2509,16 @@ relation.
 
 ```lisp
 (w / war
-  :mod (a / atom))
+   :mod (a / atom))
 ```
 
 > atomic war
 
 A pertainym may get stemmed to noun form, and then subsequently to verb form:
 
-
 ```lisp
 (p / problem
-  :mod (b / behave-01))
+   :mod (b / behave-01))
 ```
 
 > Behavioral problems.
@@ -2547,28 +2539,27 @@ Subsets
 
 We often refer to subsets when we speak.  AMR uses roles `:subset` and `:subset-of`.
 
-
 ```lisp
 (d / die-01
-  :ARG1 (s / soldier
-                  :quant 9
-                  :subset-of (s3 / soldier
-                                     :quant 20)))
+   :ARG1 (s / soldier
+            :quant 9
+            :subset-of (s3 / soldier
+                           :quant 20)))
 ```
 
 > Nine of the twenty soldiers died.
 
 ```lisp
 (h / have-03
-  :ARG0 (p4 / person
-                :quant 4
-                :subset-of (p2 / person                       
-                                    :ARG0-of (s / survive-01)
-                                    :quant 5)
-                :subset (p3 / person
-                              :quant 3
-                              :ARG1-of (d3 / diagnose-01)))
-  :ARG1 (d / disease))
+   :ARG0 (p4 / person
+             :quant 4
+             :subset-of (p2 / person                       
+                            :ARG0-of (s / survive-01)
+                            :quant 5)
+             :subset (p3 / person
+                         :quant 3
+                         :ARG1-of (d3 / diagnose-01)))
+   :ARG1 (d / disease))
 ```
 
 > Four of the five survivors had the disease, including three who were diagnosed.
@@ -2580,11 +2571,11 @@ equivalently write:
 
 ```lisp
 (d / die-01
-  :ARG1 (s / soldier
-                  :quant 9
-                  :ARG1-of (i / include-91
-                                      :ARG2 (s3 / soldier
-                                                      :quant 20))))
+   :ARG1 (s / soldier
+            :quant 9
+            :ARG1-of (i / include-91
+                        :ARG2 (s3 / soldier
+                                  :quant 20))))
 ```
 
 > Nine of the twenty soldiers died.
@@ -2607,7 +2598,7 @@ computers can also have names.
 (p / person 
    :name (n / name 
             :op1 "Mollie" 
-             :op2 "Brown"))
+            :op2 "Brown"))
 ```
 
 > Mollie Brown 
@@ -2660,8 +2651,8 @@ American spelling, but we do not otherwise normalize variants.
 
 ```lisp
 (s / state
-  :name (n / name
-                :op1 "Calif."))
+   :name (n / name
+            :op1 "Calif."))
 ```
 
 > Calif.
@@ -2724,8 +2715,8 @@ An exception is made for “Mr.”, “Mrs.”, etc:
 ```lisp
 (p / person
    :name (n / name
-                :op1 "Mr."
-                :op2 "Wu"))
+            :op1 "Mr."
+            :op2 "Wu"))
 ```
 
 > Mr. Wu
@@ -2738,11 +2729,11 @@ When faced with an appositive, AMR calmly inserts facts into slots:
 ```lisp
  (g / group
     :name (e / name
-                  :op1 "Elsevier"
-                  :op2 "N.V.")
+             :op1 "Elsevier"
+             :op2 "N.V.")
     :mod (c / country
-                :name (h / name
-                             :op1 "Holland"))
+            :name (h / name
+                     :op1 "Holland"))
     :ARG0-of (p2 / publish-01)))
 Elsevier N.V. , the Dutch publishing group
 ```
@@ -2757,8 +2748,8 @@ In such cases, we must hallucinate an entity type.  For example:
 
 ```lisp
 (p / person 
-  :name (n / name 
-                :op1 "Pascale"))
+   :name (n / name 
+            :op1 "Pascale"))
 ```
 
 > 
@@ -2766,8 +2757,8 @@ Pascale
 
 ```lisp
 (c / company
-  :ARG0-of (m / make-01
-                      :ARG1 (c / chip)))
+   :ARG0-of (m / make-01
+               :ARG1 (c / chip)))
 ```
 
 > the chip maker
@@ -2776,11 +2767,9 @@ Pascale
 However, we do not want some AMRs to say “person” and others to say “woman”, or
 some to say “company”, and others to say “organization”.  
 
-
 So when we are forced to hallucinate an entity type, AMR requires us to draw
 from this canonical list (borrowing from information extraction and question
 answering):
-
 
   - **person**, family, god, animal, fictional-character, ethnic-group, language, nationality, regional-group, religious-group
   - **organization**, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, public-institution, team, league
@@ -2791,7 +2780,7 @@ answering):
   - **publication**, book, newspaper, magazine, journal
   - law, treaty, award, food-dish, disease
 
-If none of these apply, then we use `thing`.
+If none of these apply, then we use **thing**.
 
 Some examples:
 
@@ -3221,18 +3210,18 @@ These entities are described in standard, canonical forms:
  (d / date-entity
     :year 2012
     :calendar (y / year
-		:poss (f / finance)
-		:mod (g / government
-			:part-of (u / country 
-                                                    :name (n / name
-				             :op1 "United"
-				             :op2 "States")))))
+                 :poss (f / finance)
+                 :mod (g / government
+			             :part-of (u / country 
+                                     :name (n / name
+                                              :op1 "United"
+                                              :op2 "States")))))
 ```
 
 > United States government fiscal year 2012
 
 ```lisp
- (d / date-interval
+(d / date-interval
    :op1 (d2 / date-entity :year 2012 :month 3 :day 8)
    :op2 (d3 / date-entity :year 2012 :month 3 :day 9))
 ```
@@ -3240,7 +3229,7 @@ These entities are described in standard, canonical forms:
 > March 8-9, 2012
 
 ```lisp
- (d / date-interval
+(d / date-interval
    :op1 (d2 / date-entity :year 1939 :month 9 :day 1)
    :op2 (d3 / date-entity :year 1945 :month 5 :day 8))
 ```
@@ -3258,7 +3247,7 @@ These entities are described in standard, canonical forms:
 > 25 percent
 
 ```lisp
- (p / phone-number-entity :value “18005551212”)
+(p / phone-number-entity :value "18005551212")
 ```
 
 > 1-800-555-1212
@@ -3266,13 +3255,13 @@ These entities are described in standard, canonical forms:
 > 1 (800) 555-1212
 
 ```lisp
-(e / email-address-entity :value “president@whitehouse.gov”)
+(e / email-address-entity :value "president@whitehouse.gov")
 ```
 
 > president@whitehouse.gov
 
 ```lisp
-(u / url-entity :value “www.whitehouse.gov”) 
+(u / url-entity :value "www.whitehouse.gov")
 ```
 
 > www.whitehouse.gov
@@ -3289,25 +3278,24 @@ First, the occasional AMR will have a cycle:
 ```lisp
 (w / woman
    :ARG0-of (n / nominate-01
-                        :ARG1 (b / boss
-                                       :poss w)))
+               :ARG1 (b / boss
+                        :poss w)))
 ```
 
 > the woman who nominated her boss
 
-Note how “w” refers to “the woman who nominated the boss of the woman who
+Note how `w` refers to “the woman who nominated the boss of the woman who
 nominated the boss of the woman who nominated the boss of …”
 
 
 Second, we have two different ways of encoding the same propositional content
 (“the boy likes to be believed”):
 
-
 ```lisp
 (l / like-01			(l / like-01
    :ARG0 (b / boy)		   :ARG0 (b / boy
-   :ARG1 (b2 / believe		                   :ARG1-of (c / believe))
-                  :ARG1 b))             	   :ARG1 c)
+   :ARG1 (b2 / believe		        :ARG1-of (c / believe))
+             :ARG1 b))              :ARG1 c)
 ```
 
 Sensible people will prefer the version on the left, though both versions relate
