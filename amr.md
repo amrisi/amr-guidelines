@@ -964,7 +964,7 @@ If a hyphenated word can be broken down into component meanings, we do it:
 ```lisp
 (a / account
    :mod (m / market
-               :mod (m2 / money)))
+           :mod (m2 / money)))
 ```
 
 > money-market account
@@ -1002,13 +1002,13 @@ when there is no real debate about what is happening in the world.  Consider:
 (c / charge-05
    :ARG1 (h / he)
    :ARG2 (a / and
-                  :op1 (i / intoxicate-01
-                            :ARG1 h
-                            :location (p / public))
-                  :op2 (r / resist-01
-                            :ARG0 h
-                            :ARG1 (a2 / arrest-01
-                                           :ARG1 h))))
+            :op1 (i / intoxicate-01
+                    :ARG1 h
+                    :location (p / public))
+            :op2 (r / resist-01
+                    :ARG0 h
+                    :ARG1 (a2 / arrest-01
+                              :ARG1 h))))
 ```
 
 > He was charged with public intoxication and resisting arrest.
