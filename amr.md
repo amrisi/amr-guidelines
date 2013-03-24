@@ -13,7 +13,7 @@ Part I. Introduction
 ====================
 
 AMR captures “who is doing what to who” in a sentence.  Each sentence is
-represented as a rooted, directed, acyclic graph with labels on edges
+represented as a **rooted, directed, acyclic graph** with labels on edges
 (relations) and leaves (concepts).
 
 Like a parse tree, AMR provides a single, traversable structure that takes all
@@ -27,7 +27,7 @@ Higginbotham 1985], using standard feature structure representation [Shieber
 1986, Carpenter 1992].  AMR’s formal origins are in unification systems [Kay
 1979, Knight 1989, Moore 1989] and natural language generation [Mann 1982,
 Elhadad 1988, Knight & Hatzivassiloglou 1995].  Predicates senses and core
-semantic roles in AMR are drawn from the amazing OntoNotes project.
+semantic roles in AMR are drawn from the **amazing OntoNotes project**.
 
 AMR does not say anything about how it wants to be processed.  It is closer to
 English than to other languages.  It is not an interlingua.
@@ -39,7 +39,7 @@ Example
 This AMR means (roughly):  There is a wanting event, whose ARG0 (wanter) is a
 boy, and whose ARG1 (wanted thing) is a believing event.  This believing event
 has an ARG0 (believer), which is a girl, and it has an ARG1 (believed thing),
-which is the same boy just mentioned.  Here, `boy` plays two roles: (1) it is
+which is the **same boy** just mentioned.  Here, `boy` plays two roles: (1) it is
 the ARG0 of `want-01`, and (2) it is the ARG1 of `believe-01`.  The AMR captures
 this with two directed edges pointing to the same node.  (Per OntoNotes,
 predicate senses are marked with suffixes like `-01` and `-02`, while ARG0,
@@ -112,20 +112,20 @@ In many cases, English function words do not show up at all in AMR:
    :ARG1 (m / machine))
 ```
 
-> The girl made adjustments to the machine.
+> The girl **made** adjustments **to** the machine.
 >
 > The girl adjusted the machine.
 >
-> The machine was adjusted by the girl.
+> The machine **was** adjusted **by** the girl.
 
 ```lisp
 (k / kill-01
    :time (y / yesterday))
 ```
 
-> The killing happened yesterday.
+> The killing **happened** yesterday.
 >
-> The killing took place yesterday.
+> The killing **took place** yesterday.
 
 ```lisp
 (a / and
@@ -135,7 +135,7 @@ In many cases, English function words do not show up at all in AMR:
 
 > the boy and the girl
 >
-> both the boy and the girl
+> **both** the boy and the girl
 
 ```lisp
 (b / boat
@@ -144,7 +144,7 @@ In many cases, English function words do not show up at all in AMR:
 
 > his boat
 >
-> his own boat
+> his **own** boat
 
 
 More Logical than Syntax
@@ -270,8 +270,8 @@ the same content, but rearranged:
 >
 > The boy is wanted by the girl he saw.
 
-This is a matter of focusing: the first AMR (rooted by see-01) is about the
-seeing, while the second AMR (rooted by want-01) is about the wanting.
+This is a matter of focusing: the first AMR (rooted by `see-01`) is about the
+seeing, while the second AMR (rooted by `want-01`) is about the wanting.
 
 
 Another example of an inverse role (`:instrument-of`):
@@ -486,7 +486,7 @@ humorous.  For example, the `:ARG0` and `:ARG1` of `research-01` are nicknamed
 “student” and “subject”, but this does not mean that `research-01` is restricted
 to situations where the `:ARG0` is literally a student.
 
-If OntoNotes is missing a predicate, AMR accepts “-00”:
+If OntoNotes is missing a predicate, AMR accepts `-00`:
 
 
 ```lisp
@@ -500,9 +500,8 @@ If OntoNotes is missing a predicate, AMR accepts “-00”:
 Modality
 --------
 
-AMR represents syntactic modals with concepts like possible, likely,
-obligate-01, permit-01, recommend-01, prefer-01, etc:
-
+AMR represents syntactic modals with concepts like `possible`, `likely`,
+`obligate-01`, `permit-01`, `recommend-01`, `prefer-01`, etc.:
 
 ```lisp
 (p / possible
@@ -734,7 +733,7 @@ Negative English affixes are also represented with the `:polarity` role:
 Wh-Questions
 ------------
 
-To capture wh-questions, AMR uses the concept amr-unknown (in-place!) to
+To capture wh-questions, AMR uses the concept `amr-unknown` (in-place!) to
 indicate wh-questions:
 
 
@@ -801,7 +800,7 @@ indicate wh-questions:
 > Which investigation did she lead?
 
 Note that wh- words in relative clauses are treated differently, using inverse
-roles instead of amr-unknown:
+roles instead of `amr-unknown`:
 
 
 ```lisp
@@ -987,7 +986,7 @@ But when it is hard to get component meanings out, then we leave it together:
 
 > brother-in-law
 
-In any case, we never make the hyphen itself (“-“) into an AMR concept.
+In any case, we never make the hyphen itself (“-”) into an AMR concept.
 
 
 
@@ -1013,7 +1012,7 @@ when there is no real debate about what is happening in the world.  Consider:
 
 > He was charged with public intoxication and resisting arrest.
 
-Here, the variable h appears four times, including as the ARG1 of arrest-01,
+Here, the variable h appears four times, including as the ARG1 of `arrest-01`,
 because it is clear that h is resisting his own arrest (not someone else’s). 
 However, we do not include anything to the effect of “the charging agent and the
 arresting agent are the same entity”, as that is debatable.
@@ -1024,7 +1023,7 @@ Implicit concepts
 -----------------
 
 When we build AMR from text, we introduce implicit roles, but we generally do
-not introduce implicit concepts, e.g., “full” below:
+not introduce implicit *concepts*, e.g., `full` below:
 
 
 ```lisp
@@ -1230,7 +1229,7 @@ someone who treasures:
 
 ```lisp
 (t  / treasure)			NOT:   (p / person
-				                  :ARG0-of (t / treasure-01))
+                                  :ARG0-of (t / treasure-01))
 ```
 
 > treasurer
@@ -1574,6 +1573,7 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
    :condition (g / give-01
                  :ARG1 (m / money)
                  :ARG2 b))
+```
 
 > The boy will sing unless he is given money.
 >
@@ -1738,8 +1738,8 @@ Inverse relations are often used for focusing (see [Introduction](#focus)):
 
 The concept of focus only applies at the very top (root) of the AMR.  After a
 root concept is selected, there are no more focus considerations -- all else is
-driven strictly by semantic relations.  For example, once we have selected “c /
-college” at the root, then “`:source-of`” must be filled with “boy”, not with
+driven strictly by semantic relations.  For example, once we have selected 
+`c / college` at the root, then `:source-of` must be filled with `boy`, not with
 `sing-01`.
 
 
@@ -1748,7 +1748,7 @@ Reification
 -----------
 
 Sometimes we want to use an AMR relation as a first-class concept.  Converting a
-role into a concept is called reification.  Here is an example, where the
+role into a concept is called *reification*.  Here is an example, where the
 relation `:cause` is replaced by `cause-01`. Instead of `x :cause y`, we have 
 `x :ARG1-of (c / cause-01 :ARG0 y)`.
 
@@ -1790,7 +1790,7 @@ Or we might try focusing on the drawer:
 
 But we really want to focus on the locating itself.  AMR therefore supplies
 reifications for many relations.  In the case of `:location`, the reification is
-“be-located-at-91”, allowing us to say:
+`be-located-at-91`, allowing us to say:
 
 
 ```lisp
@@ -1803,7 +1803,7 @@ reifications for many relations.  In the case of `:location`, the reification is
 
 > We know the knife is in the drawer.
 
-Note that “be-located-at-00” has two roles, `:ARG0` (the thing that exists in
+Note that `be-located-at-00` has two roles, `:ARG0` (the thing that exists in
 space) and `:ARG1` (where the thing is).  
 
 
@@ -1904,7 +1904,7 @@ AMR strips away light-verb constructions:
 
 > The girl adjusted the machine.
 >
-> The girl made an adjustment to the machine.
+> The girl **made** an adjustment to the machine.
 
 ```lisp
 (t / bathe-01
@@ -1931,7 +1931,7 @@ Here `look-05` is defined as “look up: seek”.
 Sometimes a particle doesn’t change the meaning of the verb very much, but
 OntoNotes may still have two separate predicates.  For example, `close-06` means
 “become nearer”, while `close-07` is “close in: become nearer”.  In such cases,
-AMR canonicalizes to the non-particle frame, e.g., `close-06`.
+AMR canonicalizes to the *non-particle* frame, e.g., `close-06`.
 
 
 
@@ -2103,34 +2103,33 @@ Multiple relations with the same name
 Conjunctions
 ------------
 
-To represent conjunction, AMR uses concepts and, or, contrast, either, and
-neither, along with `:opx` relations:
+To represent conjunction, AMR uses concepts `and`, `or`, `contrast`, `either`, and
+`neither`, along with `:opx` relations:
 
 
 ```lisp
 (a / and
-  :op1 (b / boy)
-  :op2 (g / girl))
+   :op1 (b / boy)
+   :op2 (g / girl))
 ```
 
 > the boy and the girl
 
 ```lisp
 (a / either
-  :op1 (b / boy)
-  :op2 (g / girl)
-  :op3 (d / dog))
+   :op1 (b / boy)
+   :op2 (g / girl)
+   :op3 (d / dog))
 ```
 
 > either the boy, the girl, or the dog
 
-Conjoined adjectives are done without and:
-
+Conjoined adjectives are done without `and`:
 
 ```lisp
 (b / ball
-  :mod (b2 / big)
-  :mod (h / heavy)
+   :mod (b2 / big)
+   :mod (h / heavy)
 ```
 
 > the big, heavy ball
@@ -2139,45 +2138,42 @@ Conjoined adjectives are done without and:
 
 `:opx` is also used for clauses:
 
-
 ```lisp
 (a / and
-  :op1 (c / shout-01)
-  :op2 (l / leave-01
-             :ARG0 (b / boy))
+   :op1 (c / shout-01)
+   :op2 (l / leave-01
+           :ARG0 (b / boy))
 ```
 
 > There was shouting, and the boy left.
 
 ```lisp
 (c / contrast
-  :op1 (c2 / shout-01)
-  :op2 (l / stay-01
-             :ARG1 (b / boy))
+   :op1 (c2 / shout-01)
+   :op2 (l / stay-01
+           :ARG1 (b / boy))
 ```
 
 > There was shouting, but the boy stayed.
 
 Sometimes, an `:op1` may be missing:
 
-
 ```lisp
 (c / contrast
-  :op2 (l / stay-01
-             :ARG1 (b / boy)))
+   :op2 (l / stay-01
+           :ARG1 (b / boy)))
 ```
 
 > But the boy stayed.
 
 AMR aims for a logical representation even when English elides core actors:
 
-
 ```lisp
 (a / and
-  :op1 (c / shout-01
-            :ARG0 (b / boy))
-  :op2 (l / leave-01
-            :ARG0 b))
+   :op1 (c / shout-01
+           :ARG0 (b / boy))
+   :op2 (l / leave-01
+           :ARG0 b))
 ```
 
 > The boy shouted and left.
@@ -2185,30 +2181,28 @@ AMR aims for a logical representation even when English elides core actors:
 The need for this is evident when an entity plays different roles in different
 predicates:
 
-
 ```lisp
 (a / and
-  :op1 (a2 / arrive-01
+   :op1 (a2 / arrive-01
             :ARG0 (b / boy))
-  :op2 (l / kill-01
-            :ARG1 b
-            :manner (p / prompt)))
+   :op2 (l / kill-01
+           :ARG1 b
+           :manner (p / prompt)))
 ```
 
 > The boy arrived and was promptly killed.
 
 However, AMR “pulls out” non-core roles like `:time` and `:location`.  Here, `:time`
-modifies the entire conjunction rooted by and:
-
+modifies the entire conjunction rooted by `and`:
 
 ```lisp
 (a / and
-  :time (d / date-entity
-              :weekday (t / tuesday))
-  :op1 (a2 / arrive-01
+   :time (d / date-entity
+            :weekday (t / tuesday))
+   :op1 (a2 / arrive-01
             :ARG0 (b / boy))
-  :op2 (l / leave-01
-            :ARG0 b))
+   :op2 (l / leave-01
+          :ARG0 b))
 ```
 
 > The boy arrived and left on Tuesday.
@@ -2762,8 +2756,8 @@ We view this object semantically as a “group”, which happens to have a known
 `:name`, plus some a couple of other properties that describe it.  
 
 
-(b) The text contains no English word we can use to fill the `:instance` slot.  In
-such cases, we must hallucinate an entity type.  For example:
+(b) The text contains *no* English word we can use to fill the `:instance` slot.
+In such cases, we must hallucinate an entity type.  For example:
 
 
 ```lisp
@@ -2793,13 +2787,13 @@ from this canonical list (borrowing from information extraction and question
 answering):
 
 
-  - person, family, god, animal, fictional-character, ethnic-group, language, nationality, regional-group, religious-group
-  - organization, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, public-institution, team, league
-  - location, city, city-district, county, local-region, state, province, country, country-region, world-region, continent, ocean, sea, lake, river, gulf, bay, strait, canal, mountain, volcano, valley, canyon, island, desert, forest, moon, planet, star, constellation
-  - facility, airport, station, port, tunnel, bridge, road, railway-line, canal, theater, museum, palace, hotel, worship-place, market, sports-facility, park, zoo, amusement-park
-  - event, incident, natural-disaster, earthquake, war, conference, game, festival
-  - product, vehicle, ship, aircraft, aircraft-type, spaceship, car-make, work-of-art, picture, music, show, broadcast-program
-  - publication, book, newspaper, magazine, journal
+  - **person**, family, god, animal, fictional-character, ethnic-group, language, nationality, regional-group, religious-group
+  - **organization**, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, public-institution, team, league
+  - **location**, city, city-district, county, local-region, state, province, country, country-region, world-region, continent, ocean, sea, lake, river, gulf, bay, strait, canal, mountain, volcano, valley, canyon, island, desert, forest, moon, planet, star, constellation
+  - **facility**, airport, station, port, tunnel, bridge, road, railway-line, canal, theater, museum, palace, hotel, worship-place, market, sports-facility, park, zoo, amusement-park
+  - **event**, incident, natural-disaster, earthquake, war, conference, game, festival
+  - **product**, vehicle, ship, aircraft, aircraft-type, spaceship, car-make, work-of-art, picture, music, show, broadcast-program
+  - **publication**, book, newspaper, magazine, journal
   - law, treaty, award, food-dish, disease
 
 If none of these apply, then we use `thing`.
@@ -2835,12 +2829,12 @@ Some examples:
 
 > the Lone Cypress
 
-Note: we are only confined to these listed concepts if the text lacks an
+Note: we are *only* confined to these listed concepts if the text lacks an
 appropriate English word for the entity type.  So, “President Obama” is still
-(“p / president …”), even though “president” is not listed. 
+`(p / president …)`, even though “president” is not listed. 
 
 
-(c) The text contains multiple English words vying for the same `:instance` slot. 
+(c) The text contains *multiple* English words vying for the same `:instance` slot. 
 This happens occasionally.  Because `:instance` is the only relation that cannot
 physically appear twice in AMR, we instead open up a `:domain-of` role:
 
