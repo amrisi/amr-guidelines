@@ -3053,8 +3053,8 @@ Quantity types include:
 (q / monetary-quantity
    :quant 20
    :unit (d / dollar
-           :mod (e / country
-                   :name (n / name :op1 "Shanghai"))))
+            :mod (e / country
+                    :name (n / name :op1 "Canada"))))
 ```
 
 > C$20
