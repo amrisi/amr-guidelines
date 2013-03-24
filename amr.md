@@ -336,7 +336,7 @@ concepts (boy, want, believe):
 
 > The boy wants to believe.
 
-The slash (“/”) is shorthand for the `:instance` relation.  This relation shows up
+The slash (`/`) is shorthand for the `:instance` relation.  This relation shows up
 more clearly in AMR graph format (see Introduction).
 
 Concepts in AMR 1.0 are usually written with English words or phrases.  Concepts
@@ -351,7 +351,7 @@ frame:
 > The boy believes.
 
 AMR semantic relations are best described through examples; see the next section
-(“Phenomena”).  Here, we only provide a brief summary listing.
+([Phenomena](#part-iii--phenomena)).  Here, we only provide a brief summary listing.
 
 Core `:ARGx` roles.  AMR 1.0 uses numbered `:ARGx` from OntoNotes:
 
@@ -1580,8 +1580,8 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 > Unless the boy is given money, he will sing.
 
 In AMR, `X :cause Y` means that the cause of X is Y.  Likewise, `Y :cause-of X`
-means Y is the cause of X.  (See the section “Reification” below about using the
-concept `cause-01` instead of `:cause` or `:cause-of`.)
+means Y is the cause of X.  (See the section [Reification](#reification) below 
+about using the concept `cause-01` instead of `:cause` or `:cause-of`.)
 
 ```lisp
  (s / strike-01
@@ -1708,8 +1708,7 @@ We do not use `:part` for set membership, as in the CEO of a company.
 Focus
 -----
 
-Inverse relations are often used for focusing (see Introduction section of this
-document):
+Inverse relations are often used for focusing (see [Introduction](#focus)):
 
 ```lisp
 (s / sing-01
@@ -2035,7 +2034,7 @@ Relative clauses
 ----------------
 
 AMR frequently represents relative clauses with inverse roles, as described in
-the introduction section:
+the [Introduction](#part-i-introduction):
 
 
 ```lisp
@@ -2607,7 +2606,7 @@ just interpret this as “Three workers”.
 
 
 
-Named Entities	
+Named Entities
 --------------
 
 Any concept instance in AMR can have `:name` role.  We are not restricted to a
@@ -2680,7 +2679,7 @@ American spelling, but we do not otherwise normalize variants.
 
 ```lisp
 (r / rate
-  :mod (a / advertise-01))
+   :mod (a / advertise-01))
 ```
 
 > advertising rates
@@ -2695,49 +2694,43 @@ situations.
 (a) The text contains one English word we can use to fill the `:instance` role. 
 For example:
 
-
 ```lisp
 (c / city 
-  :name (n / name 
-                :op1 "Zintan"))
+   :name (n / name 
+            :op1 "Zintan"))
 ```
 
-> 
-the city of Zintan 
+> the city of Zintan 
 
 AMR also moves titles into the `:instance` role:
 
 
 ```lisp
-(p / president				NOT:  (p / person
-  :name (n / name                                                    :domain-of (p2 / president)
-                :op1 "Obama"))                                      :name (n / name
-                                                                                              :op1 "Obama"))
-President Obama
+(p / president				    NOT:  (p / person
+   :name (n / name                       :domain-of (p2 / president)
+            :op1 "Obama"))                             :name (n / name
+                                                                 :op1 "Obama"))
 ```
 
-> (d / doctor
->
->    :name (n / name
->
->                 :op1 "Wu"))
+> President Obama
 
 ```lisp
-Doctor Wu
+(d / doctor
+   :name (n / name
+            :op1 "Wu"))
 ```
 
-> (p / professor
->
->    :name (n / name
->
->                  :op1 "Wu"))
+> Doctor Wu
 
 ```lisp
-Professor Wu
+(p / professor
+   :name (n / name
+            :op1 "Wu"))
 ```
+
+> Professor Wu
 
 An exception is made for “Mr.”, “Mrs.”, etc:
-
 
 ```lisp
 (p / person
@@ -2969,8 +2962,9 @@ AMR views quantified expressions like “two gallons of milk” as “milk”:
 
 > The woman bought two gallons of milk.
 
-For stretches of time and relative times, AMR uses temporal-quantity.  (For
-absolute times, AMR uses date-entity, described in the next section.)
+For stretches of time and relative times, AMR uses `temporal-quantity`.  
+(For absolute times, AMR uses `date-entity`, described in the 
+[next section](#other-entities-dates-times-percentages-phone-email-urls).)
 
 
 ```lisp
@@ -3066,14 +3060,15 @@ Occasionally, the measurement itself is the primary concept:
 
 > The number of people increased.
 
-Quantity types include: monetary-quantity, distance-quantity, area-quantity,
-volume-quantity, temporal-quantity, frequency-quantity, speed-quantity,
-acceleration-quantity, mass-quantity, force-quantity, pressure-quantity,
-energy-quantity, power-quantity, voltage-quantity (zap!), charge-quantity,
-potential-quantity, resistance-quantity, inductance-quantity,
-magnetic-field-quantity, magnetic-flux-quantity, radiation-quantity,
-concentration-quantity, temperature-quantity, score-quantity,
-fuel-consumption-quantity, seismic-quantity.
+Quantity types include: 
+`monetary-quantity`, `distance-quantity`, `area-quantity`, 
+`volume-quantity`, `temporal-quantity`, `frequency-quantity`, `speed-quantity`,
+`acceleration-quantity`, `mass-quantity`, `force-quantity`, `pressure-quantity`,
+`energy-quantity`, `power-quantity`, `voltage-quantity` (zap!), `charge-quantity`,
+`potential-quantity`, `resistance-quantity`, `inductance-quantity`,
+`magnetic-field-quantity`, `magnetic-flux-quantity`, `radiation-quantity`,
+`concentration-quantity`, `temperature-quantity`, `score-quantity`,
+`fuel-consumption-quantity`, `seismic-quantity`.
 
 
 ```lisp
@@ -3104,7 +3099,6 @@ Other entities: dates, times, percentages, phone, email, URLs
 -------------------------------------------------------------
 
 These entities are described in standard, canonical forms:
-
 
 ```lisp
  (d / date-entity
