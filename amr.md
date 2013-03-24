@@ -1825,34 +1825,30 @@ We also use reification when we want to modify a relation.  For example:
 Here are the AMR reifications.  Reifications often correspond to OntoNotes
 predicates, in which case, we just use the `:ARG` relations in the natural way.
 
+*Read this chart as: 	`x :Relation y` = `x :Domain-of (z / Reification :Range y)`.*
 
-```lisp
-Read this chart as: 	“x :Relation y” = “x :Domain-of (z / Reification :Range y)”.  
-For example: 		“x :location y” = “x :ARG0-of (b / be-located-at-91 :ARG1 y)”.
-```
+*For example: 		`x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`.*
 
-> Relation	Reification		Domain		Range		Example
-
-```lisp
-:accompanier	accompany-01		:ARG0		:ARG1		“she's with him”
-:age		age-01			:ARG1		:ARG2		“she's 41 years old”
-:beneficiary	benefit-01		:ARG0		:ARG1		“the 5k run is for kids”
-:cause		cause-01		:ARG1		:ARG0 		“he came 'cause of her”
-:destination	be-destined-for-91	:ARG0		:ARG1		“i'm off to Atlanta”
-:duration	last-01			:ARG1		:ARG2		“it's 15 minutes long”
-:instrument	have-instrument-91	:ARG0		:ARG1		“forks are for eating”
-:location	be-located-at-91	:ARG0		:ARG1		“she's not here”
-:manner	have-manner-91	:ARG0		:ARG1		“it was done quickly”
-:poss		own-01, have-03	:ARG0		:ARG1		“that dog's not mine”
-:purpose	have-purpose-91	:ARG1		:ARG2		“it's to eliminate bugs”
-:source		be-from-91		:ARG0		:ARG1		“she's from Ipanema”
-:subset		include-91		:ARG2		:ARG1		“10% of the workers”
-:time		be-temporally-at-91	:ARG0		:ARG1		“the party is on friday”
-:topic		concern-02		:ARG0		:ARG1		“the show's about me”
+Relation       | Reification           | Domain  | Range   | Example
+---------------|-----------------------|---------|---------|-------------------------
+`:accompanier` | `accompany-01`        | `:ARG0` | `:ARG1` | “she's with him”
+`:age`         | `age-01`              | `:ARG1` | `:ARG2` | “she's 41 years old”
+`:beneficiary` | `benefit-01`          | `:ARG0` | `:ARG1` | “the 5k run is for kids”
+`:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
+`:destination` | `be-destined-for-91`  | `:ARG0` | `:ARG1` | “i'm off to Atlanta”
+`:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
+`:instrument`  | `have-instrument-91`  | `:ARG0` | `:ARG1` | “forks are for eating”
+`:location`    | `be-located-at-91`    | `:ARG0` | `:ARG1` | “she's not here”
+`:manner`      | `have-manner-91`      | `:ARG0` | `:ARG1` | “it was done quickly”
+`:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
+`:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
+`:source`      | `be-from-91`          | `:ARG0` | `:ARG1` | “she's from Ipanema”
+`:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
+`:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
+`:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
 ```
 
 These relations do not have reifications:
-
 
   - `:ARG0`, `:ARG2`, `:ARG2`, ... `:op1`, `:op2`, `:op3`, `:op4`, …
   - `:calendar`, `:century`, `:day`, `:dayperiod`, `:decade`, `:era`, `:month`, `:quarter`, `:season`, `:timezone`, `:weekday`, `:year`, `:year2`
@@ -1904,7 +1900,7 @@ AMR strips away light-verb constructions:
 
 > The girl adjusted the machine.
 >
-> The girl **made** an adjustment to the machine.
+> The girl made an adjustment to the machine.
 
 ```lisp
 (t / bathe-01
@@ -2036,17 +2032,16 @@ Relative clauses
 AMR frequently represents relative clauses with inverse roles, as described in
 the [Introduction](#part-i-introduction):
 
-
 ```lisp
 (b / believe-01
-  :ARG0 (b2 / boy))
+   :ARG0 (b2 / boy))
 ```
 
 > The boy believes.
 
 ```lisp
 (b / boy
-  :ARG0-of (b2 / believe-01))
+   :ARG0-of (b2 / believe-01))
 ```
 
 > the boy who believes
@@ -2054,18 +2049,17 @@ the [Introduction](#part-i-introduction):
 English also uses relative clauses when negating a pre-nominal adjective is
 difficult (“the not-black car”):
 
-
 ```lisp
 (c / car
-  :mod (b / black))
+   :mod (b / black))
 ```
 
 > the black car
 
 ```lisp
 (c / car
-  :mod (b / black
-              :polarity -))
+   :mod (b / black
+           :polarity -))
 ```
 
 > the car that is not black
@@ -2082,19 +2076,19 @@ Multiple relations with the same name
 
 ```lisp
 (s / system
-  :mod (l / law)
-  :mod (s2 / city 
-              :name (n / name :op1 "Shanghai")))
+   :mod (l / law)
+   :mod (s2 / city 
+            :name (n / name :op1 "Shanghai")))
 ```
 
 > the Shanghai legal system
 
 ```lisp
 (b / boy
-  :ARG0-of (w / want-01
-                    :ARG1 (b / believe-01
-                                   :ARG1 (g / girl)))
-  :ARG0-of b)
+   :ARG0-of (w / want-01
+               :ARG1 (b / believe-01
+                        :ARG1 (g / girl)))
+   :ARG0-of b)
 ```
 
 > the boy who wants to believe the girl
