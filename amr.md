@@ -12,7 +12,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 Part I. Introduction
 ====================
 
-AMR captures “who is doing what to who” in a sentence.  Each sentence is
+AMR captures “who is doing what to whom” in a sentence.  Each sentence is
 represented as a **rooted, directed, acyclic graph** with labels on edges
 (relations) and leaves (concepts).
 
