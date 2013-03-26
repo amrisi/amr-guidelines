@@ -2086,9 +2086,9 @@ Multiple relations with the same name
 ```lisp
 (b / boy
    :ARG0-of (w / want-01
-               :ARG1 (b / believe-01
+               :ARG1 (b2 / believe-01
                         :ARG1 (g / girl)))
-   :ARG0-of b)
+   :ARG0-of b2)
 ```
 
 > the boy who wants to believe the girl
