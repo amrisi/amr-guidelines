@@ -2160,7 +2160,7 @@ Multiple relations with the same name
 Conjunctions
 ------------
 
-To represent conjunction, AMR uses concepts `and`, `or`, `contrast`, `either`, and
+To represent conjunction, AMR uses concepts `and`, `or`, `contrast-01`, `either`, and
 `neither`, along with `:opx` relations:
 
 
@@ -2205,10 +2205,10 @@ Conjoined adjectives are done without `and`:
 > There was shouting, and the boy left.
 
 ```lisp
-(c / contrast
-   :op1 (c2 / shout-01)
-   :op2 (l / stay-01
-           :ARG1 (b / boy))
+(c / contrast-01
+   :ARG1 (c2 / shout-01)
+   :ARG2 (l / stay-01
+            :ARG1 (b / boy))
 ```
 
 > There was shouting, but the boy stayed.
@@ -2216,9 +2216,9 @@ Conjoined adjectives are done without `and`:
 Sometimes, an `:op1` may be missing:
 
 ```lisp
-(c / contrast
-   :op2 (l / stay-01
-           :ARG1 (b / boy)))
+(c / contrast-01
+   :ARG2 (l / stay-01
+            :ARG1 (b / boy)))
 ```
 
 > But the boy stayed.
