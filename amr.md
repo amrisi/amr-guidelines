@@ -2998,7 +2998,7 @@ AMR views quantified expressions like “two gallons of milk” as “milk”:
    :ARG1 (m / milk
             :quant (q / volume-quantity 
                       :unit (g / gallon) 
-                               :quant 2)))
+                      :quant 2)))
 ```
 
 > The woman bought two gallons of milk.
