@@ -1314,7 +1314,6 @@ hard worker” just means the boy works hard:
 (w / work-01               NOT:   (p / person
    :ARG0 (b / boy)                   :ARG0-of (w / work-01
    :manner (h / hard))                           :manner (h / hard))
-   :domain (b / boy))
 ```
 
 > the boy is a hard worker
