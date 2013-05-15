@@ -1906,6 +1906,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:manner`      | `have-manner-91`      | `:ARG0` | `:ARG1` | “it was done quickly”
 `:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
 `:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
+`:quant`       | `total-01`            | `:ARG1` | `:ARG2` | “there are 4 rabbits”
 `:source`      | `be-from-91`          | `:ARG0` | `:ARG1` | “she's from Ipanema”
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
