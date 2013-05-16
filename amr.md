@@ -2895,6 +2895,8 @@ physically appear twice in AMR, we instead open up a `:domain-of` role:
 
 > President Obama, a career politician
 
+In all cases, hyphenated and possessive words inside names are kept intact, not broken up.  
+For example, "Dana-Farber Materials" only has `:op1` and `:op2`.
 
 Exact numbers
 -------------
