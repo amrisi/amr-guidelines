@@ -2450,7 +2450,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 ```lisp
 (t / tall
    :degree (m / more)
-   :ARG1 (g / girl)
+   :domain (g / girl)
    :compared-to (b / boy))
 ```
 
@@ -2461,7 +2461,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
    :mod (t / tall 
            :degree (m / most)
            :compared-to (t2 / team))
-   :ARG1 (s / she))
+   :domain (s / she))
 ```
 
 > she is the tallest girl on the team
