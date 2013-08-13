@@ -128,6 +128,7 @@ second time simply as `b`.
 This AMR can also be viewed as conjunction of logical triples, omitting root
 information:
 
+
 ```
 instance(w, want-01) ^      /* w is an instance of wanting */
 instance(b, boy) ^          /* b is an instance of boy */
