@@ -2749,15 +2749,6 @@ AMR also moves titles into the `:instance` role:
 
 
 ```lisp
-(p / president              NOT:  (p / person
-   :name (n / name                   :domain-of (p2 / president)
-            :op1 "Obama"))                          :name (n / name
-                                                             :op1 "Obama"))
-```
-
-> President Obama
-
-```lisp
 (d / doctor
    :name (n / name
             :op1 "Wu"))
@@ -2765,13 +2756,19 @@ AMR also moves titles into the `:instance` role:
 
 > Doctor Wu
 
+We use the role frame have-org-role-91 for titles that describe roles:
+
 ```lisp
-(p / professor
-   :name (n / name
-            :op1 "Wu"))
+(p / person             
+   :name (n / name                   
+            :op1 "Obama")
+   :ARG0-of (h / have-org-role-91
+                :ARG2 (p / president)))                   
 ```
 
-> Professor Wu
+> President Obama
+
+Similarly for "governor", "chairman", "director", "officer" etc.
 
 An exception is made for “Mr.”, “Mrs.”, etc:
 
@@ -2863,7 +2860,8 @@ Some examples:
            :op1 "Congress")
    :mod (c / country
            :name (n2 / name
-                     :op1 "United States")))
+                     :op1 "United"
+                     :op2 "States")))
 ```
 
 > the United States Congress
@@ -2878,8 +2876,7 @@ Some examples:
 > the Lone Cypress
 
 Note: we are *only* confined to these listed concepts if the text lacks an
-appropriate English word for the entity type.  So, “President Obama” is still
-`(p / president …)`, even though “president” is not listed. 
+appropriate English word for the entity type.  So, “the famous poet William Shalespeare” is still `(p / poet …)`, even though “poet” is not listed. 
 
 
 (c) The text contains *multiple* English words vying for the same `:instance` slot. 
@@ -2887,14 +2884,16 @@ This happens occasionally.  Because `:instance` is the only relation that cannot
 physically appear twice in AMR, we instead open up a `:domain-of` role:
 
 ```lisp
-(p / president
+(p / father
+   :poss (i / i)
    :name (n / name
-            :op1 "Obama")
+            :op1 "Barack"
+            :op2 "Obama")
    :domain-of (p2 / politician
                   :mod (c / career)))
 ```
 
-> President Obama, a career politician
+> my father Barack Obama, a career politician
 
 In all cases, hyphenated and possessive words inside names are kept intact, not broken up.  
 For example, "Dana-Farber Materials" only has `:op1` and `:op2`.
