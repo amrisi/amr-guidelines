@@ -60,6 +60,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Variables and co-reference](#variables-and-co-reference)
 	- [Possession](#possession)
 	- [Pertainyms](#pertainyms)
+	- [Ordinals](#ordinals)
 	- [Subsets](#subsets)
 	- [Named Entities](#named-entities)
 	- [Exact numbers](#exact-numbers)
@@ -2594,6 +2595,23 @@ A pertainym may get stemmed to noun form, and then subsequently to verb form:
 
 When building AMR from English, the rule is to continue stemming toward verb
 form unless the meaning is significantly altered.
+
+
+
+Ordinals
+--------
+
+We use the role `:ord` and the concept `ordinal-entity` to express ordinals.
+
+```lisp
+(p / planet
+   :ord (o / ordinal-entity 
+           :value 2))
+```
+
+> the second planet
+>
+> planet number 2
 
 
 
