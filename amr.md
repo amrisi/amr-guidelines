@@ -2613,7 +2613,18 @@ We use the role `:ord` and the concept `ordinal-entity` to express ordinals.
 >
 > planet number 2
 
-
+```lisp
+(v / visit-01
+   :ARG0 (w / we)
+   :ord (o / ordinal-entity 
+           :value 1
+           :range (t / temporal-quantity 
+                     :quant 10
+                     :unit (y / year))))
+```
+ 
+> our first visit in 10 years                       
+                       
 
 Subsets
 -------
