@@ -1803,6 +1803,8 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 
 ### `:frequency`
 
+`:frequency` describes how often something occurs.
+
 ```lisp
 (m / meet-03 
    :frequency 3
@@ -1824,6 +1826,7 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
 
 > twice a year
 
+```lisp
 (p / play-01
    :ARG0 (w / we)
    :ARG1 (b / bridge)
@@ -1831,6 +1834,7 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
                  :ARG4 (d / date-entity
                           :weekday (w2 / wednesday)
                           :dayperiod (a / afternoon))))
+```                        
 
 > We play bridge every Wednesday afternoon.
 
@@ -1845,6 +1849,10 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
 > The road goes on forever.
 
 ### `:instrument`
+
+`:instrument` describes the tool used in an action.
+
+If you want to describe how or in what way something is done, use the more general `:manner` instead.
 
 ```lisp
 (e / eat-01
