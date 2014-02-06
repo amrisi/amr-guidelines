@@ -728,7 +728,7 @@ AMR represents negation logically, using `:polarity`.
    :ARG1 (w / win-01
             :ARG0 (t2 / team
                       :poss b)
-            :polarity -)
+            :polarity -))
 ```
 
 > The boy thinks his team won’t win.  
@@ -915,7 +915,7 @@ AMR also uses `:mode` for yes-no embedded clauses:
    :ARG0 (b / boy)
    :ARG1 (c / come-01
             :ARG1 (g / girl)
-            :mode interrogative)))
+            :mode interrogative))
 ```
 
 > The boy doesn’t know whether the girl came.
@@ -1149,7 +1149,7 @@ adjective frame in OntoNotes:
 (b / boy
    :quant 4
    :ARG0-of (m / make-01
-                        :ARG1 (p / pie)))
+               :ARG1 (p / pie)))
 ```
 
 > four boys making pies
@@ -1294,7 +1294,7 @@ someone who treasures:
 
 
 ```lisp
-(t  / treasure)            NOT:   (p / person
+(t  / treasurer)           NOT:   (p / person
                                      :ARG0-of (t / treasure-01))
 ```
 
@@ -1313,9 +1313,9 @@ hard worker” just means the boy works hard:
 
 
 ```lisp
-(w / work-01               NOT:   (p / person
+(w / work-01               NOT:   (b / boy
    :ARG0 (b / boy)                   :ARG0-of (w / work-01
-   :manner (h / hard))                           :manner (h / hard))
+   :manner (h / hard))                           :manner (h / hard)))
 ```
 
 > the boy is a hard worker
@@ -1362,7 +1362,7 @@ predicates:
 ```lisp
 (a / realize-01            NOT:  (a / aware
    :ARG0 (s / soldier)              :ARG1 (s / soldier)
-   :ARG1 (b / battle)               :prep-of (b / battle))
+   :ARG1 (b / battle))              :prep-of (b / battle))
 ```
 
 > The soldier was aware of the battle.
@@ -1561,7 +1561,7 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
    :time (w / walk-01
             :ARG0 g
             :accompanier s2
-            :destination (t / town))
+            :destination (t / town)))
 ```
 
 > The soldier sang to the girl as he walked with her to town.
@@ -1819,11 +1819,11 @@ relation `:cause` is replaced by `cause-01`. Instead of `x :cause y`, we have
 
 ```lisp
 AMR without reification:        AMR with reification:
-(l / leave                      (l / leave
+(l / leave-01                   (l / leave-01
    :ARG0 (g / girl)                :ARG0 (g / girl)
-   :cause (a / arrive              :ARG1-of (c / cause-01
-             :ARG0 (b / boy)))                 :ARG0 (a / arrive
-                                               :ARG0 (b / boy))))
+   :cause (a / arrive-01           :ARG1-of (c / cause-01
+             :ARG0 (b / boy)))                 :ARG0 (a / arrive-01
+                                                        :ARG0 (b / boy))))
 ```
 
 > The girl left because the boy arrived.
@@ -2014,7 +2014,7 @@ Most prepositions that signal semantic frame elements are dropped in AMR:
 (d / die-01
    :ARG1 (m / man)
    :location (h / house
-                :poss m)))
+                :poss m))
 ```
 
 > The man died in his house.
@@ -2188,7 +2188,7 @@ Conjoined adjectives are done without `and`:
 ```lisp
 (b / ball
    :mod (b2 / big)
-   :mod (h / heavy)
+   :mod (h / heavy))
 ```
 
 > the big, heavy ball
@@ -2201,7 +2201,7 @@ Conjoined adjectives are done without `and`:
 (a / and
    :op1 (c / shout-01)
    :op2 (l / leave-01
-           :ARG0 (b / boy))
+           :ARG0 (b / boy)))
 ```
 
 > There was shouting, and the boy left.
@@ -2210,7 +2210,7 @@ Conjoined adjectives are done without `and`:
 (c / contrast-01
    :ARG1 (c2 / shout-01)
    :ARG2 (l / stay-01
-            :ARG1 (b / boy))
+            :ARG1 (b / boy)))
 ```
 
 > There was shouting, but the boy stayed.
@@ -2493,10 +2493,10 @@ AMR uses variables instead:
 
 ```lisp
 (w / want-01
-   :ARG0 (y / boy)
-   :ARG1 (b / believe-01
-            :ARG0 y)
-            :ARG1 y))
+   :ARG0 (b / boy)
+   :ARG1 (b2 / believe-01
+             :ARG0 b
+             :ARG1 b))
 ```
 
 > The boy wants to believe himself.
@@ -2724,7 +2724,7 @@ computers can also have names.
 ```lisp
 (c / city 
    :name (n / name 
-            :op1 "Marina")
+            :op1 "Marina"
             :op2 "del"
             :op3 "Rey")) 
 ```
@@ -2822,8 +2822,8 @@ When faced with an appositive, AMR calmly inserts facts into slots:
              :op2 "N.V.")
     :mod (c / country
             :name (h / name
-                     :op1 "Holland"))
-    :ARG0-of (p2 / publish-01)))
+                     :op1 "Netherlands"))
+    :ARG0-of (p2 / publish-01))
 ```
 
 > Elsevier N.V. , the Dutch publishing group
@@ -3042,26 +3042,28 @@ For stretches of time and relative times, AMR uses `temporal-quantity`.
 ```lisp
 (t / temporal-quantity
    :unit (y / year)
-   :quant 30))
+   :quant 30)
 ```
 
 > 30 years
 
 ```lisp
-(a3 / ago
-    :op1 (t / temporal-quantity
-            :unit (y / year)
-            :quant 30))
+(b / before
+   :op1 (n / now)
+   :quant (t / temporal-quantity
+             :unit (y / year)
+             :quant 30))
 ```
 
 > 30 years ago
 
 ```lisp
-(a3 / ago
-    :op1 (t / temporal-quantity
-            :unit (y / year)
-            :quant (m2 / more-than
-                       :op1 30))))
+(b / before
+   :op1 (n / now)
+   :quant (m / more-than
+             :op1 (t / temporal-quantity
+                     :unit (y / year)
+                     :quant 30)))
 ```
 
 > more than 30 years ago
@@ -3218,7 +3220,7 @@ These entities are described in standard, canonical forms:
 (d / date-entity
    :month 2
    :day 29
-   :weekday (w / Wednesday))
+   :weekday (w / wednesday))
 ```
 
 > Wednesday, February 29
@@ -3304,12 +3306,13 @@ These entities are described in standard, canonical forms:
  (d / date-entity
     :year 2012
     :calendar (y / year
-                 :poss (f / finance)
-                 :mod (g / government
-                         :part-of (u / country 
-                                     :name (n / name
-                                              :op1 "United"
-                                              :op2 "States")))))
+                 :mod (f / finance)
+                 :mod (g / government-organization
+                         :ARG0-of (g2 / govern-01
+                                      :ARG1 (c / country 
+                                               :name (n / name
+                                                        :op1 "United"
+                                                        :op2 "States"))))))
 ```
 
 > United States government fiscal year 2012
@@ -3386,10 +3389,10 @@ Second, we have two different ways of encoding the same propositional content
 (“the boy likes to be believed”):
 
 ```lisp
-(l / like-01           (l / like-01
-   :ARG0 (b / boy)        :ARG0 (b / boy
-   :ARG1 (b2 / believe             :ARG1-of (c / believe))
-             :ARG1 b))             :ARG1 c)
+(l / like-01                    (l / like-01
+   :ARG0 (b / boy)                 :ARG0 (b / boy
+   :ARG1 (b2 / believe-01                   :ARG1-of (b2 / believe-01))
+             :ARG1 b))             :ARG1 b2)
 ```
 
 Sensible people will prefer the version on the left, though both versions relate
