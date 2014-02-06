@@ -1882,7 +1882,7 @@ We also use reification when we want to modify a relation.  For example:
             :ARG0 (k2 / knife)
             :ARG1 (d / drawer)
             :polarity -
-            :time (y / yesterday))
+            :time (y / yesterday)))
 ```
 
 > We know the knife was not in the drawer yesterday.
