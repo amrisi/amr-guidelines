@@ -1915,7 +1915,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
 `:quant`       | `have-quant-91`       | `:ARG1` | `:ARG2` | “there are 4 rabbits”
 `:source`      | `be-from-91`          | `:ARG0` | `:ARG1` | “she's from Ipanema”
-`:subevent`    | `have-subevent-91`    | `:ARG1` | `:ARG2` | “10% of the workers”
+`:subevent`    | `have-subevent-91`    | `:ARG1` | `:ARG2` | “presentation at a conference”
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
@@ -3112,7 +3112,7 @@ Relative positions often include a quantity:
                 :op1 (g / city :name (n / name :op1 "Moscow"))
                 :quant (d / distance-quantity 
                           :unit (m / mile)
-                                   :quant 50)
+                          :quant 50)
                 :direction (e / east)))
 ```
 
@@ -3305,7 +3305,7 @@ These entities are described in standard, canonical forms:
     :year 2011
     :year2 2012
     :calendar (y / year 
-                 :poss (a / academia)))
+                 :mod (a / academia)))
 ```
 
 > academic year 2011-2012
