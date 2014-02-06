@@ -292,7 +292,7 @@ have:
 (s / see-01
    :ARG0 (b / boy)
    :ARG1 (m / marble
-            :mod (w / white))
+            :mod (w / white)))
 ```
 
 > The boy sees the white marble.
