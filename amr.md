@@ -223,7 +223,7 @@ the placement of negation (`:polarity -`) is very different in the two AMRs:
 
 ```lisp
 (o / obligate-01
-   :ARG2 (g / go-01
+   :ARG2 (g / go-02
             :ARG0 (b / boy)
             :polarity -))
 ```
@@ -234,7 +234,7 @@ the placement of negation (`:polarity -`) is very different in the two AMRs:
 
 ```lisp
 (p / permit-01
-   :ARG1 (g / go-01
+   :ARG1 (g / go-02
             :ARG0 (b / boy))
    :polarity -)
 ```
@@ -571,7 +571,7 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 ```lisp
 (p / possible
-   :domain (g / go-01
+   :domain (g / go-02
               :ARG0 (b / boy)))
 ```
 
@@ -581,7 +581,7 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 ```lisp
 (o / obligate-01
-   :ARG2 (g / go-01
+   :ARG2 (g / go-02
             :ARG0 (b / boy)))
 ```
 
@@ -593,7 +593,7 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 ```lisp
 (o / permit-01
-   :ARG1 (g / go-01
+   :ARG1 (g / go-02
             :ARG0 (b / boy)))
 ```
 
@@ -618,7 +618,7 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 ```lisp
 (r / recommend-01
-   :ARG1 (g / go-01
+   :ARG1 (g / go-02
             :ARG0 (b / boy)))
 ```
 
@@ -629,7 +629,7 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 ```lisp
 (l / likely
-   :domain (g / go-01
+   :domain (g / go-02
               :ARG0 (b / boy)))
 ```
 
@@ -643,7 +643,7 @@ AMR ignores the modal “would”, except in cases like:
 ```lisp
 (p / prefer-01
    :ARG0 (b / boy)
-   :ARG1 (g / go-01
+   :ARG1 (g / go-02
             :ARG0 b))
 ```
 
@@ -671,7 +671,7 @@ AMR represents negation logically, using `:polarity`.
 
 
 ```lisp
-(g / go-01
+(g / go-02
    :ARG0 (b / boy)
    :polarity -)
 ```
@@ -680,7 +680,7 @@ AMR represents negation logically, using `:polarity`.
 
 ```lisp
 (p / possible
-   :domain  (g / go-01
+   :domain  (g / go-02
                :ARG0 (b / boy))
    :polarity -)
 ```
@@ -691,7 +691,7 @@ AMR represents negation logically, using `:polarity`.
 
 ```lisp
  (p / possible
-    :domain (g / go-01
+    :domain (g / go-02
                :ARG0 (b / boy)
                :polarity -))
 ```
@@ -702,7 +702,7 @@ AMR represents negation logically, using `:polarity`.
 
 ```lisp
 (p / obligate-01
-   :ARG2 (g / go-01
+   :ARG2 (g / go-02
             :ARG0 (b / boy))
    :polarity -)
 ```
@@ -713,7 +713,7 @@ AMR represents negation logically, using `:polarity`.
 
 ```lisp
 (p / obligate-01
-   :ARG2 (g / go-01
+   :ARG2 (g / go-02
             :ARG0 (b / boy)
             :polarity -))
 ```
@@ -977,7 +977,7 @@ articles, plurals, or quotation marks:
 
 
 ```lisp
-(g / go-01
+(g / go-02
    :ARG0 (b / boy))
 ```
 
@@ -2222,7 +2222,7 @@ Conjoined adjectives are done without `and`:
 
 > There was shouting, but the boy stayed.
 
-Sometimes, an `:op1` may be missing:
+Sometimes, an `:op1` or `:ARG1` may be missing:
 
 ```lisp
 (c / contrast-01
@@ -2404,8 +2404,8 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (b / bright
-   :ARG1 (b2 / boy 
-             :mod (t / that))
+   :domain (b2 / boy 
+               :mod (t / that))
    :degree (m / more))
 ```
 
@@ -2415,8 +2415,8 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (b / bright
-   :ARG1 (b2 / boy
-             :mod (t / that))
+   :domain (b2 / boy
+               :mod (t / that))
    :degree (m / most))
 ```
 
@@ -2488,9 +2488,9 @@ If two variables are the same, then they refer to the same entity:
 
 ```lisp
 (w / want-01
-   :ARG0 (y / boy)
-   :ARG1 (g / go-01
-            :ARG0 y))
+   :ARG0 (b / boy)
+   :ARG1 (g / go-02
+            :ARG0 b))
 ```
 
 > The boy wants to go.
