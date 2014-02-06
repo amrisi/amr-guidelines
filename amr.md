@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.0 Specification
 =======================================================
 
-**October 31, 2012**
+**February 6, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -1130,7 +1130,7 @@ adjective frame in OntoNotes:
 
 ```lisp
 (m / man
-   :domain-of (l / lawyer))
+   :mod (l / lawyer))
 ```
 
 > the man who is a lawyer
@@ -1491,7 +1491,7 @@ without introducing new concepts (only relations), then we go ahead:
 ```lisp
 (s / sandwich
    :ARG1-of (e / eat-01
-               :domain-of (p / possible)))
+               :mod (p / possible)))
 ```
 
 > an edible sandwich
@@ -1503,8 +1503,8 @@ without introducing new concepts (only relations), then we go ahead:
 ```lisp
 (s / sandwich
    :ARG1-of (e / eat-01
-               :domain-of (p / possible
-                             :polarity -)))
+               :mod (p / possible
+                       :polarity -)))
 ```
 
 > an inedible sandwich
@@ -1515,7 +1515,7 @@ more than just a possibility, my friend:
 ```lisp
 (f / fund                   NOT: (f / fund
    :ARG3-of (t / tax-01))           :ARG3-of (t / tax-01
-                                                :domain-of (p / possible)))
+                                                :mod (p / possible)))
 ```
 
 > a taxable fund
@@ -1900,15 +1900,22 @@ Relation       | Reification           | Domain  | Range   | Example
 `:age`         | `age-01`              | `:ARG1` | `:ARG2` | “she's 41 years old”
 `:beneficiary` | `benefit-01`          | `:ARG0` | `:ARG1` | “the 5k run is for kids”
 `:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
+`:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
+`:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
 `:destination` | `be-destined-for-91`  | `:ARG0` | `:ARG1` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
+`:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
+`:frequency`   | `have-frequency-91`   | `:ARG1` | `:ARG2` | “he came three times”
 `:instrument`  | `have-instrument-91`  | `:ARG0` | `:ARG1` | “forks are for eating”
 `:location`    | `be-located-at-91`    | `:ARG0` | `:ARG1` | “she's not here”
-`:manner`      | `have-manner-91`      | `:ARG0` | `:ARG1` | “it was done quickly”
+`:manner`      | `have-manner-91`      | `:ARG1` | `:ARG2` | “it was done quickly”
+`:part`        | `have-part-91`        | `:ARG1` | `:ARG2` | “the roof of the house”
+`:polarity`    | `have-polarity-91`    | `:ARG1` | `:ARG2` | “I don't know.”
 `:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
 `:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
 `:quant`       | `have-quant-91`       | `:ARG1` | `:ARG2` | “there are 4 rabbits”
 `:source`      | `be-from-91`          | `:ARG0` | `:ARG1` | “she's from Ipanema”
+`:subevent`    | `have-subevent-91`    | `:ARG1` | `:ARG2` | “10% of the workers”
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
@@ -2861,13 +2868,14 @@ So when we are forced to hallucinate an entity type, AMR requires us to draw
 from this canonical list (borrowing from information extraction and question
 answering):
 
-  - **person**, family, god, animal, fictional-character, ethnic-group, language, nationality, regional-group, religious-group
-  - **organization**, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, public-institution, team, league
-  - **location**, city, city-district, county, local-region, state, province, country, country-region, world-region, continent, ocean, sea, lake, river, gulf, bay, strait, canal, mountain, volcano, valley, canyon, island, desert, forest, moon, planet, star, constellation
-  - **facility**, airport, station, port, tunnel, bridge, road, railway-line, canal, theater, museum, palace, hotel, worship-place, market, sports-facility, park, zoo, amusement-park
+  - **person**, family, animal, language, nationality, ethnic-group, regional-group, religious-group
+  - **organization**, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, team, league
+  - **location**, city, city-district, county, local-region, state, province, country, country-region, world-region, continent, ocean, sea, lake, river, gulf, bay, strait, canal, peninsula, mountain, volcano, valley, canyon, island, desert, forest, moon, planet, star, constellation
+  - **facility**, airport, station, port, tunnel, bridge, road, railway-line, canal, building, theater, museum, palace, hotel, worship-place, market, sports-facility, park, zoo, amusement-park
   - **event**, incident, natural-disaster, earthquake, war, conference, game, festival
   - **product**, vehicle, ship, aircraft, aircraft-type, spaceship, car-make, work-of-art, picture, music, show, broadcast-program
   - **publication**, book, newspaper, magazine, journal
+  - **natural-object**
   - law, treaty, award, food-dish, disease
 
 If none of these apply, then we use **thing**.
@@ -2910,7 +2918,7 @@ appropriate English word for the entity type.  So, “the famous poet William Sh
 
 (c) The text contains *multiple* English words vying for the same `:instance` slot. 
 This happens occasionally.  Because `:instance` is the only relation that cannot
-physically appear twice in AMR, we instead open up a `:domain-of` role:
+physically appear twice in AMR, we instead open up the inverse of `:domain` , i.e. the role `:mod`
 
 ```lisp
 (p / father
@@ -2918,8 +2926,8 @@ physically appear twice in AMR, we instead open up a `:domain-of` role:
    :name (n / name
             :op1 "Barack"
             :op2 "Obama")
-   :domain-of (p2 / politician
-                  :mod (c / career)))
+   :mod (p2 / politician
+            :mod (c / career)))
 ```
 
 > my father Barack Obama, a career politician
