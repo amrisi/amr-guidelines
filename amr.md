@@ -48,6 +48,10 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 		- [:consist-of](#consist-of)
 		- [:example](#example-1)
 		- [:direction](#direction)
+		- [:medium](#medium)
+		- [:frequency](#frequency)
+		- [:extent](#extent)
+		- [:instrument](#instrument)
 	- [Focus](#focus-1)
 	- [Reification](#reification)
 	- [Phrasal verbs](#phrasal-verbs)
@@ -433,10 +437,11 @@ Non-core roles:
 :beneficiary
 :cause, :compared-to, :concession, :condition, :consist-of
 :degree, :destination, :direction, :domain, :duration
-:example
+:extent, :example
+:frequency
 :instrument
 :location
-:manner, :mod, :mode
+:manner, :medium, :mod, :mode
 :name
 :part, :polarity, :poss, :purpose
 :quant
@@ -1768,6 +1773,87 @@ We do not use `:part` for set membership, as in the CEO of a company.
 ```
 
 > He drove west.
+
+### `:medium`
+
+The role `:medium` is used for channels of communications such as
+a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as languages:
+
+```lisp
+(t / talk-01
+      :ARG0 (s / she)
+      :ARG2 (h / he)
+      :medium (l / language :name (n / name :op1 "French")))
+```
+
+> She talked to him in French.
+
+```lisp
+(a / announce-01
+      :ARG0 (p2 / person
+            :ARG0-of (h / have-org-role-91
+                  :ARG2 (m / mayor)))
+      :ARG1 (r / resign-01
+            :ARG0 p2
+            :ARG1 m)
+      :medium (p / product :name (n / name :op1 "Twitter")))
+```
+
+> The mayor announced his resignation on Twitter.
+
+### `:frequency`
+
+```lisp
+(m / meet-03 
+   :frequency 3
+   :ARG0 (w / we))
+```
+
+> We met three times.
+
+The special frame `rate-entity-91` is used to describe recurring events
+and other rate entities such as "every 3000 miles" or "$3 per gallon".
+
+```lisp
+(r / rate-entity-91
+   :ARG1 2
+   :ARG2 (t / temporal-quantity 
+	    :quant 1
+            :unit (y / year)))
+```
+
+> twice a year
+
+(p / play-01
+   :ARG0 (w / we)
+   :ARG1 (b / bridge)
+   :frequency (r / rate-entity-91
+                 :ARG4 (d / date-entity
+                          :weekday (w2 / wednesday)
+                          :dayperiod (a / afternoon))))
+
+> We play bridge every Wednesday afternoon.
+
+### `:extent`
+
+```lisp
+(g / go-15
+      :ARG1 (r / road)
+      :extent (f / forever))
+```
+
+> The road goes on forever.
+
+### `:instrument`
+
+```lisp
+(e / eat-01
+   :ARG0 (i / i)
+   :ARG1 (p / pasta)
+   :instrument (f / fork))
+```
+
+> I ate pasta with a fork.
 
 
 Focus
