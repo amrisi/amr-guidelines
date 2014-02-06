@@ -2770,78 +2770,10 @@ concept (or top-level `:instance` role).  In doing so, we face one of three
 situations.
 
 
-(a) The text contains one English word we can use to fill the `:instance` role. 
-For example:
-
-```lisp
-(c / city 
-   :name (n / name 
-            :op1 "Zintan"))
-```
-
-> the city of Zintan 
-
-AMR also moves titles into the `:instance` role:
-
-
-```lisp
-(d / doctor
-   :name (n / name
-            :op1 "Wu"))
-```
-
-> Doctor Wu
-
-We use the role frame have-org-role-91 for titles that describe roles:
-
-```lisp
-(p / person             
-   :name (n / name                   
-            :op1 "Obama")
-   :ARG0-of (h / have-org-role-91
-                :ARG2 (p / president)))                   
-```
-
-> President Obama
-
-Similarly for "governor", "chairman", "director", "officer" etc.
-
-An exception is made for “Mr.”, “Mrs.”, etc:
-
-```lisp
-(p / person
-   :name (n / name
-            :op1 "Mr."
-            :op2 "Wu"))
-```
-
-> Mr. Wu
->
-> Mister Wu
-
-When faced with an appositive, AMR calmly inserts facts into slots:
-
-
-```lisp
- (g / group
-    :name (e / name
-             :op1 "Elsevier"
-             :op2 "N.V.")
-    :mod (c / country
-            :name (h / name
-                     :op1 "Netherlands"))
-    :ARG0-of (p2 / publish-01))
-```
-
-> Elsevier N.V. , the Dutch publishing group
-
-We view this object semantically as a “group”, which happens to have a known
-`:name`, plus some a couple of other properties that describe it.  
-
-
-(b) The text contains *no* English word we can use to fill the `:instance` slot.
-In such cases, we must hallucinate an entity type.  For example:
-
+(a) In general, unless the English text provides something more specific type,
+we fill the `:instance` slot from a special list of standard AMR named entity types,
+e.g. `person` and `company`.
+In such cases, we basically must hallucinate an entity type.  For example:
 
 ```lisp
 (p / person 
@@ -2894,26 +2826,133 @@ Some examples:
 ```lisp
 (g / government-organization
    :name (n / name
-           :op1 "Congress")
+           :op1 "NSA")
    :mod (c / country
-           :name (n2 / name
-                     :op1 "United"
-                     :op2 "States")))
+	   :name (n2 / name :op1 "America")))
 ```
 
-> the United States Congress
+> the American NSA
 
 ```lisp
 (n / natural-object
-   :name (n / name
-            :op2 "Lone"
-            :op3 "Cypress"))
+   :name (n2 / name
+             :op2 "Lone"
+             :op3 "Cypress"))
 ```
 
 > the Lone Cypress
 
-Note: we are *only* confined to these listed concepts if the text lacks an
-appropriate English word for the entity type.  So, “the famous poet William Shalespeare” is still `(p / poet …)`, even though “poet” is not listed. 
+
+(b) If the text contains a more specific English term to describe the type of entity, 
+we use it instead to fill the `:instance` role.
+For example:
+
+```lisp
+(p / poet
+   :name (n / name :op1 "William" :op2 "Shakespeare"))
+```
+
+> the poet William Shakespeare
+>
+> William Shakespeare, the poet
+
+`poet` is more specific than `person`.
+
+
+```lisp
+(v / village
+   :name (n / name 
+            :op1 "Odinaboi"))
+```
+
+> the village of Odinaboi
+
+`village` is more specific than `city`.
+
+
+```lisp
+(d / doctor
+   :name (n / name
+            :op1 "Wu"))
+```
+
+> Doctor Wu
+
+The following example texts mention `region`, `party` and `spacecraft`,
+but in these case we prefer the standard NE types `country-region`, 
+`political-party` and `spaceship`,
+because the latter are more (or at least equally) specific:
+
+```lisp
+(c / country-region
+   :name (n / name :op1 "Darfur")
+   :location (c2 / country :name (n2 / name :op1 "Sudan")))
+```
+
+> Sudan's Darfur region
+
+```lisp
+(p / political-party
+   :name (n / name :op1 "CDU")
+   :mod (c / conservative)
+   :mod (c2 / country :name (n2 / name :op1 "Germany")))
+```
+
+> Germany's conservative CDU party
+
+```lisp
+(s / spaceship
+   :name (n / name :op1 "Shenzhou"))
+```
+
+> the spaceship Shenzhou
+> 
+> the Shenzhou spacecraft
+
+For titles that describe roles, we use the frame have-org-role-91:
+
+```lisp
+(p / person             
+   :name (n / name                   
+            :op1 "Obama")
+   :ARG0-of (h / have-org-role-91
+                :ARG2 (p / president)))
+```
+
+> President Obama
+
+Similarly: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
+
+An exception is made for “Mr.”, “Mrs.”, etc:
+
+```lisp
+(p / person
+   :name (n / name
+            :op1 "Mr."
+            :op2 "Wu"))
+```
+
+> Mr. Wu
+>
+> Mister Wu
+
+When faced with an appositive, AMR calmly inserts facts into slots:
+
+```lisp
+(g / group
+   :name (e / name
+            :op1 "Elsevier"
+            :op2 "N.V.")
+   :mod (c / country
+           :name (h / name
+                    :op1 "Netherlands"))
+   :ARG0-of (p2 / publish-01))
+```
+
+> Elsevier N.V. , the Dutch publishing group
+
+We view this object semantically as a “group”, which happens to have a known
+`:name`, plus some a couple of other properties that describe it.  
 
 
 (c) The text contains *multiple* English words vying for the same `:instance` slot. 
