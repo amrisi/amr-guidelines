@@ -1380,10 +1380,8 @@ Many adjectives have natural English verbal predicates:
   - be worth (X) – `value-01`
   - be like (X) – `resemble-01`
   - be afraid (of X) – `fear-01`
-```
 
-Other adjectives do not, in which case we use the adjective as the predicate
-name.  
+Other adjectives do not, in which case we use the adjective as the predicate name.  
 
   - be responsible (for X) – `responsible-41`
   - be nervous (about X) – `nervous-41`
