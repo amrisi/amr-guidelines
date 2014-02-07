@@ -1828,7 +1828,7 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
 (r / rate-entity-91
    :ARG1 2
    :ARG2 (t / temporal-quantity 
-	    :quant 1
+            :quant 1
             :unit (y / year)))
 ```
 
@@ -3024,13 +3024,13 @@ For titles that describe roles, we use the frame have-org-role-91:
 
 ```lisp
 (p / person             
-   :name (n / name                   
-            :op1 "Obama")
+   :name (n / name :op1 "Obama")
    :ARG0-of (h / have-org-role-91
-                :ARG2 (p / president)))
+               :ARG1 (c / country :name (n2 / name :op1 "US"))
+               :ARG2 (p / president)))
 ```
 
-> President Obama
+> US President Obama
 
 Core roles of `have-org-role-91`:
   - `:ARG0` of `have-org-role-91` is the office holder, typically a person
@@ -3038,7 +3038,7 @@ Core roles of `have-org-role-91`:
   - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
   - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
 
-Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
+Typical have-org-role-91 titles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
 
 An exception is made for “Mr.”, “Mrs.”, etc:
 
