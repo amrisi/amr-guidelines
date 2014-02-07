@@ -1729,6 +1729,14 @@ Here are more non-core roles:
 
 We do not use `:part` for set membership, as in the CEO of a company.
 
+```lisp
+(s / south
+   :part-of (c / country :name (n / name :op1 "France")))
+```
+> the south of France
+>
+> southern France
+
 ### `:subevent`
 
 ```lisp
@@ -2906,6 +2914,8 @@ answering):
   - **publication**, book, newspaper, magazine, journal
   - **natural-object**
   - law, treaty, award, food-dish, disease
+
+We always choose the most specific applicable type.
 
 If none of these apply, then we use **thing**.
 
