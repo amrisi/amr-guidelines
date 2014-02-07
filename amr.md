@@ -1849,9 +1849,9 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
 Core roles of `rate-entity-91`:
   - `:ARG1` of `rate-entity-91` is the quantity (default: 1)
   - `:ARG2` of `rate-entity-91` is the reference quantity ("per quantity")
-  - `:ARG3` of `rate-entity-91` is any *regular* interval between events (more specific than `:ARG2`)
+  - `:ARG3` of `rate-entity-91` is any *regular* interval between events ("every 2 months" - more specific than `:ARG2`)
   - `:ARG4` of `rate-entity-91` is any entity on which recurring events happen
-  - 
+  
 
 ### `:extent`
 
