@@ -947,7 +947,7 @@ just imperatives in AMR.
 
 ```lisp
 (g / go
-   :mode exclamation
+   :mode expressive
    :ARG0 (w / we))
 ```
 
@@ -1670,6 +1670,9 @@ It can be difficult to tease apart `:purpose` from `:cause`.  For example, “I
 visited her because she was sick” (cause) or “I visited her to deliver the news”
 (purpose).
 
+In the AMR Editor, :cause/:cause-of is automatically converted to cause-01.
+(See section on [reification](#reification) below.)
+
 Occasionally, a numbered `:ARGx` role will refer exactly to `:location`,
 `:beneficiary`, or some other named non-core role.  In this case, we use the `:ARGx`
 role, e.g.:
@@ -1996,29 +1999,29 @@ Relation       | Reification           | Domain  | Range   | Example
 `:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
 `:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
-`:destination` | `be-destined-for-91`  | `:ARG0` | `:ARG1` | “i'm off to Atlanta”
+`:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
 `:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
 `:frequency`   | `have-frequency-91`   | `:ARG1` | `:ARG2` | “he came three times”
-`:instrument`  | `have-instrument-91`  | `:ARG0` | `:ARG1` | “forks are for eating”
-`:location`    | `be-located-at-91`    | `:ARG0` | `:ARG1` | “she's not here”
+`:instrument`  | `have-instrument-91`  | `:ARG1` | `:ARG2` | “forks are for eating”
+`:location`    | `be-located-at-91`    | `:ARG1` | `:ARG2` | “she's not here”
 `:manner`      | `have-manner-91`      | `:ARG1` | `:ARG2` | “it was done quickly”
 `:part`        | `have-part-91`        | `:ARG1` | `:ARG2` | “the roof of the house”
 `:polarity`    | `have-polarity-91`    | `:ARG1` | `:ARG2` | “I don't know.”
 `:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
 `:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
 `:quant`       | `have-quant-91`       | `:ARG1` | `:ARG2` | “there are 4 rabbits”
-`:source`      | `be-from-91`          | `:ARG0` | `:ARG1` | “she's from Ipanema”
+`:source`      | `be-from-91`          | `:ARG1` | `:ARG2` | “she's from Ipanema”
 `:subevent`    | `have-subevent-91`    | `:ARG1` | `:ARG2` | “presentation at a conference”
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
-`:time`        | `be-temporally-at-91` | `:ARG0` | `:ARG1` | “the party is on friday”
+`:time`        | `be-temporally-at-91` | `:ARG1` | `:ARG2` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
 
 These relations do not have reifications:
 
   - `:ARG0`, `:ARG2`, `:ARG2`, ... `:op1`, `:op2`, `:op3`, `:op4`, …
   - `:calendar`, `:century`, `:day`, `:dayperiod`, `:decade`, `:era`, `:month`, `:quarter`, `:season`, `:timezone`, `:weekday`, `:year`, `:year2`
-  - `:unit`, `:value`, `:mod`, `:mode`, `:compared-to`, `:degree`, `:direction`, `:name`, `:polarity`, `:quant`, `:scale`
+  - `:unit`, `:value`, `:mod`, `:mode`, `:compared-to`, `:degree`, `:direction`, `:name`, `:scale`
 
 Now, the question remains: when to reify?  
 
@@ -3149,6 +3152,8 @@ Exact quantities are represented by their type and `:unit` and `:quant` argument
 > ten miles
 >
 > 10 miles
+>
+> 10-mile
 
 Approximate quantities are represented using `:opN` notation, as for approximate
 numbers:
@@ -3187,6 +3192,16 @@ For stretches of time and relative times, AMR uses `temporal-quantity`.
 ```
 
 > 30 years
+
+```lisp
+(b / before
+   :op1 (n / now)
+   :duration (t / temporal-quantity
+                :unit (y / year)
+                :quant 30))
+```
+
+> during the past 30 years
 
 ```lisp
 (b / before
@@ -3325,6 +3340,8 @@ These entities are described in standard, canonical forms:
 > February 29, 2012
 >
 > 29 February 2012
+>
+> 2/29/2012
 
 ```lisp
 (d / date-entity
@@ -3393,7 +3410,9 @@ These entities are described in standard, canonical forms:
 >
 > 4:30pm
 >
-> 4:30
+> 4:30 in the afternoon
+>
+> half past four
 
 ```lisp
 (d / date-entity
