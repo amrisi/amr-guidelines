@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.0 Specification
 =======================================================
 
-**February 6, 2014**
+**February 7, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -1800,16 +1800,14 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 
 ```lisp
 (a / announce-01
-      :ARG0 (p2 / person
-            :ARG0-of (h / have-org-role-91
-                  :ARG2 (m / mayor)))
-      :ARG1 (r / resign-01
-            :ARG0 p2
-            :ARG1 m)
-      :medium (p / product :name (n / name :op1 "Twitter")))
+   :ARG0 (p / person :name (n / name :op1 "John"))
+   :ARG1 (b / bear-02
+            :ARG1 (s / son
+                     :poss p))
+   :medium (p2 / product :name (n2 / name :op1 "Twitter")))
 ```
 
-> The mayor announced his resignation on Twitter.
+> John announced the birth of his son on Twitter.
 
 ### `:frequency`
 
@@ -1847,6 +1845,13 @@ and other rate entities such as "every 3000 miles" or "$3 per gallon".
 ```                        
 
 > We play bridge every Wednesday afternoon.
+
+Core roles of `rate-entity-91`:
+  - `:ARG1` of `rate-entity-91` is the quantity (default: 1)
+  - `:ARG2` of `rate-entity-91` is the reference quantity ("per quantity")
+  - `:ARG3` of `rate-entity-91` is any *regular* interval between events (more specific than `:ARG2`)
+  - `:ARG4` of `rate-entity-91` is any entity on which recurring events happen
+  - 
 
 ### `:extent`
 
@@ -3027,7 +3032,13 @@ For titles that describe roles, we use the frame have-org-role-91:
 
 > President Obama
 
-Similarly: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
+Core roles of `have-org-role-91`:
+  - `:ARG0` of `have-org-role-91` is the office holder, typically a person
+  - `:ARG1` of `have-org-role-91` is the organization, which could also be a GPE
+  - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
+  - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
+
+Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
 
 An exception is made for “Mr.”, “Mrs.”, etc:
 
@@ -3352,29 +3363,6 @@ operators that the meaning of a text might include.
 > The aircraft's velocity reached three times the speed of sound.
 
 ```lisp
-(p / product-of
-   :op1 (p3 / percentage-entity :value 30)
-   :op2 (m / monetary-quantity
-           :ARG2-of (c2 / cost-01
-                        :ARG1 (p4 / project))))
-```
-
-> 30 percent of the project costs
-
-```lisp
-(e / equal-01
-   :ARG1 (s / size
-            :poss (c / continent :name (n / name :op1 "Antarctica")))
-   :ARG2 (s2 / sum-of
-             :op1 (s3 / size
-                      :poss (c2 / country :name (n2 / name :op1 "United" :op2 "States")))
-             :op2 (s4 / size
-                      :poss (c3 / country :name (n3 / name :op1 "Mexico")))))
-```
-
-> The size of Antarctica is as large as the United States and Mexico together.
-
-```lisp
 (f / finish-01
    :ARG0 (p / person :name (n / name :op1 "Patrick" :op2 "Makau"))
    :ARG1 (r / run-02
@@ -3390,18 +3378,6 @@ operators that the meaning of a text might include.
 ```
 
 > Patrick Makau finished the marathon in 2 hours, 3 minutes and 38 seconds.
-
-```lisp
-(e / equal-01
-   :ARG1 (s / sum-of
-            :op1 3
-            :op2 2)
-   :ARG2 5)
-```
-
-> Three and two make five.
->
-> 3 + 2 = 5
 
 
 Other entities: dates, times, percentages, phone, email, URLs
