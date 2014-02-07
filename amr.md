@@ -438,7 +438,7 @@ Non-core roles:
 :beneficiary
 :cause, :compared-to, :concession, :condition, :consist-of
 :degree, :destination, :direction, :domain, :duration
-:extent, :example
+:example, :extent
 :frequency
 :instrument
 :location
@@ -3038,7 +3038,7 @@ Core roles of `have-org-role-91`:
   - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
   - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
 
-Typical have-org-role-91 titles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy,dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
+Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy, dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
 
 An exception is made for “Mr.”, “Mrs.”, etc:
 
