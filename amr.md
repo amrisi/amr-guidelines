@@ -3027,7 +3027,7 @@ For titles that describe roles, we use the frame have-org-role-91:
    :name (n / name :op1 "Obama")
    :ARG0-of (h / have-org-role-91
                :ARG1 (c / country :name (n2 / name :op1 "US"))
-               :ARG2 (p / president)))
+               :ARG2 (p2 / president)))
 ```
 
 > US President Obama
