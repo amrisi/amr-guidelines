@@ -70,6 +70,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Exact numbers](#exact-numbers)
 	- [Approximate numbers](#approximate-numbers)
 	- [Quantities](#quantities)
+	- [Mathematical operators](#mathematical-operators)
 	- [Other entities: dates, times, percentages, phone, email, URLs](#other-entities-dates-times-percentages-phone-email-urls)
 	- [AMR Freak Show](#amr-freak-show)
 
@@ -3331,6 +3332,76 @@ rather than `:unit`:
 ```
 
 > 7.9 on the Richter scale
+
+Mathematical operators
+----------------------
+
+The special concepts `product-of` and `sum-of` support the mathematical
+operators that the meaning of a text might include.
+
+```lisp
+(r / reach-01
+   :ARG0 (v / velocity
+            :poss (a / aircraft))
+   :ARG1 (p / product-of 
+	    :op1 3
+            :op2 (s / speed
+                    :poss (s2 / sound))))
+```
+
+> The aircraft's velocity reached three times the speed of sound.
+
+```lisp
+(p / product-of
+   :op1 (p3 / percentage-entity :value 30)
+   :op2 (m / monetary-quantity
+           :ARG2-of (c2 / cost-01
+                        :ARG1 (p4 / project))))
+```
+
+> 30 percent of the project costs
+
+```lisp
+(e / equal-01
+      :ARG1 (s / size
+            :poss (c / continent :name (n / name :op1 "Antarctica")))
+      :ARG2 (s2 / sum-of
+            :op1 (s3 / size
+                  :poss (c2 / country :name (n2 / name :op1 "United" :op2 "States")))
+            :op2 (s4 / size
+                  :poss (c3 / country :name (n3 / name :op1 "Mexico")))))
+```
+
+> The size of Antarctica is as large as the United States and Mexico together.
+
+```lisp
+(f / finish-01
+      :ARG0 (p / person :name (n / name :op1 "Patrick" :op2 "Makau"))
+      :ARG1 (r / run-02
+            :ARG0 p
+            :ARG1 (m / marathon)
+            :duration (s2 / sum-of
+                  :op1 (t2 / temporal-quantity :quant 2
+                        :unit (h / hour))
+                  :op2 (t3 / temporal-quantity :quant 3
+                        :unit (m2 / minute))
+                  :op3 (t4 / temporal-quantity :quant 38
+                        :unit (s3 / second)))))
+```
+
+> Patrick Makau finished the marathon in 2 hours, 3 minutes and 38 seconds.
+
+```lisp
+(e / equal-01
+  :ARG1 (s / sum-of
+          :op1 3
+          :op2 2)
+  :ARG2 5)
+```
+
+> Three and two make five.
+>
+> 3 + 2 = 5
 
 
 Other entities: dates, times, percentages, phone, email, URLs
