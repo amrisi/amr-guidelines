@@ -1566,8 +1566,6 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 
 ### `:beneficiary`
 ### `:accompanier`
-### `:topic`
-### `:duration`
 
 ```lisp
 (s / sing-01
@@ -1580,6 +1578,38 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 ```
 
 > The soldier sang to the girl as he walked with her to town.
+
+### `:topic`
+
+```lisp
+(i / information :polarity -
+   :topic (c / case))
+```
+
+> There is no information about the case.
+
+```lisp
+(p / person :name (n / name :op1 "Jay" :op2 "Bartroff")
+   :ARG0-of (h / have-org-role-91
+               :ARG1 (u / university :name (n2 / name :op1 "USC"))
+               :ARG2 (p2 / professor
+                         :mod (a / associate)
+                         :topic (m / mathematics))))
+```
+
+> USC Associate Professor for Mathematics Jay Bartroff
+
+### `:duration`
+
+```lisp
+(w / work-01
+   :ARG0 (h / he)
+   :duration (t / temporal-quantity
+                :quant 2
+                :unit (h2 / hour)))
+```
+
+> He worked for two hours.
 
 ### `:instrument`
 
