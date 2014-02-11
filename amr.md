@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.0 Specification
+Abstract Meaning Representation (AMR) 1.1 Specification
 =======================================================
 
-**February 7, 2014**
+**February 11, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -38,6 +38,8 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 		- [:accompanier](#accompanier)
 		- [:topic](#topic)
 		- [:duration](#duration)
+		- [:instrument](#instrument)
+		- [:medium](#medium)
 		- [:manner](#manner)
 		- [:purpose](#purpose)
 		- [:cause](#cause)
@@ -48,10 +50,8 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 		- [:consist-of](#consist-of)
 		- [:example](#example-1)
 		- [:direction](#direction)
-		- [:medium](#medium)
 		- [:frequency](#frequency)
 		- [:extent](#extent)
-		- [:instrument](#instrument)
 	- [Focus](#focus-1)
 	- [Reification](#reification)
 	- [Phrasal verbs](#phrasal-verbs)
@@ -1570,7 +1570,107 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 
 > The soldier sang to the girl as he walked with her to town.
 
+### `:instrument`
+
+`:instrument` describes the physical object used in an action, typically a tool, device, weapon, or a body part such as a finger or fist.
+
+If you want to describe how or in what way something is done, use the more general `:manner` instead.
+
+```lisp
+(e / eat-01
+   :ARG0 (i / i)
+   :ARG1 (p / pasta)
+   :instrument (f / fork))
+```
+
+> I ate pasta with a fork.
+
+```lisp
+(a / attack-01
+   :ARG0 (c / country :name (n / name :op1 "Iraq"))
+   :instrument (m / missile))
+```
+
+> Iraq launched a missile attack.
+
+### `:medium`
+
+The role `:medium` is used for channels of communications such as
+a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as languages:
+
+```lisp
+(t / talk-01
+      :ARG0 (s / she)
+      :ARG2 (h / he)
+      :medium (l / language :name (n / name :op1 "French")))
+```
+
+> She talked to him in French.
+
+```lisp
+(a / announce-01
+   :ARG0 (p / person :name (n / name :op1 "John"))
+   :ARG1 (b / bear-02
+            :ARG1 (s / son
+                     :poss p))
+   :medium (p2 / product :name (n2 / name :op1 "Twitter")))
+```
+
+> John announced the birth of his son on Twitter.
+
 ### `:manner`
+
+`:manner` is used to annotate any description answering "How is something done?" that is not already covered by a more specific role such as `:instrument` or `:medium`.
+
+```lisp
+(s / sing-01
+   :ARG0 (b / boy)
+   :manner (b2 / beautiful
+                :degree (v / very)))
+```
+
+> The boy sang very beautifully.
+
+```lisp
+(d / decorate-01
+   :ARG0 (h / he)
+   :ARG1 (r / room)
+   :manner (c / creative))
+```
+
+> He decorated the room in a creative way.
+
+`:manner` also describes the method or action to do something, sometimes referred to as *means*:
+
+```lisp
+(p / propose-01
+   :ARG0 (p3 / person
+             :ARG0-of (h2 / have-org-role-91
+                          :ARG2 (m / mayor)))
+   :ARG1 (l / lower-01
+            :ARG1 (c / crime)
+            :manner (h / hire-01
+                       :ARG2 (p4 / person
+                                 :ARG0-of (h3 / have-org-role-91
+                                              :ARG1 (p2 / police)
+                                              :ARG2 (o / officer))
+                                 :mod (m2 / more)))))
+```
+
+> The mayor proposed to lower crime by hiring more police officers.
+
+`:manner` also describes modes of transportation:
+
+```lisp
+(g / go-02
+   :ARG0 (p / person :name (n / name :op1 "Nicole"))
+   :ARG4 (c / country :name (n2 / name :op1 "England"))
+   :manner (t / train))
+```
+
+> Nicole went to England by train.
+
+
 ### `:purpose`
 ### `:cause`
 
@@ -1784,31 +1884,6 @@ We do not use `:part` for set membership, as in the CEO of a company.
 
 > He drove west.
 
-### `:medium`
-
-The role `:medium` is used for channels of communications such as
-a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as languages:
-
-```lisp
-(t / talk-01
-      :ARG0 (s / she)
-      :ARG2 (h / he)
-      :medium (l / language :name (n / name :op1 "French")))
-```
-
-> She talked to him in French.
-
-```lisp
-(a / announce-01
-   :ARG0 (p / person :name (n / name :op1 "John"))
-   :ARG1 (b / bear-02
-            :ARG1 (s / son
-                     :poss p))
-   :medium (p2 / product :name (n2 / name :op1 "Twitter")))
-```
-
-> John announced the birth of his son on Twitter.
-
 ### `:frequency`
 
 `:frequency` describes how often something occurs.
@@ -1862,21 +1937,6 @@ Core roles of `rate-entity-91`:
 ```
 
 > The road goes on forever.
-
-### `:instrument`
-
-`:instrument` describes the tool used in an action.
-
-If you want to describe how or in what way something is done, use the more general `:manner` instead.
-
-```lisp
-(e / eat-01
-   :ARG0 (i / i)
-   :ARG1 (p / pasta)
-   :instrument (f / fork))
-```
-
-> I ate pasta with a fork.
 
 
 Focus
