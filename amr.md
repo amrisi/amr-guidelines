@@ -1553,6 +1553,17 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 
 ### `:source`
 ### `:destination`
+
+```lisp
+(d / drive-01
+   :ARG0 (h / he)
+   :direction (w / west)
+   :source (c / city :name (n / name :op1 "Houston"))
+   :destination (c2 / city :name (n2 / name :op1 "Austin")))
+```
+
+> He drove west, from Houston to Austin.
+
 ### `:beneficiary`
 ### `:accompanier`
 ### `:topic`
@@ -1626,7 +1637,7 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 (s / sing-01
    :ARG0 (b / boy)
    :manner (b2 / beautiful
-                :degree (v / very)))
+               :degree (v / very)))
 ```
 
 > The boy sang very beautifully.
@@ -1670,8 +1681,21 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 
 > Nicole went to England by train.
 
-
 ### `:purpose`
+
+```lisp
+(g / go-02
+   :ARG0 (h / he)
+   :ARG4 (s / store)
+   :purpose (b / buy-01
+               :ARG0 h
+               :ARG1 (w / wood
+                        :purpose (f / fence
+                                    :mod (n / new)))))
+```
+
+> He went to the store to buy wood for a new fence.
+
 ### `:cause`
 
 ```lisp
