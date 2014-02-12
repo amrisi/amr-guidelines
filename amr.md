@@ -34,6 +34,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Non-core roles](#non-core-roles)
 		- [:source](#source)
 		- [:destination](#destination)
+		- [:path](#path)
 		- [:beneficiary](#beneficiary)
 		- [:accompanier](#accompanier)
 		- [:topic](#topic)
@@ -436,7 +437,7 @@ Non-core roles:
 ```lisp
 :accompanier, :age
 :beneficiary
-:cause, :compared-to, :concession, :condition, :consist-of
+:compared-to, :concession, :condition, :consist-of
 :degree, :destination, :direction, :domain, :duration
 :example, :extent
 :frequency
@@ -444,9 +445,10 @@ Non-core roles:
 :location
 :manner, :medium, :mod, :mode
 :name
-:part, :polarity, :poss, :purpose
+:ord
+:part, :path, :polarity, :poss, :purpose
 :quant
-:scale, :source, :subevent, :subset
+:scale, :source, :subevent
 :time, :topic, :unit
 :value
 ```
@@ -502,7 +504,7 @@ All relations above have inverses of the form `:X-of`.
 
 ```lisp
 :ARG0-of, :ARG1-of
-:cause-of
+:location-of
 ```
 etc.
 
@@ -1564,6 +1566,25 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 
 > He drove west, from Houston to Austin.
 
+### `:path`
+
+```lisp
+(d / drive-01
+   :ARG0 (i / i)
+   :destination (c / city :name (n / name :op1 "Indianapolis"))
+   :path (r / road :name (n2 / name :op1 "I-65")))
+```
+
+> I drove to Indianapolis on I-65.
+
+```lisp
+(d / drive-01
+   :ARG0 (i / i)
+   :path (t / tunnel))
+```
+
+> I drove through the tunnel.
+
 ### `:beneficiary`
 ### `:accompanier`
 
@@ -1740,6 +1761,8 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 ```
 
 > The boy murmured softly to soothe the girl, because he worried about her.
+
+Note: The AMR Editor automatically reifies :cause and :cause-of to cause-01, so we call `:cause` a *shortcut*.
 
 ### `:concession`
 
@@ -2906,7 +2929,7 @@ AMR is sparing with `:subset` -- otherwise things get out of control.  For
 example, we do not use it for “Three of the workers at the plant,” but we rather
 just interpret this as “Three workers”.
 
-
+Note: The AMR Editor automatically reifies :subset, :subset-of, :superset and :superset-of to include-91, so we call them *shortcuts*.
 
 Named Entities
 --------------
