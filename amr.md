@@ -16,7 +16,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [More Logical than Syntax](#more-logical-than-syntax)
 	- [Focus](#focus)
 	- [AMR slogans](#amr-slogans)
-	- [Limitations of AMR 1.1](#limitations-of-amr-10)
+	- [Limitations of AMR 1.1](#limitations-of-amr-11)
 - [Part II.  Concepts and relations](#part-ii--concepts-and-relations)
 - [Part III.  Phenomena](#part-iii--phenomena)
 	- [Core roles](#core-roles)
