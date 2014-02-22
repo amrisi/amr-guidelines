@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.1 Specification
-=======================================================
+Abstract Meaning Representation (AMR) 1.1.1 Specification
+=========================================================
 
-**February 11, 2014**
+**February 21, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -9,14 +9,14 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Abstract Meaning Representation (AMR) 1.0 Specification](#abstract-meaning-representation-amr-10-specification)
+- [Abstract Meaning Representation (AMR) 1.1 Specification](#abstract-meaning-representation-amr-10-specification)
 - [Part I. Introduction](#part-i-introduction)
    - [Example](#example)
 	- [Abstraction away from English](#abstraction-away-from-english)
 	- [More Logical than Syntax](#more-logical-than-syntax)
 	- [Focus](#focus)
 	- [AMR slogans](#amr-slogans)
-	- [Limitations of AMR 1.0](#limitations-of-amr-10)
+	- [Limitations of AMR 1.1](#limitations-of-amr-10)
 - [Part II.  Concepts and relations](#part-ii--concepts-and-relations)
 - [Part III.  Phenomena](#part-iii--phenomena)
 	- [Core roles](#core-roles)
@@ -378,17 +378,17 @@ automatically), just as it is reasonable to align tokens in bilingual texts.
 
 
 
-Limitations of AMR 1.0
+Limitations of AMR 1.1
 ----------------------
 
-AMR 1.0 is over-simple in many ways:
+AMR 1.1 is over-simple in many ways:
 
   - It is geared toward English and the vocabulary of English.  
   - It does not represent quantifier scope, or even universal quantification at all.
   - It does not represent co-references that cross sentence boundaries.
   - It drops grammatical number, tense, aspect, quotation marks, etc.
   - It does not deeply capture many noun-noun or noun-adjective relations.
-  - It does not include deep frames such as Earthquake (with roles for magnitude, epicenter, casualties, etc) or Pregnancy (with roles for mother, father, baby gender, time since inception, etc).  AMR 1.0 looks forward to AMR 2.0!
+  - It does not include deep frames such as Earthquake (with roles for magnitude, epicenter, casualties, etc) or Pregnancy (with roles for mother, father, baby gender, time since inception, etc).  AMR 1.1 looks forward to AMR 2.0!
 
 
 Part II.  Concepts and relations
@@ -412,7 +412,7 @@ concepts (boy, want, believe):
 The slash (`/`) is shorthand for the `:instance` relation.  This relation shows up
 more clearly in AMR graph format (see Introduction).
 
-Concepts in AMR 1.0 are usually written with English words or phrases.  Concepts
+Concepts in AMR 1.1 are usually written with English words or phrases.  Concepts
 with core semantic relations may have sense tags, to identify the semantic
 frame:
 
@@ -426,7 +426,7 @@ frame:
 AMR semantic relations are best described through examples; see the next section
 ([Phenomena](#part-iii--phenomena)).  Here, we only provide a brief summary listing.
 
-Core `:ARGx` roles.  AMR 1.0 uses numbered `:ARGx` from OntoNotes:
+Core `:ARGx` roles.  AMR 1.1 uses numbered `:ARGx` from OntoNotes:
 
 ```lisp
 :ARG0, :ARG1, :ARG2, :ARG3, :ARG4, :ARG5
@@ -980,7 +980,7 @@ just imperatives in AMR.
 Articles, plurals, tense, aspect, quotes, hyphens
 -------------------------------------------------
 
-AMR 1.0 does not represent event times (outside of the explicit `:time` relation),
+AMR 1.1 does not represent event times (outside of the explicit `:time` relation),
 articles, plurals, or quotation marks:
 
 
@@ -2068,8 +2068,8 @@ AMR without reification:        AMR with reification:
 (l / leave-01                   (l / leave-01
    :ARG0 (g / girl)                :ARG0 (g / girl)
    :cause (a / arrive-01           :ARG1-of (c / cause-01
-             :ARG0 (b / boy)))                 :ARG0 (a / arrive-01
-                                                        :ARG0 (b / boy))))
+             :ARG1 (b / boy)))                 :ARG0 (a / arrive-01
+                                                        :ARG1 (b / boy))))
 ```
 
 > The girl left because the boy arrived.
@@ -2496,7 +2496,7 @@ predicates:
 ```lisp
 (a / and
    :op1 (a2 / arrive-01
-            :ARG0 (b / boy))
+            :ARG1 (b / boy))
    :op2 (l / kill-01
            :ARG1 b
            :manner (p / prompt)))
@@ -2512,7 +2512,7 @@ modifies the entire conjunction rooted by `and`:
    :time (d / date-entity
             :weekday (t / tuesday))
    :op1 (a2 / arrive-01
-            :ARG0 (b / boy))
+            :ARG1 (b / boy))
    :op2 (l / leave-01
           :ARG0 b))
 ```
