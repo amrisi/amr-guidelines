@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.1.1 Specification
-=========================================================
+Abstract Meaning Representation (AMR) 1.2 Specification
+=======================================================
 
-**February 21, 2014**
+**May 7, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -68,6 +68,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Ordinals](#ordinals)
 	- [Subsets](#subsets)
 	- [Named Entities](#named-entities)
+	- [Special Frames for Roles](#special-frames-for-roles) (have-org-role-91, have-rel-role-91)
 	- [Exact numbers](#exact-numbers)
 	- [Approximate numbers](#approximate-numbers)
 	- [Quantities](#quantities)
@@ -3159,27 +3160,7 @@ because the latter are more (or at least equally) specific:
 > 
 > the Shenzhou spacecraft
 
-For titles that describe roles, we use the frame have-org-role-91:
-
-```lisp
-(p / person             
-   :name (n / name :op1 "Obama")
-   :ARG0-of (h / have-org-role-91
-               :ARG1 (c / country :name (n2 / name :op1 "US"))
-               :ARG2 (p2 / president)))
-```
-
-> US President Obama
-
-Core roles of `have-org-role-91`:
-  - `:ARG0` of `have-org-role-91` is the office holder, typically a person
-  - `:ARG1` of `have-org-role-91` is the organization, which could also be a GPE
-  - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
-  - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
-
-Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy, dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
-
-An exception is made for “Mr.”, “Mrs.”, etc:
+Mere honorifics such as “Mr.”, “Mrs.”, etc. are included as part of the name:
 
 ```lisp
 (p / person
@@ -3191,6 +3172,8 @@ An exception is made for “Mr.”, “Mrs.”, etc:
 > Mr. Wu
 >
 > Mister Wu
+
+See the next section on "Special Frames for Roles" on how to annotate titles such as "President".
 
 When faced with an appositive, AMR calmly inserts facts into slots:
 
@@ -3217,13 +3200,56 @@ physically appear twice in AMR, we instead open up the inverse of `:domain` , i.
 
 ```lisp
 (d / doctor :name (n / name :op1 "Seuss")
-  :mod (p2 / poet))
+  :mod (p / poet))
 ```
 
 > the poet Dr. Seuss
 
 In all cases, hyphenated and possessive words inside names are kept intact, not broken up.  
 For example, "Dana-Farber Materials" only has `:op1` and `:op2`.
+
+Special Frames for Roles
+------------------------
+
+For roles in organizations, we use the frame have-org-role-91:
+
+```lisp
+(p / person             
+   :name (n / name :op1 "Obama")
+   :ARG0-of (h / have-org-role-91
+               :ARG1 (c / country :name (n2 / name :op1 "US"))
+               :ARG2 (p2 / president)))
+```
+
+> US President Obama
+
+Core roles of `have-org-role-91`:
+  - `:ARG0` of `have-org-role-91` is the office holder, typically a person
+  - `:ARG1` of `have-org-role-91` is the organization, which could also be a GPE
+  - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
+  - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
+
+Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy, dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
+
+For roles that describe the relation between two people (or two other entities of the same type), we use the frame have-rel-role-91:
+
+```lisp
+(h / have-rel-role-91
+  :ARG0 (h2 / he)
+  :ARG1 (i / i)
+  :ARG2 (b / brother-in-law))
+```
+
+> He is my brother-in-law.
+
+Core roles of `have-rel-role-91`:
+  - `:ARG0` of `have-rel-role-91` entity A
+  - `:ARG1` of `have-rel-role-91` entity B
+  - `:ARG2` of `have-rel-role-91` role of entity A (must be specified)
+  - `:ARG3` of `have-rel-role-91` role of entity B (often left unspecified)  
+  - `:ARG4` of `have-rel-role-91` relationship basis (contract, case; rarely used)
+
+Typical have-rel-role-91 roles: father, sister, husband, grandson, godfather, stepdaughter, brother-in-law; friend, boyfriend, buddy, enemy; landlord, tenant etc.
 
 Exact numbers
 -------------
