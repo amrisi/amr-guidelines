@@ -1671,11 +1671,13 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 
 ```lisp
 (a / announce-01
-   :ARG0 (p / person :name (n / name :op1 "John"))
-   :ARG1 (b / bear-02
-            :ARG1 (s / son
-                     :poss p))
-   :medium (p2 / product :name (n2 / name :op1 "Twitter")))
+  :ARG0 (p / person :name (n / name :op1 "John"))
+  :ARG1 (b / bear-02
+          :ARG1 (p2 / person
+                   :ARG0-of (h / have-rel-role-91
+                              :ARG1 p
+                              :ARG2 (s / son))))
+  :medium (p3 / product :name (n2 / name :op1 "Twitter")))
 ```
 
 > John announced the birth of his son on Twitter.
@@ -3214,16 +3216,11 @@ This happens occasionally.  Because `:instance` is the only relation that cannot
 physically appear twice in AMR, we instead open up the inverse of `:domain` , i.e. the role `:mod`
 
 ```lisp
-(p / father
-   :poss (i / i)
-   :name (n / name
-            :op1 "Barack"
-            :op2 "Obama")
-   :mod (p2 / politician
-            :mod (c / career)))
+(d / doctor :name (n / name :op1 "Seuss")
+  :mod (p2 / poet))
 ```
 
-> my father Barack Obama, a career politician
+> the poet Dr. Seuss
 
 In all cases, hyphenated and possessive words inside names are kept intact, not broken up.  
 For example, "Dana-Farber Materials" only has `:op1` and `:op2`.
