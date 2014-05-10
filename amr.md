@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2 Specification
 =======================================================
 
-**May 7, 2014**
+**May 9, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -784,8 +784,8 @@ Negative English affixes are also represented with the `:polarity` role:
 
 ```lisp
 (a / appropriate
-   :ARG1 (c / comment)
-   :polarity -)
+   :polarity -
+   :domain (c / comment))
 ```
 
 > the comment is inappropriate
