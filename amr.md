@@ -783,9 +783,11 @@ Negative English affixes are also represented with the `:polarity` role:
 
 
 ```lisp
-(a / appropriate
-   :polarity -
-   :domain (c / comment))
+
+(a / appropriate 
+  :polarity -
+  :domain (t / thing
+            :ARG1-of (c / comment-02)))
 ```
 
 > the comment is inappropriate
