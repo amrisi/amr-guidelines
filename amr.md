@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2 Specification
 =======================================================
 
-**May 9, 2014**
+**May 14, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2160,6 +2160,8 @@ Relation       | Reification           | Domain  | Range   | Example
 `:instrument`  | `have-instrument-91`  | `:ARG1` | `:ARG2` | “forks are for eating”
 `:location`    | `be-located-at-91`    | `:ARG1` | `:ARG2` | “she's not here”
 `:manner`      | `have-manner-91`      | `:ARG1` | `:ARG2` | “it was done quickly”
+`:mod`         | `have-mod-91`         | `:ARG1` | `:ARG2` | “he is half Chinese"
+`:name`        | `have-name-91`        | `:ARG1` | `:ARG2` | “the city formerly named Constantinople”
 `:part`        | `have-part-91`        | `:ARG1` | `:ARG2` | “the roof of the house”
 `:polarity`    | `have-polarity-91`    | `:ARG1` | `:ARG2` | “I don't know.”
 `:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
