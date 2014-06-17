@@ -2119,7 +2119,7 @@ reifications for many relations.  In the case of `:location`, the reification is
 
 > We know the knife is in the drawer.
 
-Note that `be-located-at-00` has two roles, `:ARG0` (the thing that exists in
+Note that `be-located-at-91` has two roles, `:ARG0` (the thing that exists in
 space) and `:ARG1` (where the thing is).  
 
 
