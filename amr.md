@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2 Specification
+Abstract Meaning Representation (AMR) 1.2.1 Specification
 =======================================================
 
-**May 14, 2014**
+**June 17, 2014**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -786,25 +786,24 @@ Negative English affixes are also represented with the `:polarity` role:
 
 (a / appropriate 
   :polarity -
-  :domain (t / thing
-            :ARG1-of (c / comment-02)))
+  :domain (d / dress))
 ```
 
-> the comment is inappropriate
+> the dress is inappropriate
 >
-> the comment is not appropriate
+> the dress is not appropriate
 
 ```lisp
-(c / comment
+(d / dress
    :mod (a / appropriate
           :polarity -))
 ```
 
-> the inappropriate comment
+> the inappropriate dress
 >
-> the comment that is appropriate
+> the dress that is inappropriate
 >
-> the comment that is not appropriate
+> the dress that is not appropriate
 
 
 Wh-Questions
@@ -2119,7 +2118,7 @@ reifications for many relations.  In the case of `:location`, the reification is
 
 > We know the knife is in the drawer.
 
-Note that `be-located-at-00` has two roles, `:ARG0` (the thing that exists in
+Note that `be-located-at-91` has two roles, `:ARG0` (the thing that exists in
 space) and `:ARG1` (where the thing is).  
 
 
@@ -2202,7 +2201,7 @@ same AMR.
 
 A second potential answer is “reify all the time”, which would completely
 eliminate relations like `:cause`, `:location`, and `:subset` from AMR, in favor of
-concepts like `cause-01`, `be-located-at-00`, and `include-91`.  But this is
+concepts like `cause-01`, `be-located-at-91`, and `include-91`.  But this is
 cumbersome -- it is easy and typical to simply type `:location`.
 
 The resolution: we consider “AMR with reification” to be “real AMR”, with
