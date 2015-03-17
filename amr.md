@@ -3062,6 +3062,11 @@ answering):
   - **natural-object**
   - law, treaty, award, food-dish, disease
 
+*Biomedical:*
+
+  - **molecular-physical-entity**, small-molecule, protein, protein-segment, amino-acid, macro-molecular-complex, enzyme, rna
+  - pathway, gene, dna-sequence, cell, cell-line, organism, disease
+
 We always choose the most specific applicable type.
 
 If none of these apply, then we use **thing**.
