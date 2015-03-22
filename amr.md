@@ -2176,7 +2176,7 @@ These relations do not have reifications:
 
   - `:ARG0`, `:ARG2`, `:ARG2`, ... `:op1`, `:op2`, `:op3`, `:op4`, …
   - `:calendar`, `:century`, `:day`, `:dayperiod`, `:decade`, `:era`, `:month`, `:quarter`, `:season`, `:timezone`, `:weekday`, `:year`, `:year2`
-  - `:unit`, `:value`, `:mod`, `:mode`, `:compared-to`, `:degree`, `:direction`, `:name`, `:scale`
+  - `:unit`, `:value`, `:mode`, `:compared-to`, `:degree`, `:direction`, `:scale`
 
 Now, the question remains: when to reify?  
 
