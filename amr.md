@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.1 Specification
 =======================================================
 
-**June 17, 2014**
+**June 11, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -575,13 +575,13 @@ If OntoNotes is missing a predicate, AMR accepts `-00`:
 Modality
 --------
 
-AMR represents syntactic modals with concepts like `possible`, `likely`,
+AMR represents syntactic modals with concepts like `possible-01`, `likely-01`,
 `obligate-01`, `permit-01`, `recommend-01`, `prefer-01`, etc.:
 
 ```lisp
-(p / possible
-   :domain (g / go-02
-              :ARG0 (b / boy)))
+(p / possible-01
+   :ARG1 (g / go-02
+           :ARG0 (b / boy)))
 ```
 
 > The boy can go.
@@ -613,8 +613,8 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 > It is permissible that the boy go.
 
 ```lisp
-(p / possible
-   :domain (r / rain-01))
+(p / possible-01
+   :ARG1 (r / rain-01))
 ```
 
 > It may rain.
@@ -637,9 +637,9 @@ AMR represents syntactic modals with concepts like `possible`, `likely`,
 
 
 ```lisp
-(l / likely
-   :domain (g / go-02
-              :ARG0 (b / boy)))
+(l / likely-01
+   :ARG1 (g / go-02
+           :ARG0 (b / boy)))
 ```
 
 > The boy is likely to go.
@@ -688,9 +688,9 @@ AMR represents negation logically, using `:polarity`.
 > The boy doesn’t go.
 
 ```lisp
-(p / possible
-   :domain  (g / go-02
-               :ARG0 (b / boy))
+(p / possible-01
+   :ARG1  (g / go-02
+            :ARG0 (b / boy))
    :polarity -)
 ```
 
@@ -699,10 +699,10 @@ AMR represents negation logically, using `:polarity`.
 > It’s not possible for the boy to go.
 
 ```lisp
- (p / possible
-    :domain (g / go-02
-               :ARG0 (b / boy)
-               :polarity -))
+ (p / possible-01
+    :ARG1 (g / go-02
+            :ARG0 (b / boy)
+            :polarity -))
 ```
 
 > It is possible for the boy not to go.
@@ -1499,7 +1499,7 @@ without introducing new concepts (only relations), then we go ahead:
 ```lisp
 (s / sandwich
    :ARG1-of (e / eat-01
-               :mod (p / possible)))
+               :ARG1-of (p / possible-01)))
 ```
 
 > an edible sandwich
@@ -1511,8 +1511,8 @@ without introducing new concepts (only relations), then we go ahead:
 ```lisp
 (s / sandwich
    :ARG1-of (e / eat-01
-               :mod (p / possible
-                       :polarity -)))
+               :ARG1-of (p / possible-01
+                          :polarity -)))
 ```
 
 > an inedible sandwich
@@ -1523,7 +1523,7 @@ more than just a possibility, my friend:
 ```lisp
 (f / fund                   NOT: (f / fund
    :ARG3-of (t / tax-01))           :ARG3-of (t / tax-01
-                                                :mod (p / possible)))
+                                                :ARG1-of (p / possible-01)))
 ```
 
 > a taxable fund
