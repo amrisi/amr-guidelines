@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.1 Specification
 =======================================================
 
-**June 11, 2015**
+**June 25, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -154,9 +154,9 @@ Abstraction away from English
 
 The AMR above can be expressed variously in English:
 
-> The boy wants the girl to believe him.
+> The boy desires the girl to believe him.
 > 
-> The boy wants to be believed by the girl.
+> The boy desires to be believed by the girl.
 > 
 > The boy has a desire to be believed by the girl.
 > 
@@ -166,7 +166,7 @@ The AMR above can be expressed variously in English:
 
 etc.
 
-The concept `want-01` might be realized as a verb (“wants”), a noun (“desire”),
+The concept `desire-01` might be realized as a verb (“desire”), a noun (also “desire”),
 or an adjective (“desirous”).  
 
 We think of AMR leaf-labels as concepts rather than words.  We do not point to
@@ -174,7 +174,7 @@ an element in an AMR and say “that is a noun” or “that is a verb”.  Rath
 say “that is an object” or “that is an event”.
 
 A single entity (“boy”) can play multiple roles simultaneously (e.g., “ARG0” of
-`want-01`, and “ARG1” of `believe-01`).  The AMR does not talk about pronouns or
+`desire-01`, and “ARG1” of `believe-01`).  The AMR does not talk about pronouns or
 zero-pronouns, though these are natural mechanisms for expressing multiple roles
 in English.
 
@@ -777,7 +777,7 @@ AMR represents negation logically, using `:polarity`.
 
 > No one ate.
 >
-> Every person failed to eat.
+> Everyone didn't eat.
 
 Negative English affixes are also represented with the `:polarity` role:
 
@@ -1466,11 +1466,7 @@ By now, these AMRs should not surprise:
             :ARG0 b))
 ```
 
-> Boys are eager to please.
->
 > Boys want to please.
->
-> Boys are desirous of pleasing.
 
 ```lisp
 (e / easy
@@ -1506,7 +1502,7 @@ without introducing new concepts (only relations), then we go ahead:
 >
 > a sandwich that can be eaten
 >
-> a sandwich whose consumption is possible
+> a sandwich that it is possible to eat
 
 ```lisp
 (s / sandwich
@@ -1591,8 +1587,9 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 ### `:accompanier`
 
 ```lisp
-(s / sing-01
+(s / hum-02
    :ARG0 (s2 / soldier)
+   :ARG1 (t2 / tune)
    :beneficiary (g / girl)
    :time (w / walk-01
             :ARG0 g
@@ -1600,7 +1597,7 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
             :destination (t / town)))
 ```
 
-> The soldier sang to the girl as he walked with her to town.
+> The soldier hummed a tune for the girl as he walked with her to town.
 
 ### `:topic`
 
