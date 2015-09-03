@@ -477,8 +477,8 @@ partial, as other `:prep-X` relations are legal AMR.
 :prep-by
 :prep-for, :prep-from
 :prep-in, :prep-in-addition-to, :prep-into
-:prep-on, :prep-on-behalf-of, :prop-out-of
-:prop-to, :prep-toward
+:prep-on, :prep-on-behalf-of, :prep-out-of
+:prep-to, :prep-toward
 :prep-under
 :prep-versus
 :prep-with, :prep-without
