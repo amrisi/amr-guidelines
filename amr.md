@@ -1558,8 +1558,8 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 (d / drive-01
    :ARG0 (h / he)
    :direction (w / west)
-   :source (c / city :name (n / name :op1 "Houston"))
-   :destination (c2 / city :name (n2 / name :op1 "Austin")))
+   :source (c / city :wiki "Houston" :name (n / name :op1 "Houston"))
+   :destination (c2 / city :wiki "Austin,_Texas" :name (n2 / name :op1 "Austin")))
 ```
 
 > He drove west, from Houston to Austin.
@@ -1569,8 +1569,8 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 ```lisp
 (d / drive-01
    :ARG0 (i / i)
-   :destination (c / city :name (n / name :op1 "Indianapolis"))
-   :path (r / road :name (n2 / name :op1 "I-65")))
+   :destination (c / city :wiki "Indianapolis" :name (n / name :op1 "Indianapolis"))
+   :path (r / road :wiki "Interstate_65" :name (n2 / name :op1 "I-65")))
 ```
 
 > I drove to Indianapolis on I-65.
@@ -1609,9 +1609,9 @@ We have seen roles like `:time` and `:location`.  AMR includes other non-core ro
 > There is no information about the case.
 
 ```lisp
-(p / person :name (n / name :op1 "Jay" :op2 "Bartroff")
+(p / person :wiki - :name (n / name :op1 "Jay" :op2 "Bartroff")
    :ARG0-of (h / have-org-role-91
-               :ARG1 (u / university :name (n2 / name :op1 "USC"))
+               :ARG1 (u / university :wiki "University_of_Southern_California" :name (n2 / name :op1 "USC"))
                :ARG2 (p2 / professor
                          :mod (a / associate)
                          :topic (m / mathematics))))
@@ -1648,7 +1648,7 @@ If you want to describe how or in what way something is done, use the more gener
 
 ```lisp
 (a / attack-01
-   :ARG0 (c / country :name (n / name :op1 "Iraq"))
+   :ARG0 (c / country :wiki "Iraq" :name (n / name :op1 "Iraq"))
    :instrument (m / missile))
 ```
 
@@ -1663,20 +1663,20 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 (t / talk-01
       :ARG0 (s / she)
       :ARG2 (h / he)
-      :medium (l / language :name (n / name :op1 "French")))
+      :medium (l / language :wiki "French_language" :name (n / name :op1 "French")))
 ```
 
 > She talked to him in French.
 
 ```lisp
 (a / announce-01
-  :ARG0 (p / person :name (n / name :op1 "John"))
+  :ARG0 (p / person :wiki - :name (n / name :op1 "John"))
   :ARG1 (b / bear-02
           :ARG1 (p2 / person
                    :ARG0-of (h / have-rel-role-91
                               :ARG1 p
                               :ARG2 (s / son))))
-  :medium (p3 / product :name (n2 / name :op1 "Twitter")))
+  :medium (p3 / product :wiki "Twitter" :name (n2 / name :op1 "Twitter")))
 ```
 
 > John announced the birth of his son on Twitter.
@@ -1726,8 +1726,8 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 
 ```lisp
 (g / go-02
-   :ARG0 (p / person :name (n / name :op1 "Nicole"))
-   :ARG4 (c / country :name (n2 / name :op1 "England"))
+   :ARG0 (p / person :wiki - :name (n / name :op1 "Nicole"))
+   :ARG4 (c / country :wiki "England" :name (n2 / name :op1 "England"))
    :manner (t / train))
 ```
 
@@ -1874,7 +1874,9 @@ created thing:
 (b / build-01                        NOT:  (b / build-01
   :ARG0 (t / they)                            :ARG0 (t / they)
   :ARG1 (b2 / bridge)                         :ARG1 (b2 / bridge :location …))
-  :location (s / state :name (n / name :op1 "Maryland"))                                   
+  :location (s / state 
+              :wiki "Maryland" 
+              :name (n / name :op1 "Maryland"))                                   
   :time (d / date-entity :month 12))
 ```
 
@@ -1908,7 +1910,7 @@ We do not use `:part` for set membership, as in the CEO of a company.
 
 ```lisp
 (s / south
-   :part-of (c / country :name (n / name :op1 "France")))
+   :part-of (c / country :wiki "France" :name (n / name :op1 "France")))
 ```
 > the south of France
 >
@@ -1920,7 +1922,7 @@ We do not use `:part` for set membership, as in the CEO of a company.
 (w / win-01
    :ARG0 (b / boy)
    :ARG1 (r / race-01
-            :subevent-of (g / game :name (n / name :op1 "Olympics"))))
+            :subevent-of (g / game :wiki "Olympic_Games" :name (n / name :op1 "Olympics"))))
 ```
 
 > The boy won the race in the Olympics.
@@ -1946,8 +1948,8 @@ We do not use `:part` for set membership, as in the CEO of a company.
 ```lisp
 (c / company           
    :example (a / and
-               :op1 (c2 / company :name (n / name :op1 "IBM"))
-               :op2 (c3 / company :name (n2 / name :op1 "Google"))))
+               :op1 (c2 / company :wiki "IBM" :name (n / name :op1 "IBM"))
+               :op2 (c3 / company :wiki "Google" :name (n2 / name :op1 "Google"))))
 ```
 
 > companies like IBM and Google
@@ -2399,6 +2401,7 @@ Multiple relations with the same name
 (s / system
    :mod (l / law)
    :mod (s2 / city 
+            :wiki "Shanghai"
             :name (n / name :op1 "Shanghai")))
 ```
 
@@ -2941,9 +2944,11 @@ Any concept instance in AMR can have `:name` role.  We are not restricted to a
 small set of fixed categories like countries and people: ships, pets, and
 computers can also have names.  
 
+Named entities are often referred to in different ways, such as "US", "U.S.", "United States" or "United States of America". To annotate such named entities with a canonical form, we use Wikipedia (for English) as a standard and mark up NEs with a `:wiki` role such as `:wiki "United_States"`. This is also useful when names themselves are ambiguous (such as "Washington" the city, state, or person; or "Clinton" or "Bush"). If there is no Wikipedia page for a given named entity, it is marked as `:wiki -`.
 
 ```lisp
 (p / person 
+   :wiki "Margaret_Brown"
    :name (n / name 
             :op1 "Mollie" 
             :op2 "Brown"))
@@ -2954,6 +2959,7 @@ computers can also have names.
 
 ```lisp
 (p / person 
+   :wiki "Margaret_Brown"
    :name (n / name 
             :op1 "Mollie" 
             :op2 "Brown") 
@@ -2967,6 +2973,7 @@ computers can also have names.
 
 ```lisp
 (s / ship 
+   :wiki "RMS_Titanic"
    :name (n / name 
             :op1 "Titanic")) 
 ```
@@ -2979,6 +2986,7 @@ computers can also have names.
 
 ```lisp
 (c / city 
+   :wiki "Marina_del_Rey,_California"
    :name (n / name 
             :op1 "Marina"
             :op2 "del"
@@ -2999,6 +3007,7 @@ American spelling, but we do not otherwise normalize variants.
 
 ```lisp
 (s / state
+   :wiki "California"
    :name (n / name
             :op1 "Calif."))
 ```
@@ -3026,6 +3035,7 @@ In such cases, we basically must hallucinate an entity type.  For example:
 
 ```lisp
 (p / person 
+   :wiki -
    :name (n / name 
             :op1 "Pascale"))
 ```
@@ -3072,6 +3082,7 @@ Some examples:
 
 ```lisp
 (a / award
+   :wiki "Nobel_Prize"
    :name (n / name
             :op1 "Nobel"
             :op2 "Prize"))
@@ -3081,9 +3092,11 @@ Some examples:
 
 ```lisp
 (g / government-organization
+   :wiki "National_Security_Agency"
    :name (n / name
            :op1 "NSA")
    :mod (c / country
+           :wiki "United_States"
 	   :name (n2 / name :op1 "America")))
 ```
 
@@ -3091,6 +3104,7 @@ Some examples:
 
 ```lisp
 (n / natural-object
+   :wiki "Lone_Cypress"
    :name (n2 / name
              :op2 "Lone"
              :op3 "Cypress"))
@@ -3105,6 +3119,7 @@ For example:
 
 ```lisp
 (p / poet
+   :wiki "William_Shakespeare"
    :name (n / name :op1 "William" :op2 "Shakespeare"))
 ```
 
@@ -3117,6 +3132,7 @@ For example:
 
 ```lisp
 (v / village
+   :wiki -
    :name (n / name 
             :op1 "Odinaboi"))
 ```
@@ -3128,6 +3144,7 @@ For example:
 
 ```lisp
 (d / doctor
+   :wiki -
    :name (n / name
             :op1 "Wu"))
 ```
@@ -3141,23 +3158,26 @@ because the latter are more (or at least equally) specific:
 
 ```lisp
 (c / country-region
+   :wiki "Darfur"
    :name (n / name :op1 "Darfur")
-   :location (c2 / country :name (n2 / name :op1 "Sudan")))
+   :location (c2 / country :wiki "Sudan" :name (n2 / name :op1 "Sudan")))
 ```
 
 > Sudan's Darfur region
 
 ```lisp
 (p / political-party
+   :wiki "Christian_Democratic_Union_of_Germany"
    :name (n / name :op1 "CDU")
    :mod (c / conservative)
-   :mod (c2 / country :name (n2 / name :op1 "Germany")))
+   :mod (c2 / country :wiki "Germany" :name (n2 / name :op1 "Germany")))
 ```
 
 > Germany's conservative CDU party
 
 ```lisp
 (s / spaceship
+   :wiki "Shenzhou_(spacecraft)"
    :name (n / name :op1 "Shenzhou"))
 ```
 
@@ -3169,6 +3189,7 @@ Mere honorifics such as “Mr.”, “Mrs.”, etc. are included as part of the 
 
 ```lisp
 (p / person
+   :wiki -
    :name (n / name
             :op1 "Mr."
             :op2 "Wu"))
@@ -3184,10 +3205,12 @@ When faced with an appositive, AMR calmly inserts facts into slots:
 
 ```lisp
 (g / group
+   :wiki "Reed_Elsevier#Elsevier_NV"
    :name (e / name
             :op1 "Elsevier"
             :op2 "N.V.")
    :mod (c / country
+           :wiki "Netherlands"
            :name (h / name
                     :op1 "Netherlands"))
    :ARG0-of (p2 / publish-01))
@@ -3204,7 +3227,7 @@ This happens occasionally.  Because `:instance` is the only relation that cannot
 physically appear twice in AMR, we instead open up the inverse of `:domain` , i.e. the role `:mod`
 
 ```lisp
-(d / doctor :name (n / name :op1 "Seuss")
+(d / doctor :wiki "Dr._Seuss" :name (n / name :op1 "Seuss")
   :mod (p / poet))
 ```
 
@@ -3219,10 +3242,11 @@ Special Frames for Roles
 For roles in organizations, we use the frame have-org-role-91:
 
 ```lisp
-(p / person             
+(p / person 
+   :wiki "Barack_Obama"
    :name (n / name :op1 "Obama")
    :ARG0-of (h / have-org-role-91
-               :ARG1 (c / country :name (n2 / name :op1 "US"))
+               :ARG1 (c / country :wiki "United_States" :name (n2 / name :op1 "US"))
                :ARG2 (p2 / president)))
 ```
 
@@ -3442,7 +3466,7 @@ Relative positions often include a quantity:
 (c / crash-01
    :ARG1 (p / plane)
    :location (r / relative-position
-                :op1 (g / city :name (n / name :op1 "Moscow"))
+                :op1 (g / city :wiki "Moscow" :name (n / name :op1 "Moscow"))
                 :quant (d / distance-quantity 
                           :unit (m / mile)
                           :quant 50)
@@ -3491,6 +3515,7 @@ Quantity types include:
    :quant 20
    :unit (d / dollar
             :mod (e / country
+                    :wiki "Canada"
                     :name (n / name :op1 "Canada"))))
 ```
 
@@ -3529,7 +3554,7 @@ operators that the meaning of a text might include.
 
 ```lisp
 (f / finish-01
-   :ARG0 (p / person :name (n / name :op1 "Patrick" :op2 "Makau"))
+   :ARG0 (p / person :wiki "Patrick_Makau_Musyoki" :name (n / name :op1 "Patrick" :op2 "Makau"))
    :ARG1 (r / run-02
             :ARG0 p
             :ARG1 (m / marathon)
@@ -3640,7 +3665,7 @@ These entities are described in standard, canonical forms:
    :year 24
    :month 2
    :day 29
-   :calendar (j / country :name (n / name :op1 "Japan")))
+   :calendar (j / country :wiki "Japan" :name (n / name :op1 "Japan")))
 ```
 
 > February 29, 24th year of Heisei era
@@ -3690,6 +3715,7 @@ These entities are described in standard, canonical forms:
                  :mod (g / government-organization
                          :ARG0-of (g2 / govern-01
                                       :ARG1 (c / country 
+                                               :wiki "United_States"
                                                :name (n / name
                                                         :op1 "United"
                                                         :op2 "States"))))))
