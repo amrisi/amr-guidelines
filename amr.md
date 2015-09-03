@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2.1 Specification
+Abstract Meaning Representation (AMR) 1.2.2 Specification
 =======================================================
 
-**June 25, 2015**
+**September 2, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -67,7 +67,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Pertainyms](#pertainyms)
 	- [Ordinals](#ordinals)
 	- [Subsets](#subsets)
-	- [Named Entities](#named-entities)
+	- [Named Entities and wikification](#named-entities)
 	- [Special Frames for Roles](#special-frames-for-roles) (have-org-role-91, have-rel-role-91)
 	- [Exact numbers](#exact-numbers)
 	- [Approximate numbers](#approximate-numbers)
@@ -452,6 +452,7 @@ Non-core roles:
 :scale, :source, :subevent
 :time, :topic, :unit
 :value
+:wiki
 ```
 
 Roles used in date-entity:
