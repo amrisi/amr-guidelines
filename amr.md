@@ -267,7 +267,7 @@ graph.  It also serves as a rudimentary representation of overall focus.  So we
 have:
 
 ```lisp
-(w / white
+(w / white-03
    :domain (m / marble))
 ```
 
@@ -277,7 +277,7 @@ have:
 
 ```lisp
 (m / marble
-   :mod (w / white))
+   :mod (w / white-03))
 ```
 
 > the white marble
@@ -287,7 +287,7 @@ have:
 ```lisp
 (s / see-01
    :ARG0 (b / boy)
-   :ARG1 (w / white
+   :ARG1 (w / white-03
             :domain (m / marble)))
 ```
 
@@ -299,7 +299,7 @@ have:
 (s / see-01
    :ARG0 (b / boy)
    :ARG1 (m / marble
-            :mod (w / white)))
+            :mod (w / white-03)))
 ```
 
 > The boy sees the white marble.
@@ -475,20 +475,13 @@ partial, as other `:prep-X` relations are legal AMR.
 ```lisp
 :prep-against, :prep-along-with, :prep-amid, :prep-among, :prep-as, :prep-at
 :prep-by
-:prep-concerning, :prep-considering
-:prep-despite
-:prep-except, :prep-excluding
-:prep-following, :prep-for, :prep-from
-:prep-in, :prep-in-addition-to, :prep-in-spite-of, :prep-into
-:prep-like
-:prep-on, :prep-on-behalf-of, :prep-opposite
-:prep-per
-:prep-regarding
-:prep-save, :prep-such-as
-:prep-through, :prep-to, :prep-toward
-:prep-under, :prep-unlike
+:prep-for, :prep-from
+:prep-in, :prep-in-addition-to, :prep-into
+:prep-on, :prep-on-behalf-of, :prop-out-of
+:prop-to, :prep-toward
+:prep-under
 :prep-versus
-:prep-with, :prep-within, :prep-without
+:prep-with, :prep-without
 ```
 etc.
 
@@ -665,7 +658,7 @@ Another example:
 
 
 ```lisp
-(u / use-03
+(u / use-02
    :ARG0 (i / i)
    :ARG1 (w / work-01
             :ARG0 i))
@@ -785,7 +778,7 @@ Negative English affixes are also represented with the `:polarity` role:
 
 ```lisp
 
-(a / appropriate 
+(a / appropriate-02 
   :polarity -
   :domain (d / dress))
 ```
@@ -796,7 +789,7 @@ Negative English affixes are also represented with the `:polarity` role:
 
 ```lisp
 (d / dress
-   :mod (a / appropriate
+   :mod (a / appropriate-02
           :polarity -))
 ```
 
@@ -862,7 +855,7 @@ indicate wh-questions:
 (g / see-01
    :ARG0 (g / girl)
    :ARG1 (a / amr-unknown
-            :mod (p / purple)))
+            :mod (p / purple-02)))
 ```
 
 > What purple thing did the girl see?
@@ -881,7 +874,7 @@ roles instead of `amr-unknown`:
 
 
 ```lisp
-(k / know-01
+(k / know-02
    :ARG0 (i / i)
    :ARG1 (p / person
             :ARG1-of (s / see-01
@@ -952,7 +945,7 @@ just imperatives in AMR.
 
 
 ```lisp
-(g / go
+(g / go-02
    :mode expressive
    :ARG0 (w / we))
 ```
@@ -960,7 +953,7 @@ just imperatives in AMR.
 > We went!
 
 ```lisp
-(g / go
+(g / go-02
    :mode imperative
    :ARG0 (y / you))
 ```
@@ -970,7 +963,7 @@ just imperatives in AMR.
 > Go!
 
 ```lisp
-(g / go
+(g / go-02
    :mode imperative
    :ARG0 (w / we))
 ```
@@ -1104,7 +1097,7 @@ not introduce implicit *concepts*, e.g., `full` below:
 
 
 ```lisp
-(h / hopeful          NOT: (f / full
+(h / hopeful-03        NOT: (f / full
    :ARG1 (g / girl))          :poss (h / hope)
                               :ARG1 (g / girl))
 ```
@@ -1123,7 +1116,7 @@ Predicate adjectives are usually represented with `:domain`, unless we have an
 adjective frame in OntoNotes:
 
 ```lisp
-(w / white
+(w / white-03
    :domain (m / marble))
 ```
 
@@ -1326,7 +1319,7 @@ hard worker” just means the boy works hard:
 ```lisp
 (w / work-01               NOT:   (b / boy
    :ARG0 (b / boy)                   :ARG0-of (w / work-01
-   :manner (h / hard))                           :manner (h / hard)))
+   :manner (h / hard-02))                       :manner (h / hard-02)))
 ```
 
 > the boy is a hard worker
@@ -1423,7 +1416,7 @@ predicates if there is an implied event or process:
 
 
 ```lisp
-(s / sad
+(s / sad-02
    :domain (g / girl))
 ```
 
@@ -1470,7 +1463,7 @@ By now, these AMRs should not surprise:
 > Boys want to please.
 
 ```lisp
-(e / easy
+(e / easy-05
    :domain (p / please-01
               :ARG1 (g / girl)))
 ```
@@ -1537,7 +1530,7 @@ Adverbs get stemmed to adjective form:
   :ARG0 (i / i)
   :ARG1  (m / move-01
                   :ARG0 (a / army)
-                  :manner (q / quick)))
+                  :manner (q / quick-02)))
 ```
 
 > I observed that the army moved quickly.
@@ -1689,7 +1682,7 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 ```lisp
 (s / sing-01
    :ARG0 (b / boy)
-   :manner (b2 / beautiful
+   :manner (b2 / beautiful-02
                :degree (v / very)))
 ```
 
@@ -1754,7 +1747,7 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
 ```lisp
 (m / murmur-01
   :ARG0 (b / boy)
-  :manner (s / soft)
+  :manner (s / soft-02)
   :purpose (s2 / soothe-01
                :ARG1 (g / girl))
   :cause (w / worry-01
@@ -2012,7 +2005,7 @@ Core roles of `rate-entity-91`:
 ### `:extent`
 
 ```lisp
-(g / go-15
+(g / go-on-15
       :ARG1 (r / road)
       :extent (f / forever))
 ```
@@ -2084,7 +2077,7 @@ know there is a knife in the drawer.  We might try focusing on the knife:
 
 
 ```lisp
-(k / know
+(k / know-01
    :ARG0 (w / we)
    :ARG1 (k2 / knife
              :location (d / drawer)))
@@ -2095,7 +2088,7 @@ know there is a knife in the drawer.  We might try focusing on the knife:
 Or we might try focusing on the drawer:
 
 ```lisp
-(k / know
+(k / know-01
    :ARG0 (w / we)
    :ARG1 (d / drawer
             :location-of (k2 / knife)))
@@ -2109,7 +2102,7 @@ reifications for many relations.  In the case of `:location`, the reification is
 
 
 ```lisp
-(k / know
+(k / know-01
    :ARG0 (w / we)
    :ARG1 (b / be-located-at-91
             :ARG0 (k2 / knife)
@@ -2126,7 +2119,7 @@ We also use reification when we want to modify a relation.  For example:
 
 
 ```lisp
-(k / know
+(k / know-01
    :ARG0 (w / we)
    :ARG1 (b / be-located-at-91
             :ARG0 (k2 / knife)
@@ -2239,7 +2232,7 @@ It also combines verb-particle constructions, using OntoNotes predicate frames.
 Here `look-05` is defined as “look up: seek”.
 
 ```lisp
-(l / look-05
+(l / look-up-05
    :ARG0 (b / boy)
    :ARG1 (a / answer))
 ```
@@ -2250,7 +2243,7 @@ Here `look-05` is defined as “look up: seek”.
 
 Sometimes a particle doesn’t change the meaning of the verb very much, but
 OntoNotes may still have two separate predicates.  For example, `close-06` means
-“become nearer”, while `close-07` is “close in: become nearer”.  In such cases,
+“become nearer”, while `close-in-07` is “close in: become nearer”.  In such cases,
 AMR canonicalizes to the *non-particle* frame, e.g., `close-06`.
 
 
@@ -2375,14 +2368,14 @@ difficult (“the not-black car”):
 
 ```lisp
 (c / car
-   :mod (b / black))
+   :mod (b / black-04))
 ```
 
 > the black car
 
 ```lisp
 (c / car
-   :mod (b / black
+   :mod (b / black-04
            :polarity -))
 ```
 
@@ -2583,7 +2576,7 @@ The placement of `:polarity` can be troublesome.  Consider:
    :ARG0 (g / girl)
    :ARG1 (w / work-01
             :ARG0 (b / boy)
-            :manner (h / hard)))
+            :manner (h / hard-02)))
 ```
 
 > The girl believes that the boy works hard.
@@ -2598,7 +2591,7 @@ or “hard”.  Here it should go under “hard”:
    :ARG0 (g / girl)
    :ARG1 (w / work-01
             :ARG0 (b2 / boy)
-            :manner (h / hard
+            :manner (h / hard-02
                        :polarity -)))
 ```
 
@@ -2617,7 +2610,7 @@ If we put `:polarity` elsewhere, we change the meaning:
    :ARG1 (w / work-01
             :polarity -
             :ARG0 (b2 / boy)
-            :manner (h / hard)))
+            :manner (h / hard-02)))
 ```
 
 > The girl believes that the boy refrains from work, in a hard manner.
@@ -2628,7 +2621,7 @@ If we put `:polarity` elsewhere, we change the meaning:
    :ARG0 (g / girl)
    :ARG1 (w / work-01
             :ARG0 (b2 / boy)
-            :manner (h / hard)))
+            :manner (h / hard-02)))
 ```
 
 > It’s not true that the girl believes the boy works hard.
@@ -2640,7 +2633,7 @@ If we put `:polarity` elsewhere, we change the meaning:
   :ARG1 (w / work-01
            :ARG0 (b2 / boy
                      :polarity -)
-           :manner (h / hard)))
+           :manner (h / hard-02)))
 ```
 
 > The non-girl believes that the non-boy works hard.
@@ -2656,7 +2649,7 @@ Degree
 Comparatives and superlatives are represented by `:degree` and `:compared-to`, e.g.:
 
 ```lisp
-(b / bright
+(b / bright-03
    :domain (b2 / boy 
                :mod (t / that))
    :degree (m / more))
@@ -2667,7 +2660,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 > That boy is more bright.
 
 ```lisp
-(b / bright
+(b / bright-03
    :domain (b2 / boy
                :mod (t / that))
    :degree (m / most))
@@ -2687,7 +2680,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
  (p / plan-01
-    :mod (g / good
+    :mod (g / good-02
             :degree (m / more)))
 ```
 
@@ -2695,7 +2688,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (p / plan-01
-   :mod (g / bad
+   :mod (g / bad-07
            :degree (m / more)))
 ```
 
@@ -3068,11 +3061,11 @@ answering):
   - **product**, vehicle, ship, aircraft, aircraft-type, spaceship, car-make, work-of-art, picture, music, show, broadcast-program
   - **publication**, book, newspaper, magazine, journal
   - **natural-object**
-  - law, treaty, award, food-dish, disease
+  - law, treaty, award, food-dish, music-key
 
 *Biomedical:*
 
-  - **molecular-physical-entity**, small-molecule, protein, protein-segment, amino-acid, macro-molecular-complex, enzyme, rna
+  - **molecular-physical-entity**, small-molecule, protein, protein-family, protein-segment, amino-acid, macro-molecular-complex, enzyme, rna
   - pathway, gene, dna-sequence, cell, cell-line, organism, disease
 
 We always choose the most specific applicable type.
