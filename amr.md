@@ -1388,13 +1388,13 @@ Many adjectives have natural English verbal predicates:
 
 Other adjectives do not, in which case we use the adjective as the predicate name.  
 
-  - be responsible (for X) – `responsible-41`
-  - be nervous (about X) – `nervous-41`
-  - be serious (about X) – `serious-41`
-  - be efficient (at X) – `efficient-41`
+  - be responsible (for X) – `responsible-01` (cause), `responsible-02` (trustworthy), `responsible-03` (duty)
+  - be nervous (about X) – `nervous-01`
+  - be serious (about X) – `serious-01` (no kidding), `serious-02` (grave)
+  - be efficient (at X) – `efficient-01`
 
 ```lisp
-(r / responsible-41
+(r / responsible-03
    :ARG0 (b / boy)
    :ARG1 (w / work))
 ```
