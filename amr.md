@@ -762,16 +762,6 @@ AMR represents negation logically, using `:polarity`.
 >
 > I have no money.
 
-```lisp
-(e / eat-01
-   :polarity -
-   :ARG0 (p / person
-            :mod (e / every)))
-```
-
-> No one ate.
->
-> Everyone didn't eat.
 
 Negative English affixes are also represented with the `:polarity` role:
 
