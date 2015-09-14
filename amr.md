@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.2 Specification
 =======================================================
 
-**September 2, 2015**
+**September 14, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -75,6 +75,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Mathematical operators](#mathematical-operators)
 	- [Other entities: dates, times, percentages, phone, email, URLs](#other-entities-dates-times-percentages-phone-email-urls)
 	- [AMR Freak Show](#amr-freak-show)
+		- [Cycles](#cycles)
 
 
 
@@ -3759,23 +3760,43 @@ AMR Freak Show
 
 This section is optional reading.  Just some mathematical curiosities of AMR
 that one bumps into eventually, of interest to mathematicians and children. 
-First, the occasional AMR will have a cycle:
 
+### Cycles
 
+The following AMR might look like it has a cycle, with `w` being a sub-node of `w`,
+but it is not cyclic after all, because one of the roles on its path is an inverse 
+(`:ARG0-of`), which corresponds to an arrow in the opposite direction:
 ```lisp
-(w / woman
-   :ARG0-of (n / nominate-01
-               :ARG1 (b / boss
-                        :poss w)))
+(w / woman 
+  :ARG0-of (l / lose-02 
+             :ARG1 (s / scarf 
+                    :poss w)))
+```
+> The woman who lost her scarf.
+
+Approximately 0.3% of AMRs are legitimately cyclic as for example:
+```lisp
+(p / procedure 
+  :purpose (e / ensure-01 
+             :ARG0 p 
+             :ARG1 (q / quality)))
+```
+> a procedure to ensure quality
+
+AMRs with such cycles typically involving `:concession`, `:condition`, `:manner`, `:purpose`, or `:time`.
+
+These cycles magically disappear upon reification:
+```lisp
+(p / procedure 
+  :ARG1-of (h / have-purpose-91 
+             :ARG2 (e / ensure-01 
+                     :ARG0 p 
+                     :ARG1 (q / quality))))
 ```
 
-> the woman who nominated her boss
+**Different textual ways to encode a graph**
 
-Note how `w` refers to “the woman who nominated the boss of the woman who
-nominated the boss of the woman who nominated the boss of …”
-
-
-Second, we have two different ways of encoding the same propositional content
+Finally, we have two different ways of encoding the same propositional content
 (“the boy likes to be believed”):
 
 ```lisp
