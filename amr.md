@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.2 Specification
 =======================================================
 
-**September 14, 2015**
+**September 15, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -961,6 +961,13 @@ Finally, `:mode expressive` is used to mark exclamational words such as `ah, ha,
 
 > Yippee!
 
+```lisp
+(yes :mode expressive)
+```
+
+> Yes!!!
+
+Note that `Yes.` as a normal answer to a question is not marked with any :mode, as it plainly conveys information based on the preceding question. But a celebratory `Yes!!!` after your favorite sports team scores an imporant point should be marked up using `:mode expressive`.
 
 Articles, plurals, tense, aspect, quotes, hyphens
 -------------------------------------------------
