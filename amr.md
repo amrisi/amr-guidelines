@@ -931,17 +931,7 @@ We contrast this with:
 >
 > The boy doesn’t know the girl came.
 
-`:mode` is also used for imperatives & exclamations.  Exclamatory imperatives are
-just imperatives in AMR.
-
-
-```lisp
-(g / go-02
-   :mode expressive
-   :ARG0 (w / we))
-```
-
-> We went!
+`:mode` is also used for imperatives.  Exclamatory imperatives are just imperatives in AMR.
 
 ```lisp
 (g / go-02
@@ -962,6 +952,14 @@ just imperatives in AMR.
 > Let’s go.
 >
 > Let’s go!
+
+Finally, `:mode expressive` is used to mark exclamational words such as `ah, ha, hmm, oh, wow, yippee` that express emotions, but don't refer to a clear event, object or property. Do **not** use `:mode expressive` for mere emphasis (text in ALLCAPS), exclamation marks (!) or disfluency markers (uh), which are not annotated in AMR.
+
+```lisp
+(yippee :mode expressive)
+```
+
+> Yippee!
 
 
 Articles, plurals, tense, aspect, quotes, hyphens
