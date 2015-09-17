@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.2 Specification
 =======================================================
 
-**September 15, 2015**
+**September 17, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2144,6 +2144,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
 `:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
+`:extent`      | `have-extent-91`      | `:ARG1` | `:ARG2` | “trip was 2500 miles”
 `:frequency`   | `have-frequency-91`   | `:ARG1` | `:ARG2` | “he came three times”
 `:instrument`  | `have-instrument-91`  | `:ARG1` | `:ARG2` | “forks are for eating”
 `:location`    | `be-located-at-91`    | `:ARG1` | `:ARG2` | “she's not here”
