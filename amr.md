@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.2 Specification
 =======================================================
 
-**September 17, 2015**
+**September 18, 2015**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -481,7 +481,6 @@ partial, as other `:prep-X` relations are legal AMR.
 :prep-on, :prep-on-behalf-of, :prep-out-of
 :prep-to, :prep-toward
 :prep-under
-:prep-versus
 :prep-with, :prep-without
 ```
 etc.
