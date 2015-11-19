@@ -269,7 +269,7 @@ have:
 
 ```lisp
 (w / white-03
-   :domain (m / marble))
+   :ARG1 (m / marble))
 ```
 
 > The marble is white.
@@ -278,7 +278,7 @@ have:
 
 ```lisp
 (m / marble
-   :mod (w / white-03))
+   :ARG1-of (w / white-03))
 ```
 
 > the white marble
@@ -289,7 +289,7 @@ have:
 (s / see-01
    :ARG0 (b / boy)
    :ARG1 (w / white-03
-            :domain (m / marble)))
+            :ARG1 (m / marble)))
 ```
 
 > The boy sees that the marble is white.
@@ -300,7 +300,7 @@ have:
 (s / see-01
    :ARG0 (b / boy)
    :ARG1 (m / marble
-            :mod (w / white-03)))
+            :ARG1-of (w / white-03)))
 ```
 
 > The boy sees the white marble.
@@ -770,7 +770,7 @@ Negative English affixes are also represented with the `:polarity` role:
 
 (a / appropriate-02 
   :polarity -
-  :domain (d / dress))
+  :ARG1 (d / dress))
 ```
 
 > the dress is inappropriate
@@ -779,8 +779,8 @@ Negative English affixes are also represented with the `:polarity` role:
 
 ```lisp
 (d / dress
-   :mod (a / appropriate-02
-          :polarity -))
+   :ARG1-of (a / appropriate-02
+              :polarity -))
 ```
 
 > the inappropriate dress
@@ -835,8 +835,8 @@ indicate wh-questions:
 ```lisp
 (r / run-01
    :ARG0 (g / girl)
-   :mod (f / fast
-          :degree (a / amr-unknown)))
+   :manner (f / fast
+             :degree (a / amr-unknown)))
 ```
 
 > How fast did the girl run?
@@ -845,7 +845,7 @@ indicate wh-questions:
 (g / see-01
    :ARG0 (g / girl)
    :ARG1 (a / amr-unknown
-            :mod (p / purple-02)))
+            :ARG1-of (p / purple-02)))
 ```
 
 > What purple thing did the girl see?
@@ -1111,14 +1111,13 @@ Predicate adjectives are usually represented with `:domain`, unless we have an
 adjective frame in OntoNotes:
 
 ```lisp
-(w / white-03
+(s / small
    :domain (m / marble))
 ```
 
-> The marble is white.
+> The marble is small.
 
 “Noun is noun” constructions also use `:domain`:
-
 
 ```lisp
 (l / lawyer
@@ -1412,7 +1411,7 @@ predicates if there is an implied event or process:
 
 ```lisp
 (s / sad-02
-   :domain (g / girl))
+   :ARG1 (g / girl))
 ```
 
 > The girl is sad.
@@ -1459,7 +1458,7 @@ By now, these AMRs should not surprise:
 
 ```lisp
 (e / easy-05
-   :domain (p / please-01
+   :ARG1 (p / please-01
               :ARG1 (g / girl)))
 ```
 
@@ -2364,15 +2363,15 @@ difficult (“the not-black car”):
 
 ```lisp
 (c / car
-   :mod (b / black-04))
+   :ARG1-of (b / black-04))
 ```
 
 > the black car
 
 ```lisp
 (c / car
-   :mod (b / black-04
-           :polarity -))
+   :ARG1-of (b / black-04
+              :polarity -))
 ```
 
 > the car that is not black
@@ -2646,7 +2645,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (b / bright-03
-   :domain (b2 / boy 
+   :ARG1 (b2 / boy 
                :mod (t / that))
    :degree (m / more))
 ```
@@ -2657,7 +2656,7 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
 (b / bright-03
-   :domain (b2 / boy
+   :ARG1 (b2 / boy
                :mod (t / that))
    :degree (m / most))
 ```
@@ -2676,16 +2675,16 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 
 ```lisp
  (p / plan-01
-    :mod (g / good-02
-            :degree (m / more)))
+    :ARG1-of (g / good-02
+               :degree (m / more)))
 ```
 
 > a better plan
 
 ```lisp
 (p / plan-01
-   :mod (g / bad-07
-           :degree (m / more)))
+   :ARG1-of (g / bad-07
+              :degree (m / more)))
 ```
 
 > a worse plan
