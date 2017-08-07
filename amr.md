@@ -9,7 +9,6 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Abstract Meaning Representation (AMR) 1.2.2 Specification](#abstract-meaning-representation-amr-122-specification)
 - [Part I. Introduction](#part-i-introduction)
    - [Example](#example)
 	- [Abstraction away from English](#abstraction-away-from-english)
