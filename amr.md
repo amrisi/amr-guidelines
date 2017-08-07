@@ -9,14 +9,14 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Abstract Meaning Representation (AMR) 1.2 Specification](#abstract-meaning-representation-amr-10-specification)
+- [Abstract Meaning Representation (AMR) 1.2.2 Specification](#abstract-meaning-representation-amr-122-specification)
 - [Part I. Introduction](#part-i-introduction)
    - [Example](#example)
 	- [Abstraction away from English](#abstraction-away-from-english)
 	- [More Logical than Syntax](#more-logical-than-syntax)
 	- [Focus](#focus)
 	- [AMR slogans](#amr-slogans)
-	- [Limitations of AMR 1.2](#limitations-of-amr-11)
+	- [Limitations of AMR 1.2](#limitations-of-amr-12)
 - [Part II.  Concepts and relations](#part-ii--concepts-and-relations)
 - [Part III.  Phenomena](#part-iii--phenomena)
 	- [Core roles](#core-roles)
