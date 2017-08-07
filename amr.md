@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2.2 Specification
+Abstract Meaning Representation (AMR) 1.2.3 Specification
 =======================================================
 
-**September 18, 2015**
+**August 7, 2017**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2642,7 +2642,7 @@ quantifiers.
 Degree
 ------
 
-Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `:have-degree-91` when additional arguments are present.  
+Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `have-degree-91` when additional arguments are present.  
 ```lisp
 Have-degree-91
 Arg1: domain, entity characterized by attribute (e.g. girl)
@@ -2652,8 +2652,8 @@ Arg4: compared-to (e.g. (than the) BOY)
 Arg5: superlative: reference to superset
 Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCOASTER)
 ```
-Have-degree-91 is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, or the consequence.  
-Annotators are encouraged to use have-degree-91 as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
+`have-degree-91` is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, or the consequence.  
+Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
 
 ```lisp
 (b / bright-03
@@ -2719,7 +2719,7 @@ Annotators are encouraged to use have-degree-91 as the root concept (as opposed 
 
 > the girl is taller than the boy
 
-Have-degree-91 is also used for Superlative constructions, which invoke a subset/superset relation.  This takes precedence over Include-91, which could also be used in these cases to express the subset/superset relation between the thing that is “the most” and superset of items being compared to: 
+`have-degree-91` is also used for Superlative constructions, which invoke a subset/superset relation.  This takes precedence over `include-91`, which could also be used in these cases to express the subset/superset relation between the thing that is “the most” and superset of items being compared to: 
 
 ```lisp
 (h / have-degree-91
@@ -2733,7 +2733,7 @@ Have-degree-91 is also used for Superlative constructions, which invoke a subset
 
 > she is the tallest girl on the team
 
-Additionally, Have-degree-91 is used for the degree-consequence construction, which licenses an argument representing the result or consequence of the degree to which a state is true: 
+Additionally, `have-degree-91` is used for the degree-consequence construction, which licenses an argument representing the result or consequence of the degree to which a state is true: 
 
 >It is too early to reach any conclusion as to the motive and identity of the attackers.
 ```lisp
@@ -3554,10 +3554,10 @@ rather than `:unit`:
 
 > 7.9 on the Richter scale
 
-Have-quant-91 is the reification of :quant.  Its arguments parallel have-degree-91, and it is used for comparisons and superlatives relating to amounts of things as opposed to qualities of things. See Dictionary examples for a list illustrating when to use have-quant-91 and when to use have-degree-91. 
+`have-quant-91` is the reification of `:quant`.  Its arguments parallel `have-degree-91`, and it is used for comparisons and superlatives relating to amounts of things as opposed to qualities of things. See Dictionary examples for a list illustrating when to use `have-quant-91` and when to use `have-degree-91`. 
 
 ```lisp
-Have-Quant-91
+have-quant-91
 ARG1: entity (thing being quantified)
 ARG2: quantity (numerical or quantifier: many, much)
 ARG3: degree mention (more, less, equal, too)
