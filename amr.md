@@ -2139,6 +2139,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
 `:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
+`:degree`      | `have-degree-91`      | `:ARG2` | `:ARG3` | “the girl is taller than the boy”
 `:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
 `:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
@@ -2641,7 +2642,18 @@ quantifiers.
 Degree
 ------
 
-Comparatives and superlatives are represented by `:degree` and `:compared-to`, e.g.:
+Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `:have-degree-91` when additional arguments are present.  
+```lisp
+Have-degree-91
+Arg1: domain, entity characterized by attribute (e.g. girl)
+Arg2: attribute (e.g. tall)
+Arg3: degree itself (e.g. more, less, equal)
+Arg4: compared-to (e.g. (than the) BOY)
+Arg5: superlative: reference to superset
+Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCOASTER)
+```
+Have-degree-91 is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, or the consequence.  
+Annotators are encouraged to use have-degree-91 as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
 
 ```lisp
 (b / bright-03
@@ -2698,27 +2710,46 @@ Comparatives and superlatives are represented by `:degree` and `:compared-to`, e
 > a plan that is too extreme
 
 ```lisp
-(t / tall
-   :degree (m / more)
-   :domain (g / girl)
-   :compared-to (b / boy))
+(h / have-degree-91
+      :ARG1 (g / girl)
+      :ARG2 (t / tall)
+      :ARG3 (m / more)
+      :ARG4 (b / boy))
 ```
 
 > the girl is taller than the boy
 
+Have-degree-91 is also used for Superlative constructions, which invoke a subset/superset relation.  This takes precedence over Include-91, which could also be used in these cases to express the subset/superset relation between the thing that is “the most” and superset of items being compared to: 
+
 ```lisp
-(g / girl
-   :mod (t / tall 
-           :degree (m / most)
-           :compared-to (t2 / team))
-   :domain (s / she))
+(h / have-degree-91
+      :ARG1 (s / she)
+      :ARG2 (t / tall)
+      :ARG3 (m / most)
+      :ARG5 (g / girl
+            :ARG0-of (h2 / have-org-role-91
+                  :ARG1 (t2 / team))))
 ```
 
 > she is the tallest girl on the team
 
-AMR apologizes, realizing that the girl is not taller than the whole team, but
-taller than each individual.
+Additionally, Have-degree-91 is used for the degree-consequence construction, which licenses an argument representing the result or consequence of the degree to which a state is true: 
 
+>It is too early to reach any conclusion as to the motive and identity of the attackers.
+```lisp
+(h / have-degree-91
+      :ARG2 (e / early)
+      :ARG3 (t / too)
+      :ARG6 (c2 / conclude-01 :polarity -
+            :ARG1 (a / and
+                  :op1 (m / motive
+                        :poss (p / person
+                              :ARG0-of (a2 / attack-01)))
+                  :op2 (i / identity
+                        :poss p))))
+```
+
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is above.  Annotators should introduce the most logical relation fitting with the context, including the possible introduction of negative polarity, which often accompanies Degree-Consequence constructions with “too” (above: it’s too early; therefore, there’s no conclusion…).  See AMR Dictionary for additional examples. 
 
 
 Variables and co-reference
@@ -3522,6 +3553,65 @@ rather than `:unit`:
 ```
 
 > 7.9 on the Richter scale
+
+Have-quant-91 is the reification of :quant.  Its arguments parallel have-degree-91, and it is used for comparisons and superlatives relating to amounts of things as opposed to qualities of things. See Dictionary examples for a list illustrating when to use have-quant-91 and when to use have-degree-91. 
+
+```lisp
+Have-Quant-91
+ARG1: entity (thing being quantified)
+ARG2: quantity (numerical or quantifier: many, much)
+ARG3: degree mention (more, less, equal, too)
+ARG4: compared-to
+ARG5: superlative: reference to superset
+ARG6: consequence, result
+```
+
+> He sold as many cars as his competitor.
+```lisp
+(s / sell-01
+      :ARG0 (h / he)
+      :ARG1 (c / car
+            :ARG1-of (h2 / have-quant-91
+                  :ARG2 (q / quantity)
+                  :ARG3 (e2 / equal)
+                  :ARG4 (c3 / car
+                        :ARG1-of (s2 / sell-01
+                              :ARG0 (p / person
+                                    :ARG0-of (c2 / compete-02
+                                          :ARG1 h)))))))
+```
+
+> He sold the most cars of his competitors. 
+```lisp
+(s / sell-01
+      :ARG0 (h / he)
+      :ARG1 (c / car
+            :ARG1-of (h2 / have-quant-91
+                  :ARG2 (q / quantity)
+                  :ARG3 (m / most)
+                  :ARG5 (c3 / car
+                        :ARG1-of (s2 / sell-01
+                              :ARG0 (p / person
+                                    :ARG0-of (c2 / compete-02
+                                          :ARG1 h)))))))
+```
+
+> I had scarcely enough drinking water to last a week. 
+```lisp
+(h / have-03
+      :ARG0 (i / i)
+      :ARG1 (w / water
+            :purpose (d2 / drink-01
+                  :ARG0 i)
+            :ARG1-of (h3 / have-quant-91
+                  :ARG2 (e / enough
+                        :mod (s / scarce))
+                  :ARG6 (l / last-03
+                        :ARG1 w
+                        :ARG2 (t / temporal-quantity :quant 1
+                              :unit (w2 / week))
+                        :ARG3 i))))
+```
 
 Mathematical operators
 ----------------------
