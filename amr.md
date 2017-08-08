@@ -860,8 +860,8 @@ indicate wh-questions:
 
 
 
-AMR also uses amr-unknown for yes-no questions. For such yes-no questions, the `amr-unknown' marks
-the :polarity relation.
+AMR also uses amr-unknown for yes-no questions. For such yes-no questions, the `amr-unknown` bears
+the `:polarity` relation, essentially asking "what is the truth of this assertion?": 
 
 
 ```lisp
@@ -902,8 +902,9 @@ roles instead of `amr-unknown`:
 > I know the person you saw.
 
 
-AMR also uses inverse roles for embedded yes-no clauses (usually having a "whether" or "if"). The
-concept `truth-value` is used to refer to whether or not an event happened:
+AMR also uses inverse roles for embedded interrogative clauses, such as those that 
+start with "whether". As with relative clauses, we do not uses `amr-unknown`; instead, 
+ `truth-value` is used to refer to whether or not an event happened:
 
 ```lisp
 (k / know-01
@@ -935,8 +936,8 @@ We contrast this with:
 Choice Questions
 ----------------
 
-Some questions provide the set of answers which are possible.  We handle these with the concept `amr-choice`,
-which can receive any number of numbered arguments, as in:
+Choice questions can look like yes/no questions, but provide a set of possible answers for the question.
+We handle these with the concept `amr-choice` (usually in place of `or`), which can receive any number of numbered `:op` arguments:
 
 ```lisp
 (w / want-01
