@@ -22,7 +22,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Modality](#modality)
 	- [Negation](#negation)
 	- [Wh-Questions](#wh-questions)
-	- [Other interrogatives & imperatives](#other-interrogatives--imperatives)
+	- [Imperatives and other modes](#imperative-and-expressive-mode)
 	- [Articles, plurals, tense, aspect, quotes, hyphens](#articles-plurals-tense-aspect-quotes-hyphens)
 	- [Implicit roles](#implicit-roles)
 	- [Implicit concepts](#implicit-concepts)
@@ -858,6 +858,33 @@ indicate wh-questions:
 
 > Which investigation did she lead?
 
+
+
+AMR also uses amr-unknown for yes-no questions. For such yes-no questions, the `amr-unknown' marks
+the :polarity relation.
+
+
+```lisp
+(f / find-01
+   :ARG0 (g / girl)
+   :ARG1 (b / boy)
+   :polarity (a / amr-unknown))
+
+```
+> Did the girl find the boy?
+
+```lisp
+(f / find-01
+   :ARG1 (b / boy)
+   :polarity (a / amr-unknown))
+
+```
+
+> Was the boy found?
+
+
+
+
 Note that wh- words in relative clauses are treated differently, using inverse
 roles instead of `amr-unknown`:
 
@@ -875,40 +902,16 @@ roles instead of `amr-unknown`:
 > I know the person you saw.
 
 
-Other interrogatives & imperatives
-----------------------------------
-
-AMR uses `:mode` to indicate yes-no questions:
-
-
-```lisp
-(f / find-01
-   :ARG0 (g / girl)
-   :ARG1 (b / boy)
-   :mode interrogative)
-
-```
-
-> Did the girl find the boy?
-
-```lisp
-(f / find-01
-   :ARG1 (b / boy)
-   :mode interrogative)
-
-```
-
-> Was the boy found?
-
-AMR also uses `:mode` for yes-no embedded clauses:
+AMR also uses inverse roles for embedded yes-no clauses (usually having a "whether" or "if"). The
+concept `truth-value` is used to refer to whether or not an event happened:
 
 ```lisp
 (k / know-01
    :polarity -
    :ARG0 (b / boy)
-   :ARG1 (c / come-01
-            :ARG1 (g / girl)
-            :mode interrogative))
+   :ARG1 (t / truth-value
+            :polarity-of  (c / come-01
+                             :ARG1 (g / girl))))
 ```
 
 > The boy doesn’t know whether the girl came.
@@ -929,7 +932,37 @@ We contrast this with:
 >
 > The boy doesn’t know the girl came.
 
-`:mode` is also used for imperatives.  Exclamatory imperatives are just imperatives in AMR.
+Choice Questions
+----------------
+
+Some questions provide the set of answers which are possible.  We handle these with the concept `amr-choice`,
+which can receive any number of numbered arguments, as in:
+
+```lisp
+(w / want-01
+      :ARG0 (y / you)
+      :ARG1 (a / amr-choice
+            :op1 (t / tea)
+            :op2 (c / coffee)))
+```
+
+> Do you want tea or coffee?
+
+```lisp
+(r / recommend-01
+      :ARG1 (a / amr-choice
+            :op1 (s / stay-01
+                  :ARG1 (i / i))
+            :op2 (g / go-02
+                  :ARG0 i)))
+```
+> Should I stay or should I go?
+
+
+Imperative and Expressive mode
+------------------------------
+
+`:mode imperative` is used for imperatives.  Exclamatory imperatives are just imperatives in AMR.
 
 ```lisp
 (g / go-02
