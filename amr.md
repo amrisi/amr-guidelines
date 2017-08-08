@@ -903,8 +903,8 @@ roles instead of `amr-unknown`:
 
 
 AMR also uses inverse roles for embedded interrogative clauses, such as those that 
-start with "whether". As with relative clauses, we do not uses `amr-unknown`; instead, 
- `truth-value` is used to refer to whether or not an event happened:
+start with "whether". As with relative clauses, we do not use `amr-unknown`; instead, 
+the `truth-value` concept is added, to refer to whether or not an event happened:
 
 ```lisp
 (k / know-01
