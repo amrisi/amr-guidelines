@@ -2689,15 +2689,13 @@ Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCO
 Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
 
 ```lisp
-(b / bright-03
-   :ARG1 (b2 / boy 
-               :mod (t / that))
-   :degree (m / more))
+(b / boy 
+      :ARG1-of (h / have-degree-91 
+            :ARG2 (b2 / bright-03 
+                  :ARG1 b) 
+            :ARG3 (m / more))) 
 ```
-
-> That boy is brighter.
->
-> That boy is more bright.
+> The brighter boy. 
 
 ```lisp
 (b / boy 
@@ -2707,9 +2705,7 @@ Annotators are encouraged to use `have-degree-91` as the root concept (as oppose
             :ARG3 (m / most))) 
 ```
 
-> That boy is the brightest.
->
-> That boy is the most bright.
+> The brightest boy.
 
 ```lisp
 (p / plan 
@@ -2775,7 +2771,7 @@ Additionally, `have-degree-91` is used for the degree-consequence construction, 
 
 >It is too early to reach any conclusion.
 
-Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that the watch does NOT fit), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See AMR Dictionary for additional examples. Negative polarity should only be introduced (modifying have-degree-91) when it is explicit: 
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See AMR Dictionary for additional examples. Negative polarity should only be introduced (modifying have-degree-91) when it is explicit: 
 
 ```lisp
 (h / have-degree-91 :polarity - 
