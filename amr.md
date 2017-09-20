@@ -2675,7 +2675,7 @@ quantifiers.
 Degree
 ------
 
-Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `have-degree-91` when additional arguments are present.  
+Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `have-degree-91` when additional arguments are invoked, implicitly or explicitly, by a comparative, superlative, or degree-consequence construction.  
 ```lisp
 Have-degree-91
 Arg1: domain, entity characterized by attribute (e.g. girl)
@@ -2685,51 +2685,44 @@ Arg4: compared-to (e.g. (than the) BOY)
 Arg5: superlative: reference to superset
 Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCOASTER)
 ```
-`have-degree-91` is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, or the consequence.  
+`have-degree-91` is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, a superset for superlatives, or the consequence.  
 Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
 
 ```lisp
-(b / bright-03
-   :ARG1 (b2 / boy 
-               :mod (t / that))
-   :degree (m / more))
+(b / boy 
+      :ARG1-of (h / have-degree-91 
+            :ARG2 (b2 / bright-03 
+                  :ARG1 b) 
+            :ARG3 (m / more))) 
 ```
-
-> That boy is brighter.
->
-> That boy is more bright.
+> The brighter boy. 
 
 ```lisp
-(b / bright-03
-   :ARG1 (b2 / boy
-               :mod (t / that))
-   :degree (m / most))
+(b / boy 
+      :ARG1-of (h / have-degree-91 
+            :ARG2 (b2 / bright-03 
+                  :ARG1 b) 
+            :ARG3 (m / most))) 
 ```
 
-> That boy is the brightest.
->
-> That boy is the most bright.
+> The brightest boy.
 
 ```lisp
-(p / plan-01
-   :time (e / early
-            :degree (m / more)))
-```
-
-> the earlier plan
-
-```lisp
- (p / plan-01
-    :ARG1-of (g / good-02
-               :degree (m / more)))
+(p / plan 
+      :ARG1-of (h / have-degree-91 
+            :ARG2 (g/ good-02 
+                  :ARG1 p) 
+            :ARG3 (m / more))) 
 ```
 
 > a better plan
 
 ```lisp
-(p / plan-01
-   :ARG1-of (g / bad-07
-              :degree (m / more)))
+(p / plan 
+      :ARG1-of (h / have-degree-91 
+            :ARG2 (b / bad-07 
+                  :ARG1 p) 
+            :ARG3 (m / more))) 
 ```
 
 > a worse plan
@@ -2768,22 +2761,29 @@ Annotators are encouraged to use `have-degree-91` as the root concept (as oppose
 
 Additionally, `have-degree-91` is used for the degree-consequence construction, which licenses an argument representing the result or consequence of the degree to which a state is true: 
 
->It is too early to reach any conclusion as to the motive and identity of the attackers.
+
 ```lisp
-(h / have-degree-91
-      :ARG2 (e / early)
-      :ARG3 (t / too)
-      :ARG6 (c2 / conclude-01 :polarity -
-            :ARG1 (a / and
-                  :op1 (m / motive
-                        :poss (p / person
-                              :ARG0-of (a2 / attack-01)))
-                  :op2 (i / identity
-                        :poss p))))
+(h / have-degree-91 
+      :ARG2 (e / early) 
+      :ARG3 (t / too) 
+      :ARG6 (c / conclude-01)) 
 ```
 
-Note: The primary relation of the Consequence argument may be elided or unspecified, as it is above.  Annotators should introduce the most logical relation fitting with the context, including the possible introduction of negative polarity, which often accompanies Degree-Consequence constructions with “too” (above: it’s too early; therefore, there’s no conclusion…).  See AMR Dictionary for additional examples. 
+>It is too early to reach any conclusion.
 
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See AMR Dictionary for additional examples. Negative polarity should only be introduced (modifying have-degree-91) when it is explicit: 
+
+```lisp
+(h / have-degree-91 :polarity - 
+      :ARG1 (h2 / he) 
+      :ARG2 (t / tall) 
+      :ARG3 (e / enough) 
+      :ARG6 (r / ride-01 
+            :ARG0 h2 
+            :ARG1 (r2 / rollercoaster))) 
+```
+
+>He is not tall enough to ride the rollercoaster.
 
 Variables and co-reference
 --------------------------
@@ -3599,7 +3599,6 @@ ARG5: superlative: reference to superset
 ARG6: consequence, result
 ```
 
-> He sold as many cars as his competitor.
 ```lisp
 (s / sell-01
       :ARG0 (h / he)
@@ -3614,7 +3613,9 @@ ARG6: consequence, result
                                           :ARG1 h)))))))
 ```
 
-> He sold the most cars of his competitors. 
+> He sold as many cars as his competitor.
+
+
 ```lisp
 (s / sell-01
       :ARG0 (h / he)
@@ -3629,7 +3630,8 @@ ARG6: consequence, result
                                           :ARG1 h)))))))
 ```
 
-> I had scarcely enough drinking water to last a week. 
+> He sold the most cars of his competitors. 
+ 
 ```lisp
 (h / have-03
       :ARG0 (i / i)
@@ -3645,6 +3647,8 @@ ARG6: consequence, result
                               :unit (w2 / week))
                         :ARG3 i))))
 ```
+
+> I had scarcely enough drinking water to last a week.
 
 Mathematical operators
 ----------------------
