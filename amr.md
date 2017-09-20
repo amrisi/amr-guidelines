@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2.3 Specification
+Abstract Meaning Representation (AMR) 1.2.4 Specification
 =======================================================
 
-**August 7, 2017**
+**September 20, 2017**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2685,8 +2685,9 @@ Arg4: compared-to (e.g. (than the) BOY)
 Arg5: superlative: reference to superset
 Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCOASTER)
 ```
-`have-degree-91` is the reification of :degree.  Annotators need not use the roleset when :degree expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, a superset for superlatives, or the consequence.  
-Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., the girl is taller than the boy, she is the tallest girl on the team -- see below).  
+`have-degree-91` is the reification of `:degree`.  Annotators need not use the roleset when `:degree` expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, a superset for superlatives, or the consequence.
+
+Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., *the girl is taller than the boy*, *she is the tallest girl on the team*—see below).  
 
 ```lisp
 (b / boy 
@@ -2771,7 +2772,7 @@ Additionally, `have-degree-91` is used for the degree-consequence construction, 
 
 >It is too early to reach any conclusion.
 
-Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See AMR Dictionary for additional examples. Negative polarity should only be introduced (modifying have-degree-91) when it is explicit: 
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
 
 ```lisp
 (h / have-degree-91 :polarity - 
