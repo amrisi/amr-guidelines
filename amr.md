@@ -1236,7 +1236,7 @@ or
    …)
 ```
 
-Recent versions of OntoNotes have noun predicate frames like `destruction-01`,
+Older versions of OntoNotes have noun predicate frames like `destruction-01`,
 but we do not want AMRs to contain both `destroy-01` and `destruction-01`. 
 Therefore, we avoid `destruction-01`.
 
