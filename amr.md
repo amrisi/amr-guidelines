@@ -522,14 +522,15 @@ Core roles are taken from the OntoNotes semantic role layer.  OntoNotes
 predicates are sense-labeled words (e.g., `sentence-01`).  They are
 predicate-specific and numbered.  For example: 
 
-  - `:ARG0` of `charge-01` is the person doing the charging.
-  - `:ARG1` of `charge-01` is the person being charged.
-  - `:ARG2` of `charge-01` is the role or crime (for which `:ARG0` is charging `:ARG1`).
-<p></p>
+  - `:ARG0` of `charge-05` is the person doing the charging.
+  - `:ARG1` of `charge-05` is the person being charged.
+  - `:ARG2` of `charge-05` is the role or crime (for which `:ARG0` is charging `:ARG1`).
+
   - `:ARG0` of `sentence-01` is the person doing the sentencing.
   - `:ARG1` of `sentence-01` is the person being sentenced.
-  - `:ARG2` of `sentence-01` is the role or crime.
-<p></p>
+  - `:ARG2` of `sentence-01` is the sentence (punishment).
+  - `:ARG3` of `sentence-01` is the role or crime.
+
   - `:ARG0` of `fine-01` is the person doing the fining.
   - `:ARG1` of `fine-01` is the amount of the fine (e.g., $1000).
   - `:ARG2` of `fine-01` is the person being fined.
@@ -544,7 +545,7 @@ One semantic frame may be realized in vastly different ways in English:
 (d / describe-01
    :ARG0 (h / he)
    :ARG1 (m / mission)
-   :ARG2 (f / failure))
+   :ARG2 (f / fail-01))
 ```
 
 > He described the mission as a failure.
@@ -564,11 +565,12 @@ If OntoNotes is missing a predicate, AMR accepts `-00`:
 
 
 ```lisp
-(c / comeback-00
-   :ARG0 (b / band))
+(b / band
+  :consist-of (p / person
+                :ARG0-of (m / maraud-00)))
 ```
 
-> the band experienced a comeback
+> a band of marauders
 
 
 Modality
