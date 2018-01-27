@@ -1556,7 +1556,7 @@ more than just a possibility, my friend:
 Adverbs with -ly
 ----------------
 
-Adverbs get stemmed to adjective form:
+Adverbs normally get stemmed to adjective form:
 
 
 ```lisp
@@ -1573,6 +1573,17 @@ Adverbs get stemmed to adjective form:
 >
 > I observed the army moving quickly.
 
+However, this is not the case when the adverb has a special meaning.
+For example, the meanings of 'hard' and 'hardly' are quite different:
+
+```lisp
+(k / know-01
+  :ARG0 (i / i)
+  :ARG1 (s / she)
+  :degree (h / hardly))
+```
+
+> I hardly know her.
 
 Non-core roles
 --------------
