@@ -21,7 +21,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Core roles](#core-roles)
 	- [Modality](#modality)
 	- [Negation](#negation)
-	- [Wh-Questions](#wh-questions)
+	- [Questions](#questions)
 	- [Imperatives and other modes](#imperative-and-expressive-mode)
 	- [Articles, plurals, tense, aspect, quotes, hyphens](#articles-plurals-tense-aspect-quotes-hyphens)
 	- [Implicit roles](#implicit-roles)
@@ -797,12 +797,11 @@ Negative English affixes are also represented with the `:polarity` role:
 > the dress that is not appropriate
 
 
-Wh-Questions
-------------
+Questions
+---------
 
-To capture wh-questions, AMR uses the concept `amr-unknown` (in-place!) to
-indicate wh-questions:
-
+To capture questions, AMR uses the concept `amr-unknown` (in-place!) to
+indicate questions:
 
 ```lisp
 (f / find-01
