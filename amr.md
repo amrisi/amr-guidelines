@@ -2702,7 +2702,7 @@ Intensifiers (`very`, `extremely`) and downtoners (`somewhat`, `relatively`) are
 ```
 > You are very beautiful.
 
-Comparatives and superlatives are represented using `:have-degree-91`.  
+Comparatives and superlatives are represented using the frame `have-degree-91`.  
 ```lisp
 Have-degree-91
 Arg1: domain, entity characterized by attribute (e.g. girl)
