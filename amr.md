@@ -2441,9 +2441,9 @@ Multiple relations with the same name
 ```lisp
 (s / system
    :mod (l / law)
-   :mod (s2 / city 
-            :wiki "Shanghai"
-            :name (n / name :op1 "Shanghai")))
+   :mod (c / city 
+           :wiki "Shanghai"
+           :name (n / name :op1 "Shanghai")))
 ```
 
 > the Shanghai legal system
@@ -2693,73 +2693,82 @@ quantifiers.
 Degree
 ------
 
-Comparatives and superlatives are represented by `:degree` when only a degree-word modifier is present and `have-degree-91` when additional arguments are invoked, implicitly or explicitly, by a comparative, superlative, or degree-consequence construction.  
+Intensifiers (`very`, `extremely`) and downtoners (`somewhat`, `relatively`) are annotated with `:degree`:
+
+```lisp
+(b / beautiful-02
+   :ARG1 (y / you)
+   :degree (v / very))
+```
+> You are very beautiful.
+
+Comparatives and superlatives are represented using `:have-degree-91`.  
 ```lisp
 Have-degree-91
 Arg1: domain, entity characterized by attribute (e.g. girl)
 Arg2: attribute (e.g. tall)
-Arg3: degree itself (e.g. more, less, equal)
+Arg3: degree itself (e.g. more, less, equal, most, least, enough, too, so, to-the-point, at-least, times)
 Arg4: compared-to (e.g. (than the) BOY)
 Arg5: superlative: reference to superset
-Arg6: consequence, result of degree (e.g. (not tall enough) TO RIDE THE ROLLERCOASTER)
+Arg6: reference, threshold of sufficiency (e.g. (tall enough) TO RIDE THE ROLLERCOASTER)
 ```
-`have-degree-91` is the reification of `:degree`.  Annotators need not use the roleset when `:degree` expressions alone are used (e.g., He’s VERY tall), but should use the roleset when other arguments are invoked, such as the entity compared-to, a superset for superlatives, or the consequence.
 
 Annotators are encouraged to use `have-degree-91` as the root concept (as opposed to the adjective with a particular degree, or the entity characterized by that adjective) when a comparison seems to be the main focus of the sentence, which include cases of the copular construction (e.g., *the girl is taller than the boy*, *she is the tallest girl on the team*—see below).  
 
 ```lisp
 (b / boy 
-      :ARG1-of (h / have-degree-91 
-            :ARG2 (b2 / bright-03 
-                  :ARG1 b) 
-            :ARG3 (m / more))) 
+   :ARG1-of (h / have-degree-91 
+              :ARG2 (b2 / bright-03 
+                       :ARG1 b) 
+              :ARG3 (m / more))) 
 ```
 > The brighter boy. 
 
 ```lisp
 (b / boy 
-      :ARG1-of (h / have-degree-91 
-            :ARG2 (b2 / bright-03 
-                  :ARG1 b) 
-            :ARG3 (m / most))) 
+   :ARG1-of (h / have-degree-91 
+              :ARG2 (b2 / bright-03 
+                        :ARG1 b) 
+              :ARG3 (m / most))) 
 ```
 
 > The brightest boy.
 
 ```lisp
 (p / plan 
-      :ARG1-of (h / have-degree-91 
-            :ARG2 (g/ good-02 
-                  :ARG1 p) 
-            :ARG3 (m / more))) 
+   :ARG1-of (h / have-degree-91 
+              :ARG2 (g / good-02 
+                     :ARG1 p) 
+              :ARG3 (m / more))) 
 ```
 
 > a better plan
 
 ```lisp
 (p / plan 
-      :ARG1-of (h / have-degree-91 
-            :ARG2 (b / bad-07 
-                  :ARG1 p) 
-            :ARG3 (m / more))) 
+  :ARG1-of (h / have-degree-91 
+             :ARG2 (b / bad-07 
+                     :ARG1 p) 
+             :ARG3 (m / more))) 
 ```
 
 > a worse plan
 
 ```lisp
-(p / plan-01
-   :mod (e / extreme
-           :degree (t / too)))
+(p / plan 
+   :ARG1-of (h / have-degree-91 
+              :ARG2 (e / extreme) 
+              :ARG3 (t / too))) 
 ```
 
 > a plan that is too extreme
 
 ```lisp
 (h / have-degree-91
-      :ARG1 (g / girl)
-      :ARG2 (t / tall)
-      :ARG3 (m / more)
-      :ARG4 (b / boy))
+   :ARG1 (g / girl)
+   :ARG2 (t / tall)
+   :ARG3 (m / more)
+   :ARG4 (b / boy))
 ```
 
 > the girl is taller than the boy
@@ -2768,12 +2777,12 @@ Annotators are encouraged to use `have-degree-91` as the root concept (as oppose
 
 ```lisp
 (h / have-degree-91
-      :ARG1 (s / she)
-      :ARG2 (t / tall)
-      :ARG3 (m / most)
-      :ARG5 (g / girl
-            :ARG0-of (h2 / have-org-role-91
-                  :ARG1 (t2 / team))))
+   :ARG1 (s / she)
+   :ARG2 (t / tall)
+   :ARG3 (m / most)
+   :ARG5 (g / girl
+           :ARG0-of (h2 / have-org-role-91
+                       :ARG1 (t2 / team))))
 ```
 
 > she is the tallest girl on the team
@@ -2783,23 +2792,23 @@ Additionally, `have-degree-91` is used for the degree-consequence construction, 
 
 ```lisp
 (h / have-degree-91 
-      :ARG2 (e / early) 
-      :ARG3 (t / too) 
-      :ARG6 (c / conclude-01)) 
+  :ARG2 (e / early) 
+  :ARG3 (t / too) 
+  :ARG6 (c / conclude-01)) 
 ```
 
->It is too early to reach any conclusion.
+> It is too early to reach any conclusion.
 
 Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
 
 ```lisp
 (h / have-degree-91 :polarity - 
-      :ARG1 (h2 / he) 
-      :ARG2 (t / tall) 
-      :ARG3 (e / enough) 
-      :ARG6 (r / ride-01 
-            :ARG0 h2 
-            :ARG1 (r2 / rollercoaster))) 
+   :ARG1 (h2 / he) 
+   :ARG2 (t / tall) 
+   :ARG3 (e / enough) 
+   :ARG6 (r / ride-01 
+           :ARG0 h2 
+           :ARG1 (r2 / rollercoaster))) 
 ```
 
 >He is not tall enough to ride the rollercoaster.
