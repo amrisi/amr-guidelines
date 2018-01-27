@@ -2190,7 +2190,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
 `:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
-`:degree`      | `have-degree-91`      | `:ARG2` | `:ARG3` | “the girl is taller than the boy”
+`:degree`      | `have-degree-92`      | `:ARG1` | `:ARG2` | “very tall” (intensifier or downtoner)
 `:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
 `:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
@@ -2211,12 +2211,13 @@ Relation       | Reification           | Domain  | Range   | Example
 `:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG1` | `:ARG2` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
+`:value`       | `have-value-91`       | `:ARG1` | `:ARG2` | “The phone number is 1-800-555-1223.”
 
 These relations do not have reifications:
 
   - `:ARG0`, `:ARG2`, `:ARG2`, ... `:op1`, `:op2`, `:op3`, `:op4`, …
   - `:calendar`, `:century`, `:day`, `:dayperiod`, `:decade`, `:era`, `:month`, `:quarter`, `:season`, `:timezone`, `:weekday`, `:year`, `:year2`
-  - `:unit`, `:value`, `:mode`, `:degree`, `:direction`, `:scale`
+  - `:unit`, `:direction`, `:scale`
 
 Now, the question remains: when to reify?  
 
