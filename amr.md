@@ -93,12 +93,16 @@ a parse tree, the AMR is abstract.  It may represent any number of natural
 language sentences.  AMR does not annotate the individual words in a sentence,
 like a dependency parse does.
 
-AMR implements a simplified, standard neo-Davidsonian semantics [Davidson 1967,
-Higginbotham 1985], using standard feature structure representation [Shieber
-1986, Carpenter 1992].  AMR’s formal origins are in unification systems [Kay
-1979, Knight 1989, Moore 1989] and natural language generation [Mann 1982,
-Elhadad 1988, Knight & Hatzivassiloglou 1995].  Predicates senses and core
-semantic roles in AMR are drawn from the **amazing OntoNotes project**.
+AMR implements a simplified, standard neo-Davidsonian semantics
+\[[Davidson 1967](#Davidson-1967), [Higginbotham 1985](#Higginbotham-1985)\],
+using standard feature structure representation \[[Shieber
+1986](#Shieber-1986), [Carpenter 1992](#Carpenter-1992)\].  AMR’s formal
+origins are in unification systems \[[Kay 1979](#Kay-1979), [Knight
+1989](#Knight-1989), [Moore 1989](#Moore-1989)\] and natural language
+generation \[[Mann 1982](#Mann-1982), [Elhadad 1995](#Elhadad-1995), [Knight
+& Hatzivassiloglou 1995](#Knight-and-Hatzivassiloglou-1995)\].  Predicates
+senses and core semantic roles in AMR are drawn from the **amazing OntoNotes
+project**.
 
 AMR does not say anything about how it wants to be processed.  It is closer to
 English than to other languages.  It is not an interlingua.
@@ -3941,3 +3945,35 @@ Finally, we have two different ways of encoding the same propositional content
 Sensible people will prefer the version on the left, though both versions relate
 the same conjunction of propositional triples.
 
+References
+----------
+
+<a name="Carpenter-1992" href="#Carpenter-1992">#</a>
+Carpenter, Bob. "The Logic of Typed Feature Structures". *Number 32 in Cambridge Tracts in Theoretical Computer Science*. (1992).
+
+<a name="Davidson-1967" href="Davidson-1967">#</a>
+Davidson, Donald. "The logical form of action sentences." (1967).
+
+<a name="Elhadad-1995" href="#Elhadad-1995">#</a>
+Elhadad, Michael. "Using argumentation in text generation." *Journal of Pragmatics* 24.1 (1995): 189-220.
+
+<a name="Higginbotham-1985" href="#Higginbotham-1985">#</a>
+Higginbotham, James. "On semantics." *Linguistic inquiry* 16.4 (1985): 547-593.
+
+<a name="Kay-1979" href="#Kay-1979">#</a>
+Kay, Martin. "Functional grammar." *Annual Meeting of the Berkeley Linguistics Society*. Vol. 5. (1979).
+
+<a name="Knight-1989" href="#Knight-1989">#</a>
+Knight, Kevin. "Unification: A multidisciplinary survey." *ACM Computing Surveys (CSUR)* 21.1 (1989): 93-124.
+
+<a name="Knight-and-Hatzivassiloglou-1995" href="#Knight-and-Hatzivassiloglou-1995">#</a>
+Knight, Kevin, and Vasileios Hatzivassiloglou. "Two-level, many-paths generation." *Proceedings of the 33rd annual meeting on Association for Computational Linguistics* (1995).
+
+<a name="Mann-1982" href="#Mann-1982">#</a>
+Mann, William C. "An Overview of the Penman Text Generation System". No. ISI/RR-83-114. (1983).
+
+<a name="Moore-1989" href="#Moore-1989">#</a>
+Moore, Robert C. "Unification-based semantic interpretation." *Proceedings of the 27th annual meeting on Association for Computational Linguistics* (1989).
+
+<a name="Shieber-1986" href="#Shieber-1986">#</a>
+Shieber, Stuart M. "An Introduction to Unification-Based Approaches to Grammar." (1986).
