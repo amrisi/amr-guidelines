@@ -3917,7 +3917,7 @@ These entities are described in standard, canonical forms:
 
 Further information
 -------------------
-For more information about the AMR and for more examples, see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html), maintained by Ulf Hermjakob (USC/ISI).
+For more information about AMR and for more examples, see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html), maintained by Ulf Hermjakob (USC/ISI).
 
 
 AMR Freak Show
