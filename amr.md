@@ -73,6 +73,7 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 	- [Quantities](#quantities)
 	- [Mathematical operators](#mathematical-operators)
 	- [Other entities: dates, times, percentages, phone, email, URLs](#other-entities-dates-times-percentages-phone-email-urls)
+	- [Further information](#further-information)
 	- [AMR Freak Show](#amr-freak-show)
 		- [Cycles](#cycles)
 
@@ -3912,6 +3913,11 @@ These entities are described in standard, canonical forms:
 ```
 
 > www.whitehouse.gov
+
+
+Further information
+-------------------
+For more information about the AMR and for more examples, see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html), maintained by Ulf Hermjakob (USC/ISI).
 
 
 AMR Freak Show
