@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2.4 Specification
+Abstract Meaning Representation (AMR) 1.2.5 Specification
 =======================================================
 
-**September 20, 2017**
+**Janaury 26, 2018**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -390,7 +390,7 @@ AMR 1.2 is over-simple in many ways:
 
   - It is geared toward English and the vocabulary of English.  
   - It does not represent quantifier scope, or even universal quantification at all.
-  - It does not represent co-references that cross sentence boundaries.
+  - It does not represent co-references that cross sentence boundaries. (LDC general release in early 2018 will include new multi-sentence co-reference annotations for some AMR documents.) 
   - It drops grammatical number, tense, aspect, quotation marks, etc.
   - It does not deeply capture many noun-noun or noun-adjective relations.
   - It does not include deep frames such as Earthquake (with roles for magnitude, epicenter, casualties, etc) or Pregnancy (with roles for mother, father, baby gender, time since inception, etc).  AMR 1.2 looks forward to AMR 2.0!
@@ -447,14 +447,16 @@ Non-core roles:
 :example, :extent
 :frequency
 :instrument
-:location
+:li, :location
 :manner, :medium, :mod, :mode
 :name
 :ord
-:part, :path, :polarity, :poss, :purpose
+:part, :path, :polarity, :polite, :poss, :purpose
 :quant
+:range
 :scale, :source, :subevent
-:time, :topic, :unit
+:time, :topic
+:unit
 :value
 :wiki
 ```
