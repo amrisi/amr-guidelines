@@ -800,8 +800,7 @@ Negative English affixes are also represented with the `:polarity` role:
 Questions
 ---------
 
-To capture questions, AMR uses the concept `amr-unknown` (in-place!) to
-indicate questions:
+AMR uses the concept `amr-unknown` (in-place!) to indicate questions:
 
 ```lisp
 (f / find-01
