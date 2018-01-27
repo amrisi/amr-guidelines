@@ -138,14 +138,14 @@ information:
 
 
 ```
-instance(w, want-01) ^      /* w is an instance of wanting */
-instance(b, boy) ^          /* b is an instance of boy */
-instance(b2, believe-01) ^  /* b2 is an instance of believing */
-instance(g, girl) ^         /* g is an instance of girl */
-ARG0(w, b) ^                /* b is the wanter in w */
-ARG1(w, b2) ^               /* b2 is the wantee in w */
-ARG0(b2, g) ^               /* g is the believer in b2 */
-ARG1(b2, b)                 /* b is the believee in b2 */
+instance-of(w, want-01) ^      /* w is an instance of wanting */
+instance-of(b, boy) ^          /* b is an instance of boy */
+instance-of(b2, believe-01) ^  /* b2 is an instance of believing */
+instance-of(g, girl) ^         /* g is an instance of girl */
+ARG0(w, b) ^                   /* b is the wanter in w */
+ARG1(w, b2) ^                  /* b2 is the wantee in w */
+ARG0(b2, g) ^                  /* g is the believer in b2 */
+ARG1(b2, b)                    /* b is the believee in b2 */
 ```
 
 
@@ -410,7 +410,7 @@ concepts (boy, want, believe):
 
 > The boy wants to believe.
 
-The slash (`/`) is shorthand for the `:instance` relation.  This relation shows up
+The slash (`/`) is shorthand for the `:instance-of` relation.  This relation shows up
 more clearly in AMR graph format (see Introduction).
 
 Concepts in AMR 1.2 are usually written with English words or phrases.  Concepts
@@ -3078,12 +3078,12 @@ American spelling, but we do not otherwise normalize variants.
 > ad rates
 
 When building AMRs for proper names or “-er” nouns, we need to fill the root
-concept (or top-level `:instance` role).  In doing so, we face one of three
+concept (or top-level `:instance-of` role).  In doing so, we face one of three
 situations.
 
 
 (a) In general, unless the English text provides something more specific type,
-we fill the `:instance` slot from a special list of standard AMR named entity types,
+we fill the `:instance-of` slot from a special list of standard AMR named entity types,
 e.g. `person` and `company`.
 In such cases, we basically must hallucinate an entity type.  For example:
 
@@ -3168,7 +3168,7 @@ Some examples:
 
 
 (b) If the text contains a more specific English term to describe the type of entity, 
-we use it instead to fill the `:instance` role.
+we use it instead to fill the `:instance-of` role.
 For example:
 
 ```lisp
@@ -3276,8 +3276,8 @@ We view this object semantically as a “group”, which happens to have a known
 `:name`, plus some a couple of other properties that describe it.  
 
 
-(c) The text contains *multiple* English words vying for the same `:instance` slot. 
-This happens occasionally.  Because `:instance` is the only relation that cannot
+(c) The text contains *multiple* English words vying for the same `:instance-of` slot. 
+This happens occasionally.  Because `:instance-of` is the only relation that cannot
 physically appear twice in AMR, we instead open up the inverse of `:domain` , i.e. the role `:mod`
 
 ```lisp
@@ -3310,7 +3310,7 @@ Core roles of `have-org-role-91`:
   - `:ARG0` of `have-org-role-91` is the office holder, typically a person
   - `:ARG1` of `have-org-role-91` is the organization, which could also be a GPE
   - `:ARG2` of `have-org-role-91` is the title of the office held, e.g. president
-  - `:ARG3` of `have-org-role-91` is a description of responsibilty (rarely used)
+  - `:ARG3` of `have-org-role-91` is a description of responsibility (rarely used)
 
 Typical have-org-role-91 roles: ambassador, archbishop, bishop, CEO, chairman, chancellor, chief of staff, commissioner, congressman, deputy, dictator, director, emperor, empress, envoy, foreign minister, governor, king, mayor, monarch, officer, official, pope, premier, president, principal, professor, queen, secretary, senator, spokesman, spokeswoman, treasurer etc.
 
