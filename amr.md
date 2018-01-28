@@ -2865,20 +2865,7 @@ If an overt pronoun has no antecedent within the sentence, AMR uses the pronoun:
 > He saw them.
 
 Pronouns in AMR are always nominative (he, she, i, we, they, …) and never
-accusative (him, her, me, us, them, …).  AMR uses the token `y'all` for you
-plural:
-
-```lisp
-(s / see-01
-   :ARG0 (i / i)
-   :ARG1 (y / y'all))
-```
-
-> I saw you (plural).
->
-> I saw y’all.
->
-> I saw you guys.
+accusative (him, her, me, us, them, …).  
 
 
 Possession
@@ -3646,7 +3633,6 @@ ARG6: consequence, result
       :ARG0 (h / he)
       :ARG1 (c / car
             :ARG1-of (h2 / have-quant-91
-                  :ARG2 (q / quantity)
                   :ARG3 (e2 / equal)
                   :ARG4 (c3 / car
                         :ARG1-of (s2 / sell-01
@@ -3663,7 +3649,6 @@ ARG6: consequence, result
       :ARG0 (h / he)
       :ARG1 (c / car
             :ARG1-of (h2 / have-quant-91
-                  :ARG2 (q / quantity)
                   :ARG3 (m / most)
                   :ARG5 (c3 / car
                         :ARG1-of (s2 / sell-01
@@ -3681,7 +3666,7 @@ ARG6: consequence, result
             :purpose (d2 / drink-01
                   :ARG0 i)
             :ARG1-of (h3 / have-quant-91
-                  :ARG2 (e / enough
+                  :ARG3 (e / enough
                         :mod (s / scarce))
                   :ARG6 (l / last-03
                         :ARG1 w
@@ -3908,7 +3893,7 @@ These entities are described in standard, canonical forms:
 > 25 percent
 
 ```lisp
-(p / phone-number-entity :value "18005551212")
+(p / phone-number-entity :value "1-800-555-1212")
 ```
 
 > 1-800-555-1212
@@ -3930,7 +3915,13 @@ These entities are described in standard, canonical forms:
 
 Further information
 -------------------
-For more information about AMR and for more examples, see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html), maintained by Ulf Hermjakob (USC/ISI).
+For more information about AMR and for more examples, 
+see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html),
+[amr.isi.edu](https://amr.isi.edu),
+[list of AMR NE types](https://www.isi.edu/~ulf/amr/lib/ne-types.html),
+[list of AMR roles](https://www.isi.edu/~ulf/amr/lib/roles.html),
+[list AMR quantity types](https://www.isi.edu/~ulf/amr/lib/popup/quantity-types.html).
+Maintained by Ulf Hermjakob (USC/ISI).
 
 
 AMR Freak Show
@@ -3961,7 +3952,7 @@ Approximately 0.3% of AMRs are legitimately cyclic as for example:
 ```
 > a procedure to ensure quality
 
-AMRs with such cycles typically involving `:concession`, `:condition`, `:manner`, `:purpose`, or `:time`.
+AMRs with such cycles typically involve `:concession`, `:condition`, `:manner`, `:purpose`, or `:time`.
 
 These cycles magically disappear upon reification:
 ```lisp
