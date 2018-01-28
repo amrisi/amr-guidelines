@@ -2250,6 +2250,7 @@ non-reified relations as semantic sugar.  Therefore, if you are translating
 English into AMR, the rule is “whenever you feel like it”, because your AMRs
 will be normalized into reified form behind the scenes.
 
+In the AMR corpus, for consistency, reifications are collapsed unless needed.
 
 
 Phrasal verbs
@@ -2436,7 +2437,8 @@ Japanese simply marks adjectives with a negative suffix.
 Multiple relations with the same name
 -------------------------------------
 
- An entity may have several relations with the same name:
+An entity may have several relations with the same name. 
+In the following examples, *system* has two `:mod` relations, *arrive-01* has two `:time` relations, and *boy* has two `:ARG0-of` relations.
 
 
 ```lisp
@@ -2448,6 +2450,16 @@ Multiple relations with the same name
 ```
 
 > the Shanghai legal system
+
+```lisp
+(a / arrive-01
+  :ARG1 (s / she)
+  :time (t / today)
+  :time (b / before
+          :op1 (n / now)))
+```
+
+> She arrived earlier today.
 
 ```lisp
 (b / boy
