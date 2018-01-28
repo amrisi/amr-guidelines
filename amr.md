@@ -143,10 +143,10 @@ information:
 
 
 ```
-instance(w, want-01) ^      /* w is an instance of wanting */
-instance(b, boy) ^          /* b is an instance of boy */
-instance(b2, believe-01) ^  /* b2 is an instance of believing */
-instance(g, girl) ^         /* g is an instance of girl */
+instance(w, want-01) ^         /* w is an instance of wanting */
+instance(b, boy) ^             /* b is an instance of boy */
+instance(b2, believe-01) ^     /* b2 is an instance of believing */
+instance(g, girl) ^            /* g is an instance of girl */
 ARG0(w, b) ^                   /* b is the wanter in w */
 ARG1(w, b2) ^                  /* b2 is the wantee in w */
 ARG0(b2, g) ^                  /* g is the believer in b2 */
@@ -415,7 +415,7 @@ concepts (boy, want, believe):
 
 > The boy wants to believe.
 
-The slash (`/`) is shorthand for the `:instance` relation.  This relation shows up
+The slash (`/`) is shorthand for the __*instance*__ relation, or, more technically, an `:instance-of` role.  This relation shows up
 more clearly in AMR graph format (see Introduction).
 
 Concepts in AMR 1.2 are usually written with English words or phrases.  Concepts
@@ -3106,12 +3106,12 @@ American spelling, but we do not otherwise normalize variants.
 > ad rates
 
 When building AMRs for proper names or “-er” nouns, we need to fill the root
-concept (or top-level `:instance` role).  In doing so, we face one of three
+concept (or top-level *instance* role).  In doing so, we face one of three
 situations.
 
 
 (a) In general, unless the English text provides something more specific type,
-we fill the `:instance` slot from a special list of standard AMR named entity types,
+we fill the *instance* slot from a special list of standard AMR named entity types,
 e.g. `person` and `company`.
 In such cases, we basically must hallucinate an entity type.  For example:
 
@@ -3141,21 +3141,22 @@ So when we are forced to hallucinate an entity type, AMR requires us to draw
 from this canonical list (borrowing from information extraction and question
 answering):
 
-  - **person**, family, animal, language, nationality, ethnic-group, regional-group, religious-group
-  - **organization**, company, government-organization, military, criminal-organization, political-party, school, university, research-institute, team, league
-  - **location**, city, city-district, county, local-region, state, province, country, country-region, world-region, continent, ocean, sea, lake, river, gulf, bay, strait, canal, peninsula, mountain, volcano, valley, canyon, island, desert, forest, moon, planet, star, constellation
+  - person, family, animal, language, nationality, ethnic-group, regional-group, religious-group, political-movement
+  - **organization**, company, government-organization, military, criminal-organization, political-party, market-sector, school, university, research-institute, team, league
+  - **location**, city, city-district, county, state, province, territory, country, local-region, country-region, world-region, continent; ocean, sea, lake, river, gulf, bay, strait, canal; peninsula, mountain, volcano, valley, canyon, island, desert, forest
+moon, planet, star, constellation
   - **facility**, airport, station, port, tunnel, bridge, road, railway-line, canal, building, theater, museum, palace, hotel, worship-place, market, sports-facility, park, zoo, amusement-park
   - **event**, incident, natural-disaster, earthquake, war, conference, game, festival
   - **product**, vehicle, ship, aircraft, aircraft-type, spaceship, car-make, work-of-art, picture, music, show, broadcast-program
   - **publication**, book, newspaper, magazine, journal
   - **natural-object**
-  - law, treaty, award, food-dish, music-key
+  - award, law, court-decision, treaty, music-key, musical-note, food-dish, writing-script, variable, program
 
 *Biomedical:*
 
-  - **molecular-physical-entity**, small-molecule, protein, protein-family, protein-segment, amino-acid, macro-molecular-complex, enzyme, rna
-  - pathway, gene, dna-sequence, cell, cell-line, organism, disease
-
+  - **molecular-physical-entity**, small-molecule, protein, protein-family, protein-segment, amino-acid, macro-molecular-complex, enzyme, nucleic-acid
+  - pathway, gene, dna-sequence, cell, cell-line, species, taxon, disease, medical-condition
+    
 We always choose the most specific applicable type.
 
 If none of these apply, then we use **thing**.
@@ -3196,7 +3197,7 @@ Some examples:
 
 
 (b) If the text contains a more specific English term to describe the type of entity, 
-we use it instead to fill the `:instance` role.
+we use it instead to fill the *instance* role.
 For example:
 
 ```lisp
@@ -3304,8 +3305,8 @@ We view this object semantically as a “group”, which happens to have a known
 `:name`, plus some a couple of other properties that describe it.  
 
 
-(c) The text contains *multiple* English words vying for the same `:instance` slot. 
-This happens occasionally.  Because `:instance` is the only relation that cannot
+(c) The text contains *multiple* English words vying for the same *instance* slot. 
+This happens occasionally.  Because *instance* is the only relation that cannot
 physically appear twice in AMR, we instead open up the inverse of `:domain` , i.e. the role `:mod`
 
 ```lisp
