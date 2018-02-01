@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.5 Specification
 =======================================================
 
-**Janaury 26, 2018**
+**Janaury 31, 2018**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -415,8 +415,7 @@ concepts (boy, want, believe):
 
 > The boy wants to believe.
 
-The slash (`/`) is shorthand for the __*instance*__ relation, or, more technically, an `:instance-of` role.  This relation shows up
-more clearly in AMR graph format (see Introduction).
+The slash (`/`) is shorthand for the __*instance*__ relation.  This relation shows up more clearly in AMR graph format (see Introduction).
 
 Concepts in AMR 1.2 are usually written with English words or phrases.  Concepts
 with core semantic relations may have sense tags, to identify the semantic
@@ -2812,7 +2811,7 @@ Additionally, `have-degree-91` is used for the degree-consequence construction, 
 
 > It is too early to reach any conclusion.
 
-Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://amr.isi.edu/doc/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
 
 ```lisp
 (h / have-degree-91 :polarity - 
@@ -3912,17 +3911,21 @@ These entities are described in standard, canonical forms:
 
 > www.whitehouse.gov
 
+For additional special frames and entities `byline-91`, `correlate-91` (*"the more the merrier"*), `course-91`, `have-degree-of-resemblance-91` (*"X is more like Y than Z"*), `hyperlink-91`, `instead-of-91`, `publication-91`, `request-confirmation-91`, `score-entity`, `score-on-scale-91`, `statistical-test-91`, `street-address-91`, `string-entity`, `value-interval`, `variable`), please consult the
+ * AMR Dictionary: [https://amr.isi.edu/doc/amr-dict.html](https://amr.isi.edu/doc/amr-dict.html) and/or
+ * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt]
 
 Further information
 -------------------
-For more information about AMR and for more examples, 
-see the [AMR Dictionary](https://www.isi.edu/~ulf/amr/lib/amr-dict.html),
-[amr.isi.edu](https://amr.isi.edu),
-[list of AMR NE types](https://www.isi.edu/~ulf/amr/lib/ne-types.html),
-[list of AMR roles](https://www.isi.edu/~ulf/amr/lib/roles.html),
-[list AMR quantity types](https://www.isi.edu/~ulf/amr/lib/popup/quantity-types.html).
-Maintained by Ulf Hermjakob (USC/ISI).
+For more information about AMR and for more examples, see 
+ * AMR Dictionary: [https://amr.isi.edu/doc/amr-dict.html](https://amr.isi.edu/doc/amr-dict.html)
+ * AMR page at ISI: [https://amr.isi.edu](https://amr.isi.edu)
+ * List of AMR NE types: [https://amr.isi.edu/doc/ne-types.html](https://amr.isi.edu/doc/ne-types.html)
+ * List of AMR roles: [https://amr.isi.edu/doc/roles.html](https://amr.isi.edu/doc/roles.html)
+ * List of AMR quantity types: [https://amr.isi.edu/doc/quantity-types.html](https://amr.isi.edu/doc/quantity-types.html)
+ * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt](https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt)
 
+Maintained by Ulf Hermjakob (USC/ISI).
 
 AMR Freak Show
 --------------
