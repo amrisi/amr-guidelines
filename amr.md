@@ -3913,7 +3913,7 @@ These entities are described in standard, canonical forms:
 
 For additional special frames and entities `byline-91`, `correlate-91` (*"the more the merrier"*), `course-91`, `have-degree-of-resemblance-91` (*"X is more like Y than Z"*), `hyperlink-91`, `instead-of-91`, `publication-91`, `request-confirmation-91`, `score-entity`, `score-on-scale-91`, `statistical-test-91`, `street-address-91`, `string-entity`, `value-interval`, `variable`), please consult the
  * AMR Dictionary: [https://amr.isi.edu/doc/amr-dict.html](https://amr.isi.edu/doc/amr-dict.html) and/or
- * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt]
+ * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt](https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt)
 
 Further information
 -------------------
