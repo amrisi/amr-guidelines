@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.5 Specification
 =======================================================
 
-**Janaury 31, 2018**
+**February 5, 2018**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2825,6 +2825,8 @@ Note: The primary relation of the Consequence argument may be elided or unspecif
 
 >He is not tall enough to ride the rollercoaster.
 
+For a more thorough discussion, see *Abstract Meaning Representation of Constructions: The More We Include, the Better the Representation* by [Bonial et al. 2018](#Bonial-2018).
+
 Variables and co-reference
 --------------------------
 
@@ -3983,6 +3985,12 @@ the same conjunction of propositional triples.
 
 References
 ----------
+
+<a name="Banarescu-2014" href="#Banarescu-2014">#</a>
+Banarescu, Laura, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, and Nathan Schneider. "Abstract Meaning Representation for Sembanking." *Proceedings of the 7th Linguistic Annotation Workshop* (2013).
+
+<a name="Bonial-2018" href="#Bonial-2018">#</a>
+Bonial, Claire, Bianca Badarau, Kira Griffitt, Ulf Hermjakob, Kevin Knight, Tim O'Gorman, Martha Palmer and Nathan Schneider. "Abstract Meaning Representation of Constructions: The More We Include, the Better the Representation." *11th Language Resources and Evaluation Conference* (2018).
 
 <a name="Carpenter-1992" href="#Carpenter-1992">#</a>
 Carpenter, Bob. "The Logic of Typed Feature Structures". *Number 32 in Cambridge Tracts in Theoretical Computer Science*. (1992).
