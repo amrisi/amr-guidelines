@@ -1,7 +1,7 @@
 Abstract Meaning Representation (AMR) 1.2.5 Specification
 =======================================================
 
-**February 5, 2018**
+**February 23, 2018**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -423,7 +423,7 @@ frame:
 
 ```lisp
 (b / believe-01
-   :ARG0 (b / boy))
+   :ARG0 (b2 / boy))
 ```
 
 > The boy believes.
@@ -759,7 +759,7 @@ AMR represents negation logically, using `:polarity`.
 > The boy doesn’t think his team will win.  (colloquially, ambiguously)
 
 ```lisp
-(h / have-01 
+(h / have-03 
    :polarity -
    :ARG0 (i / i)
    :ARG1 (m / money))
@@ -847,7 +847,7 @@ AMR uses the concept `amr-unknown` (in-place!) to indicate questions:
 > How fast did the girl run?
 
 ```lisp
-(g / see-01
+(s / see-01
    :ARG0 (g / girl)
    :ARG1 (a / amr-unknown
             :ARG1-of (p / purple-02)))
@@ -994,13 +994,13 @@ Imperative and Expressive mode
 Finally, `:mode expressive` is used to mark exclamational words such as `ah, ha, hmm, oh, wow, yippee` that express emotions, but don't refer to a clear event, object or property. Do **not** use `:mode expressive` for mere emphasis (text in ALLCAPS), exclamation marks (!) or disfluency markers (uh), which are not annotated in AMR.
 
 ```lisp
-(yippee :mode expressive)
+(y / yippee :mode expressive)
 ```
 
 > Yippee!
 
 ```lisp
-(yes :mode expressive)
+(y / yes :mode expressive)
 ```
 
 > Yes!!!
@@ -1457,8 +1457,8 @@ predicates if there is an implied event or process:
 
 ```lisp
 (s / sadden-01
-   :ARG1 (g / girl)
-   :ARG2 (d / disaster))
+   :ARG0 (d / disaster)
+   :ARG1 (g / girl))
 ```
 
 > The girl was saddened by the disaster.
@@ -1748,7 +1748,7 @@ a newspaper, a TV channel, the web, YouTube, Facebook, a speech, as well as lang
    :ARG0 (p3 / person
              :ARG0-of (h2 / have-org-role-91
                           :ARG2 (m / mayor)))
-   :ARG1 (l / lower-01
+   :ARG1 (l / lower-05
             :ARG1 (c / crime)
             :manner (h / hire-01
                        :ARG2 (p4 / person
@@ -2106,7 +2106,7 @@ relation `:cause` is replaced by `cause-01`. Instead of `x :cause y`, we have
 
 ```lisp
 AMR without reification:        AMR with reification:
-(l / leave-01                   (l / leave-01
+(l / leave-11                   (l / leave-11
    :ARG0 (g / girl)                :ARG0 (g / girl)
    :cause (a / arrive-01           :ARG1-of (c / cause-01
              :ARG1 (b / boy)))                 :ARG0 (a / arrive-01
@@ -2149,14 +2149,14 @@ reifications for many relations.  In the case of `:location`, the reification is
 (k / know-01
    :ARG0 (w / we)
    :ARG1 (b / be-located-at-91
-            :ARG0 (k2 / knife)
-            :ARG1 (d / drawer)))
+            :ARG1 (k2 / knife)
+            :ARG2 (d / drawer)))
 ```
 
 > We know the knife is in the drawer.
 
-Note that `be-located-at-91` has two roles, `:ARG0` (the thing that exists in
-space) and `:ARG1` (where the thing is).  
+Note that `be-located-at-91` has two roles, `:ARG1` (the thing that exists in
+space) and `:ARG2` (where the thing is).  
 
 
 We also use reification when we want to modify a relation.  For example:
@@ -2166,8 +2166,8 @@ We also use reification when we want to modify a relation.  For example:
 (k / know-01
    :ARG0 (w / we)
    :ARG1 (b / be-located-at-91
-            :ARG0 (k2 / knife)
-            :ARG1 (d / drawer)
+            :ARG1 (k2 / knife)
+            :ARG2 (d / drawer)
             :polarity -
             :time (y / yesterday)))
 ```
@@ -2360,7 +2360,7 @@ AMR cringes while employing a default `:prep-x` representation:
 ```lisp
 (s / sue-01
    :ARG1 (h / he)
-   :prep-in (s / case))
+   :prep-in (c / case))
 ```
 
 > He was sued in the case.
@@ -2368,7 +2368,7 @@ AMR cringes while employing a default `:prep-x` representation:
 AMR combines phrasal prepositions:
 
 ```lisp
-(f / file
+(f / file-01
    :ARG1 (b / brief)
    :prep-on-behalf-of (g / government))
 ```
@@ -2512,7 +2512,7 @@ Conjoined adjectives are done without `and`:
 ```lisp
 (a / and
    :op1 (c / shout-01)
-   :op2 (l / leave-01
+   :op2 (l / leave-11
            :ARG0 (b / boy)))
 ```
 
@@ -2543,7 +2543,7 @@ AMR aims for a logical representation even when English elides core actors:
 (a / and
    :op1 (c / shout-01
            :ARG0 (b / boy))
-   :op2 (l / leave-01
+   :op2 (l / leave-11
            :ARG0 b))
 ```
 
@@ -2572,7 +2572,7 @@ modifies the entire conjunction rooted by `and`:
             :weekday (t / tuesday))
    :op1 (a2 / arrive-01
             :ARG1 (b / boy))
-   :op2 (l / leave-01
+   :op2 (l / leave-11
           :ARG0 b))
 ```
 
@@ -2634,7 +2634,7 @@ The placement of `:polarity` can be troublesome.  Consider:
 (b / believe-01
    :ARG0 (g / girl)
    :ARG1 (w / work-01
-            :ARG0 (b / boy)
+            :ARG0 (b2 / boy)
             :manner (h / hard-02)))
 ```
 
@@ -2823,7 +2823,7 @@ Note: The primary relation of the Consequence argument may be elided or unspecif
            :ARG1 (r2 / rollercoaster))) 
 ```
 
->He is not tall enough to ride the rollercoaster.
+> He is not tall enough to ride the rollercoaster.
 
 For a more thorough discussion, see *Abstract Meaning Representation of Constructions: The More We Include, the Better the Representation* by [Bonial et al. 2018](#Bonial-2018).
 
@@ -2860,7 +2860,7 @@ If an overt pronoun has no antecedent within the sentence, AMR uses the pronoun:
 ```lisp
 (s / see-01
    :ARG0 (h / he)
-   :ARG1 (s / they))
+   :ARG1 (t / they))
 ```
 
 > He saw them.
@@ -3122,13 +3122,12 @@ In such cases, we basically must hallucinate an entity type.  For example:
             :op1 "Pascale"))
 ```
 
-> 
-Pascale 
+> Pascale 
 
 ```lisp
 (c / company
    :ARG0-of (m / make-01
-               :ARG1 (c / chip)))
+               :ARG1 (c2 / chip)))
 ```
 
 > the chip maker
