@@ -3017,7 +3017,7 @@ AMR is sparing with `:subset` -- otherwise things get out of control.  For
 example, we do not use it for “Three of the workers at the plant,” but we rather
 just interpret this as “Three workers”.
 
-Note: The AMR Editor automatically reifies :cause, :cost, :employed-by, :meaning, :role, :subset, :subset-of, :superset and :superset-of to include-91, so we call them *shortcuts*.
+Note: The AMR Editor automatically reifies :cause, :cost, :employed-by, :meaning, :role, :subset, :superset and their inverses (e.g. :cause-of) to cause-01, cost-01, have-org-role-91, mean-01, have-org-role-91, include-91, and include-91 respectively, so we call them *shortcuts*.
 
 Named Entities
 --------------
