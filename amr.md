@@ -42,7 +42,6 @@ Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
 		- [:medium](#medium)
 		- [:manner](#manner)
 		- [:purpose](#purpose)
-		- [:cause](#cause)
 		- [:concession](#concession)
 		- [:condition](#condition)
 		- [:part](#part)
