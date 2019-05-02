@@ -1,7 +1,7 @@
-Abstract Meaning Representation (AMR) 1.2.5 Specification
+Abstract Meaning Representation (AMR) 1.2.6 Specification
 =======================================================
 
-**February 23, 2018**
+**May 1, 2019**
 
 _Laura Banarescu, Claire Bonial, Shu Cai, Madalina Georgescu, Kira Griffitt, 
 Ulf Hermjakob, Kevin Knight, Philipp Koehn, Martha Palmer, Nathan Schneider_
@@ -2186,7 +2186,6 @@ Relation       | Reification           | Domain  | Range   | Example
 `:accompanier` | `accompany-01`        | `:ARG0` | `:ARG1` | “she's with him”
 `:age`         | `age-01`              | `:ARG1` | `:ARG2` | “she's 41 years old”
 `:beneficiary` | `benefit-01`          | `:ARG0` | `:ARG1` | “the 5k run is for kids”
-`:cause`       | `cause-01`            | `:ARG1` | `:ARG0` | “he came 'cause of her”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
 `:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
 `:degree`      | `have-degree-92`      | `:ARG1` | `:ARG2` | “very tall” (intensifier or downtoner)
@@ -2196,10 +2195,12 @@ Relation       | Reification           | Domain  | Range   | Example
 `:extent`      | `have-extent-91`      | `:ARG1` | `:ARG2` | “trip was 2500 miles”
 `:frequency`   | `have-frequency-91`   | `:ARG1` | `:ARG2` | “he came three times”
 `:instrument`  | `have-instrument-91`  | `:ARG1` | `:ARG2` | “forks are for eating”
+`:li`          | `have-li-91`          | `:ARG1` | `:ARG2` | “(B)”
 `:location`    | `be-located-at-91`    | `:ARG1` | `:ARG2` | “she's not here”
 `:manner`      | `have-manner-91`      | `:ARG1` | `:ARG2` | “it was done quickly”
 `:mod`         | `have-mod-91`         | `:ARG1` | `:ARG2` | “he is half Chinese"
 `:name`        | `have-name-91`        | `:ARG1` | `:ARG2` | “the city formerly named Constantinople”
+`:ord`         | `have-ord-91`         | `:ARG1` | `:ARG2` | “I don't know whether it was his first loss.”
 `:part`        | `have-part-91`        | `:ARG1` | `:ARG2` | “the roof of the house”
 `:polarity`    | `have-polarity-91`    | `:ARG1` | `:ARG2` | “I don't know.”
 `:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
@@ -2207,7 +2208,6 @@ Relation       | Reification           | Domain  | Range   | Example
 `:quant`       | `have-quant-91`       | `:ARG1` | `:ARG2` | “there are 4 rabbits”
 `:source`      | `be-from-91`          | `:ARG1` | `:ARG2` | “she's from Ipanema”
 `:subevent`    | `have-subevent-91`    | `:ARG1` | `:ARG2` | “presentation at a conference”
-`:subset`      | `include-91`          | `:ARG2` | `:ARG1` | “10% of the workers”
 `:time`        | `be-temporally-at-91` | `:ARG1` | `:ARG2` | “the party is on friday”
 `:topic`       | `concern-02`          | `:ARG0` | `:ARG1` | “the show's about me”
 `:value`       | `have-value-91`       | `:ARG1` | `:ARG2` | “The phone number is 1-800-555-1223.”
@@ -2240,8 +2240,8 @@ the boy's arrival”.  So we cannot guarantee that these two sentences get the
 same AMR.
 
 A second potential answer is “reify all the time”, which would completely
-eliminate relations like `:cause`, `:location`, and `:subset` from AMR, in favor of
-concepts like `cause-01`, `be-located-at-91`, and `include-91`.  But this is
+eliminate relations like `:location`, and `:time` from AMR, in favor of
+concepts like `be-located-at-91`, and `be-temporally-at-91`.  But this is
 cumbersome -- it is easy and typical to simply type `:location`.
 
 The resolution: we consider “AMR with reification” to be “real AMR”, with
@@ -3017,7 +3017,7 @@ AMR is sparing with `:subset` -- otherwise things get out of control.  For
 example, we do not use it for “Three of the workers at the plant,” but we rather
 just interpret this as “Three workers”.
 
-Note: The AMR Editor automatically reifies :subset, :subset-of, :superset and :superset-of to include-91, so we call them *shortcuts*.
+Note: The AMR Editor automatically reifies :cause, :cost, :employed-by, :meaning, :role, :subset, :subset-of, :superset and :superset-of to include-91, so we call them *shortcuts*.
 
 Named Entities
 --------------
