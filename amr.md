@@ -2230,7 +2230,7 @@ AMR without reification:        AMR with reification:
    :ARG0 (g / girl)                :ARG0 (g / girl)
    :cause (a / arrive              :ARG1-of (c / cause-01
              :ARG0 (b / boy)))                 :ARG0 (a / arrive
-                                               :ARG0 (b / boy))))
+                                                        :ARG0 (b / boy))))
 ```
 
 Furthermore, we might reasonably tend to use the first AMR for “The girl left
