@@ -2600,9 +2600,9 @@ their position:
 > Each of the boys left.
 
 ```lisp
-(l / leave-01
-   :ARG0 (b / boy
-            :mod (n / no)))
+(b / boy
+     :polarity -
+     :ARG0-of (l / leave-01))
 ```
 
 > No boy left.
