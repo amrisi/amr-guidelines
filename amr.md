@@ -2178,7 +2178,7 @@ predicates, in which case, we just use the `:ARG` relations in the natural way.
 
 > Read this chart as: `x :Relation y` = `x :Domain-of (z / Reification :Range y)`
 >
-> For example: `x :location y` = `x :ARG0-of (b / be-located-at-91 :ARG1 y)`
+> For example: `x :location y` = `x :ARG1-of (b / be-located-at-91 :ARG2 y)`
 
 Relation       | Reification           | Domain  | Range   | Example
 ---------------|-----------------------|---------|---------|-------------------------
