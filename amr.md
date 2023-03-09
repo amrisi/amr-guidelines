@@ -2202,7 +2202,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:ord`         | `have-ord-91`         | `:ARG1` | `:ARG2` | “I don't know whether it was his first loss.”
 `:part`        | `have-part-91`        | `:ARG1` | `:ARG2` | “the roof of the house”
 `:polarity`    | `have-polarity-91`    | `:ARG1` | `:ARG2` | “I don't know.”
-`:poss`        | `own-01`, `have-03`   | `:ARG0` | `:ARG1` | “that dog's not mine”
+`:poss`        | `own-01`, `have-03`   | `:ARG1` | `:ARG0` | “that dog's not mine”
 `:purpose`     | `have-purpose-91`     | `:ARG1` | `:ARG2` | “it's to eliminate bugs”
 `:quant`       | `have-quant-91`       | `:ARG1` | `:ARG2` | “there are 4 rabbits”
 `:source`      | `be-from-91`          | `:ARG1` | `:ARG2` | “she's from Ipanema”
