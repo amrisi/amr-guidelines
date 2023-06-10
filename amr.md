@@ -2187,7 +2187,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:beneficiary` | `benefit-01`          | `:ARG0` | `:ARG1` | “the 5k run is for kids”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
 `:condition`   | `have-condition-91`   | `:ARG1` | `:ARG2` | “he comes if she comes”
-`:degree`      | `have-degree-92`      | `:ARG1` | `:ARG2` | “very tall” (intensifier or downtoner)
+`:degree`      | `have-degree-91`      | `:ARG1` | `:ARG2` | “very tall” (intensifier or downtoner)
 `:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
 `:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
