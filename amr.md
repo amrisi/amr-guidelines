@@ -2182,7 +2182,7 @@ predicates, in which case, we just use the `:ARG` relations in the natural way.
 
 Relation       | Reification           | Domain  | Range   | Example
 ---------------|-----------------------|---------|---------|-------------------------
-`:accompanier` | `accompany-01`        | `:ARG0` | `:ARG1` | “she's with him”
+`:accompanier` | `accompany-01`        | `:ARG1` | `:ARG0` | “she is accompanied by him”
 `:age`         | `age-01`              | `:ARG1` | `:ARG2` | “she's 41 years old”
 `:beneficiary` | `benefit-01`          | `:ARG0` | `:ARG1` | “the 5k run is for kids”
 `:concession`  | `have-concession-91`  | `:ARG1` | `:ARG2` | “he came despite of her”
@@ -2190,7 +2190,7 @@ Relation       | Reification           | Domain  | Range   | Example
 `:degree`      | `have-degree-91`      | `:ARG1` | `:ARG2` | “very tall” (intensifier or downtoner)
 `:destination` | `be-destined-for-91`  | `:ARG1` | `:ARG2` | “i'm off to Atlanta”
 `:duration`    | `last-01`             | `:ARG1` | `:ARG2` | “it's 15 minutes long”
-`:example`     | `exemplify-01`        | `:ARG0` | `:ARG1` | “cities such as Atlanta”
+`:example`     | `exemplify-01`        | `:ARG1` | `:ARG0` | “cities such as Atlanta”
 `:extent`      | `have-extent-91`      | `:ARG1` | `:ARG2` | “trip was 2500 miles”
 `:frequency`   | `have-frequency-91`   | `:ARG1` | `:ARG2` | “he came three times”
 `:instrument`  | `have-instrument-91`  | `:ARG1` | `:ARG2` | “forks are for eating”
