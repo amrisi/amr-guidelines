@@ -2510,7 +2510,7 @@ Conjoined adjectives are done without `and`:
 
 ```lisp
 (a / and
-   :op1 (c / shout-01)
+   :op1 (s / shout-01)
    :op2 (l / leave-11
            :ARG0 (b / boy)))
 ```
@@ -2519,8 +2519,8 @@ Conjoined adjectives are done without `and`:
 
 ```lisp
 (c / contrast-01
-   :ARG1 (c2 / shout-01)
-   :ARG2 (l / stay-01
+   :ARG1 (s / shout-01)
+   :ARG2 (s2 / stay-01
             :ARG1 (b / boy)))
 ```
 
@@ -2530,7 +2530,7 @@ Sometimes, an `:op1` or `:ARG1` may be missing:
 
 ```lisp
 (c / contrast-01
-   :ARG2 (l / stay-01
+   :ARG2 (s / stay-01
             :ARG1 (b / boy)))
 ```
 
@@ -2540,7 +2540,7 @@ AMR aims for a logical representation even when English elides core actors:
 
 ```lisp
 (a / and
-   :op1 (c / shout-01
+   :op1 (s / shout-01
            :ARG0 (b / boy))
    :op2 (l / leave-11
            :ARG0 b))
@@ -2555,7 +2555,7 @@ predicates:
 (a / and
    :op1 (a2 / arrive-01
             :ARG1 (b / boy))
-   :op2 (l / kill-01
+   :op2 (k / kill-01
            :ARG1 b
            :manner (p / prompt)))
 ```
