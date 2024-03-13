@@ -3782,7 +3782,7 @@ These entities are described in standard, canonical forms:
    :month 2
    :day 29
    :weekday (w / wednesday)
-   :time 16:30
+   :time "16:30"
    :timezone (z / PST))
 ```
 
@@ -3790,7 +3790,7 @@ These entities are described in standard, canonical forms:
 
 ```lisp
 (d / date-entity
-   :time 16:30)
+   :time "16:30")
 ```
 
 > 16:30
