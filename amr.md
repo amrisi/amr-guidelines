@@ -137,11 +137,11 @@ The variables `w`, `b`, `b2`, and `g` correspond to internal nodes in the graph 
 Note that b appears twice in this format, the first time as `(b / boy)` and the
 second time simply as `b`.
 
-This AMR can also be viewed as conjunction of logical triples, omitting root
-information:
-
+This AMR can also be viewed as conjunction of logical triples, along with root
+information (the meaning of the root is discussed under [Focus](#focus)):
 
 ```
+root(w) ^                      /* w is the focus of the sentence */
 instance(w, want-01) ^         /* w is an instance of wanting */
 instance(b, boy) ^             /* b is an instance of boy */
 instance(b2, believe-01) ^     /* b2 is an instance of believing */
