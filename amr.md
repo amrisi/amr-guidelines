@@ -2810,7 +2810,7 @@ Additionally, `have-degree-91` is used for the degree-consequence construction, 
 
 > It is too early to reach any conclusion.
 
-Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://amr.isi.edu/doc/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
+Note: The primary relation of the Consequence argument may be elided or unspecified, as it is here.  Annotators should introduce the most logical relation fitting with the context.  Although it may be tempting to introduce modality, possibility, and/or polarity in the consequence (i.e. expressing that there is NO conclusion), a survey of these constructions has demonstrated the difficulty in introducing such elements consistently in context.  Therefore, annotators are asked to limit the Arg6 to the simple relation to which the degree has reference.  See [AMR Dictionary](https://uhermjakob.github.io/amr/lib/amr-dict.html) for additional examples. Negative polarity should only be introduced (modifying `have-degree-91`) when it is explicit: 
 
 ```lisp
 (h / have-degree-91 :polarity - 
@@ -3912,20 +3912,19 @@ These entities are described in standard, canonical forms:
 > www.whitehouse.gov
 
 For additional special frames and entities `byline-91`, `correlate-91` (*"the more the merrier"*), `course-91`, `have-degree-of-resemblance-91` (*"X is more like Y than Z"*), `hyperlink-91`, `instead-of-91`, `publication-91`, `request-confirmation-91`, `score-entity`, `score-on-scale-91`, `statistical-test-91`, `street-address-91`, `string-entity`, `value-interval`, `variable`), please consult the
- * AMR Dictionary: [https://amr.isi.edu/doc/amr-dict.html](https://amr.isi.edu/doc/amr-dict.html) and/or
- * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt](https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt)
+ * AMR Dictionary: [https://uhermjakob.github.io/amr/lib/amr-dict.html](https://uhermjakob.github.io/amr/lib/amr-dict.html) and/or
 
 Further information
 -------------------
 For more information about AMR and for more examples, see 
- * AMR Dictionary: [https://amr.isi.edu/doc/amr-dict.html](https://amr.isi.edu/doc/amr-dict.html)
- * AMR page at ISI: [https://amr.isi.edu](https://amr.isi.edu)
- * List of AMR NE types: [https://amr.isi.edu/doc/ne-types.html](https://amr.isi.edu/doc/ne-types.html)
- * List of AMR roles: [https://amr.isi.edu/doc/roles.html](https://amr.isi.edu/doc/roles.html)
- * List of AMR quantity types: [https://amr.isi.edu/doc/quantity-types.html](https://amr.isi.edu/doc/quantity-types.html)
- * List of frame arguments in PropBank (AMR version): [https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt](https://amr.isi.edu/doc/propbank-amr-frames-arg-descr.txt)
+ * AMR Dictionary: [https://uhermjakob.github.io/amr/lib/amr-dict.html](https://uhermjakob.github.io/amr/lib/amr-dict.html)
+ * List of AMR NE types: [https://uhermjakob.github.io/amr/lib/ne-types.html](https://uhermjakob.github.io/amr/lib/ne-types.html)
+ * List of AMR roles: [https://uhermjakob.github.io/amr/lib/roles.html](https://uhermjakob.github.io/amr/lib/roles.html)
+ * List of AMR quantity types: [https://uhermjakob.github.io/amr/lib/quantity-types.html](https://uhermjakob.github.io/amr/lib/quantity-types.html)
+ * List of frame arguments in PropBank (AMR version): <https://github.com/flipz357/AMR-World/blob/main/data/dictionaries/propbank-amr-frames-arg-descr.txt>
+ * List of Human Reference AMR annotations (including Bio AMR corpus and 'The Little Prince' corpus) <https://github.com/flipz357/AMR-World/tree/main/data/reference_amrs>
 
-Maintained by Ulf Hermjakob (USC/ISI).
+Maintained by Ulf Hermjakob (USC/ISI) and Juri Opitz (University of Zurich, Department of Computational Linguistics).
 
 AMR Freak Show
 --------------
